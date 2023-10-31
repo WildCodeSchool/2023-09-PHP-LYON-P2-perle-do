@@ -1,3 +1,14 @@
-body {
-    color: #f76c6c;
+* {
+    text-decoration: none;
+}
+
+nav,
+nav ul {
+    display: flex;
+    width: 100vw;
+    justify-content: space-around;
+}
+
+:root {
+    --primary: #464646;
 }
