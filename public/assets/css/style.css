@@ -2,13 +2,12 @@
     text-decoration: none;
 }
 
-nav,
 nav ul {
     display: flex;
     width: 100vw;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
-:root {
-    --primary: #464646;
+nav {
+    justify-content: space-evenly;
 }
