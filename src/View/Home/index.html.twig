@@ -1,6 +1,47 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Hello Wilder !</h1>
-    <p>Find a complete CRUD example on <a href="/items">/items</a> page.</p>
+<div class="grid">
+    <div>
+        <a href="\categories"><article>
+            <i class="fa-regular fa-file-lines"></i>
+            <p>Catégories</p>
+        </article></a>
+    </div>
+    <div>
+        <a href="\customers"><article>
+            <i class="fa-regular fa-user"></i>
+            <p>Compte Clients</p>
+        </article></a>
+    </div>
+    <div>
+        <a href="\invoices"><article>
+            <i class="fa-solid fa-receipt"></i>
+            <p>Facture</p>
+        </article></a>
+    </div>
+    <div>
+        <a href="\earnmoney"><article>
+            <i class="fa-solid fa-chart-column"></i>
+            <p>CA</p>
+        </article></a>
+    </div>
+    <div>
+        <a href="\workshops"><article>
+            <i class="fa-regular fa-calendar"></i>
+            <p>Atelier</p>
+        </article></a>
+    </div>
+    <div>
+        <a href="\calculators"><article>
+            <i class="fa-solid fa-calculator"></i>
+            <p>Calculatrice</p>
+        </article></a>
+    </div>
+    <div>
+        <a href="\cart"><article>
+            <i class="fa-solid fa-cart-shopping"></i>
+            <p>Paniers</p>
+        </article></a>
+    </div>
 {% endblock %}
