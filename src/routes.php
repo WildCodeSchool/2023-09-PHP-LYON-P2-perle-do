@@ -37,6 +37,8 @@ return [
     'invoices/show' => ['InvoiceController', 'show', ['id']],
     'invoices/add' => ['InvoiceController', 'add',],
     'invoices/delete' => ['InvoiceController', 'delete',],
+    // pages recherche
+    'search' => ['SearchController','index',],
 
 
     'items' => ['ItemController', 'index',],

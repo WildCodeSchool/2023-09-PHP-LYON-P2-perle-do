@@ -15,16 +15,16 @@
 </head>
 
 <body>
-    {% block headermobile %}
+    {% block header %}
     <header>
         <a href="javascript:window.history.back();"><i class="fa-solid fa-chevron-left"></i></a>
         <img src="/assets/images/logo2.png" alt="logo de perle do">
         <p>{{ now|date("l j F Y", "Europe/Paris") }}</p>
-        <i class="fa-solid fa-magnifying-glass"></i>
+        <a href="/search"><i class="fa-solid fa-magnifying-glass"></i></a>
     </header>
     {% endblock %}
 
-    {% block navbarmobile %}
+    {% block navbar %}
     <nav class="navbar-mobile">
       <ul>
         <li><a href="/categories"><i class="fa-regular fa-file-lines color "></i></a></li>
@@ -39,6 +39,8 @@
     {% endblock %}
 
     {% block content %}{% endblock %}
+
+    
 
     {% block javascript %}{% endblock %}
 </body>

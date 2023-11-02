@@ -94,6 +94,11 @@ header .fa-magnifying-glass{
     justify-items: end;
 }
 
+.buddhism {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
 /* accueil */
 .grid {

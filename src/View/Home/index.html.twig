@@ -1,11 +1,11 @@
 {% extends 'layout.html.twig' %}
 
-    {% block headermobile %}
+    {% block header %}
     <header>
         <i class="fa-solid fa-power-off"></i>
         <img src="/assets/images/logo2.png" alt="logo de perle do">
         <p>{{ now|date("l j F Y", "Europe/Paris") }}</p>
-        <i class="fa-solid fa-magnifying-glass"></i>
+        <a href="/search"><i class="fa-solid fa-magnifying-glass"></i></a>
     </header>
     {% endblock %}
 
@@ -55,5 +55,5 @@
     </div>
 {% endblock %}
 
-{% block navbarmobile %}
+{% block navbar %}
 {% endblock %}
