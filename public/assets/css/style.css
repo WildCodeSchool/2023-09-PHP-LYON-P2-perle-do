@@ -2,8 +2,8 @@
 /* Can be forced with data-theme="light" */
 [data-theme="light"],
 :root:not([data-theme="dark"]) {
-    --primary: #C49A6C;
-    --primary-hover: #C49A6C;
+    --primary: #c49a6c;
+    --primary-hover: #c49a6c;
     --primary-focus: rgba(216, 27, 96, 0.125);
     --primary-inverse: #FFF;
     --backgound-color: rgba(255, 235, 228, 0.56);
@@ -13,20 +13,20 @@
 /* Automatically enabled if user has Dark mode enabled */
 @media only screen and (prefers-color-scheme: dark) {
     :root:not([data-theme]) {
-        --primary: #C49A6C;
-        --primary-hover: #C49A6C;
+        --primary: #c49a6c;
+        --primary-hover: #c49a6c;
         --primary-focus: rgba(216, 27, 96, 0.25);
-        --primary-inverse: #FFF;
+        --primary-inverse: #fff;
     }
 }
 
 /* Pink Dark scheme (Forced) */
 /* Enabled if forced with data-theme="dark" */
 [data-theme="dark"] {
-    --primary: #C49A6C;
-    --primary-hover: #C49A6C;
+    --primary: #c49a6c;
+    --primary-hover: #c49a6c;
     --primary-focus: rgba(216, 27, 96, 0.25);
-    --primary-inverse: #FFF;
+    --primary-inverse: #fff;
 }
 
 /* Pink (Common styles) */
@@ -37,17 +37,31 @@
     --switch-checked-background-color: var(--primary);
 }
 
-[role=link]:is([aria-current],:hover,:active,:focus), a:is([aria-current],:hover,:active,:focus) {
+[role="link"]:is([aria-current], :hover, :active, :focus),
+a:is([aria-current], :hover, :active, :focus) {
     --color: var(--primary-hover);
     --text-decoration: none;
 }
 
 * {
-    * {
-        margin: 0;
-        padding: 0;
-        background-color: #F1F1F1;
-    }
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    --background-block-white: #fefefe;
+    --background-color: #f9f9f9;
+    --font-black: #333333;
+}
+body {
+    background-color: var(--background-color);
+}
+nav ul {
+    display: flex;
+    width: 100vw;
+    justify-content: space-evenly;
+}
+
+nav {
+    justify-content: space-evenly;
 }
 
 /* header */
@@ -108,38 +122,57 @@ article p {
     font-size: 1rem;
 }
 
+.navbar-mobile {
+    background-color: var(--background-block-white);
+    position: fixed;
+    bottom: 1%;
+    border-radius: 15px;
+    width: 98%;
+    left: 1vw;
+    right: 1vw;
+    box-shadow: var(--card-box-shadow);
+}
+.navbar-mobile > ul a {
+    color: var(--font-black);
+}
+
 /* -------------------media queries pour + 780 px--------------------- */
-@media screen and (min-width:780px) {
+@media screen and (min-width: 780px) {
     .grid {
         grid-template-columns: 1fr 1fr 1fr;
-        }
-        .grid div:last-child {
-            grid-column-end: 4;
-        }
-        
+    }
+    .grid div:last-child {
+        grid-column-end: 4;
+    }
+
         article {
-            height: 20vh;
-        }
+        height: 20vh;
+    }
 
-        article p {
-            font-size: 1.5rem;
-        }
+    article p {
+        font-size: 1.5rem;
+    }
 
-        body header {
-            display: flex;
-            justify-content: space-between;
-            background-color: #F1F1F1;
-        }
+    body header {
+        display: flex;
+        justify-content: space-between;
+        background-color: #F1F1F1;
+    }
         
-        header img {
-            display: none;
-        }
-        header p {
-            display: none;
-        }
+    header img {
+        display: none;
+    }
+
+    header p {
+        display: none;
+    }
         
-        header .fa-magnifying-glass{
-            display: flex;
-            justify-content: space-between;
-        }
+    header .fa-magnifying-glass{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .navbar-mobile {
+        display: none;
+    }
 }
