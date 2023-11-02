@@ -48,6 +48,7 @@ a:is([aria-current], :hover, :active, :focus) {
     text-decoration: none;
     --background-block-white: #fefefe;
     --background-color: #f9f9f9;
+    --font-black: #333333;
 }
 body {
     background-color: var(--background-color);
@@ -96,6 +97,10 @@ article p {
     right: 1vw;
     box-shadow: var(--card-box-shadow);
 }
+ul a {
+    color: var(--font-black);
+}
+
 /* -------------------media queries pour + 780 px--------------------- */
 @media screen and (min-width: 780px) {
     .grid {
