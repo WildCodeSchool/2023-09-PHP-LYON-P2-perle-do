@@ -97,7 +97,7 @@ article p {
     right: 1vw;
     box-shadow: var(--card-box-shadow);
 }
-ul a {
+.navbar_mobile > ul a {
     color: var(--font-black);
 }
 
@@ -116,5 +116,8 @@ ul a {
 
     article p {
         font-size: 1.5rem;
+    }
+    .navbar_mobile {
+        display: none;
     }
 }
