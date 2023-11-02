@@ -13,9 +13,7 @@
     <script src="https://kit.fontawesome.com/9fbc16b7ca.js" crossorigin="anonymous"></script>
     {% block stylesheet %}{% endblock %}
 </head>
-
-<body>
-    <nav>
+<nav class="navbar_mobile">
   <ul>
     <li><a href="/categories"><i class="fa-regular fa-file-lines"></i></a></li>
     <li><a href="/customers"><i class="fa-regular fa-user"></i></a></li>
@@ -27,8 +25,9 @@
   </ul>
 </nav>
 
-    {% block content %}
-    {% endblock %}
+<body>
+    {% block content %}{% endblock %}
+
     {% block javascript %}{% endblock %}
 </body>
 
