@@ -1,5 +1,14 @@
 {% extends 'layout.html.twig' %}
 
+    {% block headermobile %}
+    <header>
+        <i class="fa-solid fa-power-off"></i>
+        <img src="/assets/images/logo2.png" alt="logo de perle do">
+        <p>{{ now|date("l j F Y", "Europe/Paris") }}</p>
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </header>
+    {% endblock %}
+
 {% block content %}
 <div class="grid">
     <div>
@@ -44,4 +53,7 @@
             <p>Paniers</p>
         </article></a>
     </div>
+{% endblock %}
+
+{% block navbarmobile %}
 {% endblock %}
