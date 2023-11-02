@@ -15,6 +15,13 @@
 </head>
 
 <body>
+    <header>
+        <i class="fa-solid fa-chevron-left"></i>
+        <img src="/assets/images/logo2.png" alt="logo de perle do">
+        <p>{{ now|date("l j F Y", "Europe/Paris") }}</p>
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </header>
+
     {% block content %}{% endblock %}
     {% block javascript %}{% endblock %}
 </body>

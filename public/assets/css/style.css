@@ -6,6 +6,7 @@
     --primary-hover: #C49A6C;
     --primary-focus: rgba(216, 27, 96, 0.125);
     --primary-inverse: #FFF;
+    --backgound-color: rgba(255, 235, 228, 0.56);
 }
 
 /* Pink Dark scheme (Auto) */
@@ -45,21 +46,57 @@
     * {
         margin: 0;
         padding: 0;
+        background-color: #F1F1F1;
     }
 }
+
+/* header */
+body header {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 0.5fr;
+    grid-template-rows: 1fr 1fr;
+    background-color: var(--backgound-color);
+    padding: 1rem;
+    position: absolute;
+}
+
+header img {
+    display: grid;
+    width: 100%;
+    justify-items: center;
+}
+header p {
+    display: grid;
+    grid-row: 2;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    justify-items: center;
+}
+
+header .fa-magnifying-glass{
+    display: grid;
+    justify-items: end;
+}
+
 
 /* accueil */
 .grid {
 grid-template-columns: 1fr 1fr;
-margin: 2rem;
+margin-right: 2rem;
+margin-left: 2rem;
 column-gap: 5rem;
+position: absolute;
+top: 13vh;
+width: 90%;
 }
+
 .grid div:last-child {
     grid-column-start: 1;
     grid-column-end: 3;
 }
 
 article {
+    margin-top: 1rem;
     border-radius: 2rem;
     width: 100%;
     height: 15vh;
@@ -86,5 +123,23 @@ article p {
 
         article p {
             font-size: 1.5rem;
+        }
+
+        body header {
+            display: flex;
+            justify-content: space-between;
+            background-color: #F1F1F1;
+        }
+        
+        header img {
+            display: none;
+        }
+        header p {
+            display: none;
+        }
+        
+        header .fa-magnifying-glass{
+            display: flex;
+            justify-content: space-between;
         }
 }
