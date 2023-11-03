@@ -208,10 +208,10 @@ nav {
         padding-right:1rem;
     }
 
-nav li {
+    nav li {
         width: max-content;
         padding: 15px 0px;
-    }
+        }
 
     .categorieblock{
         position: relative;
@@ -223,18 +223,21 @@ nav li {
 
     }
 
-nav img{
-display: flex;
-position: relative;
-bottom:20vh;
-    width: fit-content;
-}
+    nav img{
+        display: flex;
+        position: relative;
+        bottom:20vh;
+        width: fit-content;
+    }
 
-.deconnexion{
-    display: flex;
-    position: relative;
-    top:20vh;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    .deconnexion{
+        display: flex;
+        position: relative;
+        top:20vh;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
 
-}
+    .fa-power-off,.deconnexion, .deconnexion > a{
+        color: var(--primary);
+    }
 }
