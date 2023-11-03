@@ -190,18 +190,18 @@ nav {
         box-shadow: var(--card-box-shadow);
         width: 25%;
         height: 100vh;
-        padding:0 7.5%;
+        padding:0 6%;
     }
 
     .navbar-desktop > ul a {
         color: var(--font-black);
     }
-}
+
     nav ul {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        width: max-content;
+        width:fit-content;
     }
 
     i{
@@ -214,7 +214,27 @@ nav li {
     }
 
     .categorieblock{
-        position: fixed;
+        position: relative;
+        display: flex;
+        width: 66%;
         left: 30%;
         height: 80%;
+        justify-content: space-between;
+
     }
+
+nav img{
+display: flex;
+position: relative;
+bottom:20vh;
+    width: fit-content;
+}
+
+.deconnexion{
+    display: flex;
+    position: relative;
+    top:20vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+}
