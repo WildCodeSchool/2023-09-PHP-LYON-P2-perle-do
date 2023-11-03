@@ -54,16 +54,6 @@ a:is([aria-current], :hover, :active, :focus) {
 body {
     background-color: var(--background-color);
 }
-nav ul {
-    display: flex;
-    width: 100vw;
-    justify-content: space-evenly;
-}
-
-nav {
-    justify-content: space-evenly;
-}
-
 /* header */
 body header {
     display: grid;
@@ -121,6 +111,17 @@ article {
 article p {
     font-size: 1rem;
 }
+/* navbar */
+
+nav ul {
+    display: flex;
+    width: 100vw;
+    justify-content: space-evenly;
+}
+
+nav {
+    justify-content: space-evenly;
+}
 
 .navbar-mobile {
     background-color: var(--background-block-white);
@@ -135,7 +136,9 @@ article p {
 .navbar-mobile > ul a {
     color: var(--font-black);
 }
-
+.navbar-desktop {
+    display: none;
+}
 /* -------------------media queries pour + 780 px--------------------- */
 @media screen and (min-width: 780px) {
     .grid {
@@ -175,4 +178,41 @@ article p {
     .navbar-mobile {
         display: none;
     }
+
+    .navbar-desktop {
+        z-index: 99999;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--background-block-white);
+        box-shadow: var(--card-box-shadow);
+        width: 25%;
+        height: 100vh;
+        padding:0 5%;
+    }
+
+    .navbar-desktop > ul a {
+        color: var(--font-black);
+    }
 }
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    i{
+        padding-right:1rem;
+    }
+
+    a{
+        padding-right:1rem;
+        font-size: medium;
+        align-items: center;
+    }
+    
+nav li {
+        width: max-content;
+        padding: 10px 0px;
+    }
+
