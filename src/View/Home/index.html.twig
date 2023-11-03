@@ -1,5 +1,14 @@
 {% extends 'layout.html.twig' %}
 
+    {% block header %}
+    <header>
+        <i class="fa-solid fa-power-off"></i>
+        <img src="/assets/images/logo2.png" alt="logo de perle do">
+        <p>{{ now|date("l j F Y", "Europe/Paris") }}</p>
+        <a href="/search"><i class="fa-solid fa-magnifying-glass"></i></a>
+    </header>
+    {% endblock %}
+
 {% block content %}
 <div class="grid">
     <div>
@@ -44,4 +53,8 @@
             <p>Paniers</p>
         </article></a>
     </div>
+</div>
+{% endblock %}
+
+{% block navbar %}
 {% endblock %}
