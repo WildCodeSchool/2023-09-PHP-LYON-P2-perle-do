@@ -159,6 +159,8 @@ nav {
     body header {
         display: flex;
         justify-content: space-between;
+        width: 100%;
+        padding-left: 30%;
         background-color: var(--background-block-white);
     }
         
@@ -180,6 +182,7 @@ nav {
     }
 
     .navbar-desktop {
+        position: fixed;
         z-index: 99999;
         display: flex;
         flex-direction: column;
@@ -187,7 +190,7 @@ nav {
         box-shadow: var(--card-box-shadow);
         width: 25%;
         height: 100vh;
-        padding:0 5%;
+        padding:0 7.5%;
     }
 
     .navbar-desktop > ul a {
@@ -198,21 +201,20 @@ nav {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        width: 100%;
+        width: max-content;
     }
 
     i{
         padding-right:1rem;
     }
 
-    a{
-        padding-right:1rem;
-        font-size: medium;
-        align-items: center;
-    }
-    
 nav li {
         width: max-content;
-        padding: 10px 0px;
+        padding: 15px 0px;
     }
 
+    .categorieblock{
+        position: fixed;
+        left: 30%;
+        height: 80%;
+    }
