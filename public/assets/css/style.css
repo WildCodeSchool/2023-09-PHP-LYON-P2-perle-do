@@ -71,7 +71,6 @@ body header {
     grid-template-rows: 1fr 1fr;
     background-color: var(--backgound-color);
     padding: 1rem;
-    position: absolute;
     height: 20vh;
 }
 
@@ -94,20 +93,14 @@ header .fa-magnifying-glass{
     justify-items: end;
 }
 
-.buddhism {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
 /* accueil */
 .grid {
 grid-template-columns: 1fr 1fr;
 margin-right: 2rem;
 margin-left: 2rem;
 column-gap: 5rem;
-position: absolute;
-top: 12vh;
+position: relative;
+top: -7vh;
 width: 90%;
 }
 
