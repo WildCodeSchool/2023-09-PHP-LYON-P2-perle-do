@@ -7,6 +7,7 @@
     --primary-focus: rgba(216, 27, 96, 0.125);
     --primary-inverse: #FFF;
     --backgound-color: rgba(255, 235, 228, 0.56);
+    --block-color : #FFEBE4;
 }
 
 /* Pink Dark scheme (Auto) */
@@ -136,6 +137,34 @@ article p {
     color: var(--font-black);
 }
 
+/* search */
+.blockpage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: -7vh;
+    width: 90%;
+    padding-left : 1rem;
+    padding-right: 1rem;
+}
+
+.categorieblock {
+    position: relative;
+    height: 80%;
+    width: 100%;
+}
+
+h1 {
+    align-self: flex-start;
+} 
+
+.blockpage article {
+    width: 50%;
+    background-color: var(--block-color);
+}
+
 /* -------------------media queries pour + 780 px--------------------- */
 @media screen and (min-width: 780px) {
     .grid {
@@ -175,4 +204,13 @@ article p {
     .navbar-mobile {
         display: none;
     }
+
+
+    .categorieblock {
+        position: relative;
+        left: 30%;
+        height: 80%;
+        width: 65%;
+    }
+
 }
