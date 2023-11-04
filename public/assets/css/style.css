@@ -142,7 +142,7 @@ nav {
 }
 
 /* search */
-.blockpage {
+.block-page {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -155,7 +155,7 @@ h3 {
     align-self: flex-start;
 }
 
-.blockpage article {
+.block-page article {
     width: 75%;
     height: 100%;
 }
@@ -175,12 +175,12 @@ select {
     border-radius: 0.5rem;
 }
 
-.cancelvalid {
+.cancel-valid {
     display: flex;
     flex-direction: row;
 }
 
-.cancelvalid article {
+.cancel-valid article {
     width: 5rem;
     padding: 0;
     margin: 1rem;
@@ -195,11 +195,11 @@ select {
     width: 100%;
 }
 
-.addButton,
-.deleteButton,
-.editButton,
-.cancelButton,
-.validateButton {
+.add-button,
+.delete-button,
+.edit-button,
+.cancel-button,
+.validate-button {
     display: flex;
     position: relative;
     left: 24vw;
@@ -214,11 +214,11 @@ select {
     font-size: 1.5rem;
 }
 
-.addButton > a > p,
-.deleteButton > a,
-.editButton > a,
-.cancelButton > a,
-.validateButton > a {
+.add-button> a > p,
+.delete-button> a,
+.edit-button > a,
+.cancel-button> a,
+.validate-button> a {
     margin: 0;
     color: var(--font-black);
 }
@@ -296,7 +296,7 @@ select {
         padding: 15px 0px;
     }
 
-    .categorieblock {
+    .categorie-block {
         position: relative;
         display: flex;
         width: 66%;
@@ -340,11 +340,11 @@ select {
         width: 100%;
     }
 
-    .addButton,
-    .deleteButton,
-    .editButton,
-    .cancelButton,
-    .validateButton {
+    .add-button,
+    .delete-button,
+    .edit-button,
+    .cancel-button,
+    .validate-button {
         display: flex;
         position: relative;
         left: 52vw;
@@ -355,7 +355,7 @@ select {
         font-size: 1.5rem;
     }
 
-    .addButton > a > p {
+    .add-button > a > p {
         font-size: 1.2rem;
     }
 
