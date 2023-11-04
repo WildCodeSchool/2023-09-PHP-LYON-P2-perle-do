@@ -5,9 +5,10 @@
     --primary: #c49a6c;
     --primary-hover: #c49a6c;
     --primary-focus: rgba(216, 27, 96, 0.125);
-    --primary-inverse: #FFF;
+    --primary-inverse: #fff;
     --backgound-color: rgba(255, 235, 228, 0.56);
     --block-color : #FFEBE4;
+    --background-button-color: #ffebe4;
 }
 
 /* Pink Dark scheme (Auto) */
@@ -45,8 +46,6 @@ a:is([aria-current], :hover, :active, :focus) {
 }
 
 * {
-    margin: 0;
-    padding: 0;
     text-decoration: none;
     --background-block-white: #fefefe;
     --background-color: #f9f9f9;
@@ -55,16 +54,6 @@ a:is([aria-current], :hover, :active, :focus) {
 body {
     background-color: var(--background-color);
 }
-nav ul {
-    display: flex;
-    width: 100vw;
-    justify-content: space-evenly;
-}
-
-nav {
-    justify-content: space-evenly;
-}
-
 /* header */
 body header {
     display: grid;
@@ -89,20 +78,20 @@ header p {
     justify-items: center;
 }
 
-header .fa-magnifying-glass{
+header .fa-magnifying-glass {
     display: grid;
     justify-items: end;
 }
 
 /* accueil */
 .grid {
-grid-template-columns: 1fr 1fr;
-margin-right: 2rem;
-margin-left: 2rem;
-column-gap: 5rem;
-position: relative;
-top: -7vh;
-width: 90%;
+    grid-template-columns: 1fr 1fr;
+    margin-right: 2rem;
+    margin-left: 2rem;
+    column-gap: 5rem;
+    position: relative;
+    top: -7vh;
+    width: 90%;
 }
 
 .grid div:last-child {
@@ -122,6 +111,17 @@ article {
 article p {
     font-size: 1rem;
 }
+/* navbar */
+
+nav ul {
+    display: flex;
+    width: 100vw;
+    justify-content: space-evenly;
+}
+
+nav {
+    justify-content: space-evenly;
+}
 
 .navbar-mobile {
     background-color: var(--background-block-white);
@@ -135,6 +135,16 @@ article p {
 }
 .navbar-mobile > ul a {
     color: var(--font-black);
+}
+.navbar-desktop {
+    display: none;
+}
+/* button */
+.buttons {
+    display: flex;
+    position: fixed;
+    bottom: 9vh;
+    width: 100%;
 }
 
 /* search */
@@ -165,6 +175,33 @@ h1 {
     background-color: var(--block-color);
 }
 
+.addButton,
+.deleteButton,
+.editButton,
+.cancelButton,
+.validateButton {
+    display: flex;
+    position: relative;
+    left: 24vw;
+    padding: 0;
+    margin: 0 0.5rem;
+    background-color: var(--background-button-color);
+    border-radius: 15px;
+    width: 12%;
+    height: 6vh;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.addButton > a > p,
+.deleteButton > a,
+.editButton > a,
+.cancelButton > a,
+.validateButton > a {
+    margin: 0;
+    color: var(--font-black);
+}
 /* -------------------media queries pour + 780 px--------------------- */
 @media screen and (min-width: 780px) {
     .grid {
@@ -174,7 +211,7 @@ h1 {
         grid-column-end: 4;
     }
 
-        article {
+    article {
         height: 20vh;
     }
 
@@ -185,9 +222,11 @@ h1 {
     body header {
         display: flex;
         justify-content: space-between;
+        width: 100%;
+        padding-left: 30%;
         background-color: var(--background-block-white);
     }
-        
+
     header img {
         display: none;
     }
@@ -195,8 +234,8 @@ h1 {
     header p {
         display: none;
     }
-        
-    header .fa-magnifying-glass{
+
+    header .fa-magnifying-glass {
         display: flex;
         justify-content: space-between;
     }
@@ -213,4 +252,95 @@ h1 {
         width: 65%;
     }
 
+    .navbar-desktop {
+        position: fixed;
+        z-index: 99999;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--background-block-white);
+        box-shadow: var(--card-box-shadow);
+        width: 25%;
+        height: 100vh;
+        padding: 0 6%;
+    }
+
+    .navbar-desktop > ul a {
+        color: var(--font-black);
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: fit-content;
+    }
+
+    i {
+        padding-right: 1rem;
+    }
+
+    nav li {
+        width: max-content;
+        padding: 15px 0px;
+    }
+
+    .categorieblock {
+        position: relative;
+        display: flex;
+        width: 66%;
+        left: 30%;
+        height: 80%;
+        justify-content: space-between;
+    }
+
+    nav img {
+        display: flex;
+        position: relative;
+        bottom:16vh;
+        width: fit-content;
+    }
+
+    .deconnexion {
+        display: flex;
+        position: relative;
+        top:16vh;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .fa-power-off,
+    .deconnexion,
+    .deconnexion > a {
+        color: var(--primary);
+    }
+
+    .buttons {
+        display: flex;
+        position: fixed;
+        bottom: 9vh;
+        width: 100%;
+    }
+
+    .addButton,
+    .deleteButton,
+    .editButton,
+    .cancelButton,
+    .validateButton {
+        display: flex;
+        position: relative;
+        left: 52vw;
+        background-color: var(--background-button-color);
+        border-radius: 15px;
+        width: 5rem;
+        height: 10vh;
+        font-size: 1.5rem;
+    }
+
+    .addButton > a > p {
+        font-size: 1.2rem;
+    }
+
+    i.fa-solid,
+    i.fa-regular {
+        padding: 0;
+    }
 }

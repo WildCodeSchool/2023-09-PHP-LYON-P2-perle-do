@@ -15,34 +15,65 @@
 </head>
 
 <body>
-    {% block header %}
+
+  {% block navbar %}
+  <nav class="navbar-mobile">
+    <ul>
+      <li><a href="/categories"><i class="fa-regular fa-file-lines color "></i></a></li>
+      <li><a href="/customers"><i class="fa-regular fa-user color"></i></a></li>
+      <li><a href=""><i class="fa-solid fa-chart-column color"></i></a></li>
+      <li><a href=""><i class="fa-regular fa-calendar color"></i></a></li>
+      <li><a href="/invoices"><i class="fa-solid fa-receipt color"></i></a></li>
+      <li><a href=""><i class="fa-solid fa-cart-shopping color"></i></a></li>
+      <li><a href=""><i class="fa-solid fa-calculator color"></i></a></li>
+    </ul>
+  </nav>
+
+  <nav class="navbar-desktop">
+    <ul>
+      <img src="/assets/images/logo2.png" alt="logo de perle do">
+      <li><a href="/categories"><i class="fa-regular fa-file-lines color "></i>Produits</a></li>
+      <li><a href="/customers"><i class="fa-regular fa-user color"></i>Fiches clients</a></li>
+      <li><a href=""><i class="fa-solid fa-chart-column color"></i>Chiffre d'affaire</a></li>
+      <li><a href=""><i class="fa-regular fa-calendar color"></i>Evênements</a></li>
+      <li><a href="/invoices"><i class="fa-solid fa-receipt color"></i>Factures</a></li>
+      <li><a href=""><i class="fa-solid fa-cart-shopping color"></i>Panier</a></li>
+      <li class="deconnexion"><a href="/"><i class="fa-solid fa-power-off"></i>Deconnexion</a></li>
+    </ul>
+  </nav>
+  {% endblock %}
+
+  {% block header %}
     <header>
         <a href="javascript:window.history.back();"><i class="fa-solid fa-chevron-left"></i></a>
         <img src="/assets/images/logo2.png" alt="logo de perle do">
         <p>{{ now|date("l j F Y", "Europe/Paris") }}</p>
         <a href="/search"><i class="fa-solid fa-magnifying-glass"></i></a>
     </header>
-    {% endblock %}
+  {% endblock %}
 
-    {% block navbar %}
-    <nav class="navbar-mobile">
-      <ul>
-        <li><a href="/categories"><i class="fa-regular fa-file-lines color "></i></a></li>
-        <li><a href="/customers"><i class="fa-regular fa-user color"></i></a></li>
-        <li><a href=""><i class="fa-solid fa-chart-column color"></i></a></li>
-        <li><a href=""><i class="fa-regular fa-calendar color"></i></a></li>
-        <li><a href="/invoices"><i class="fa-solid fa-receipt color"></i></a></li>
-        <li><a href=""><i class="fa-solid fa-cart-shopping color"></i></a></li>
-        <li><a href=""><i class="fa-solid fa-calculator color"></i></a></li>
-      </ul>
-    </nav>
-    {% endblock %}
+  {% block content %}{% endblock %}
 
-    {% block content %}{% endblock %}
+  {% block buttons %}
+      <div class="buttons"><article class="addButton"><a href="">
+        <p>Ajouter</p></a>
+      </article>
 
-    
+      <article class="deleteButton"><a href=""><i class="fa-regular fa-trash-can"></i></a>
+      </article>
 
-    {% block javascript %}{% endblock %}
+      <article class="editButton"><a href=""><i class="fa-solid fa-pen"></i></a>
+      </article>
+
+      <article class="cancelButton"><a href=""><i class="fa-solid fa-ban"></i></a>
+      </article>
+
+      <article class="validateButton"><a href=""><i class="fa-regular fa-circle-check"></i></a>
+      </article>
+
+      </div>
+  {% endblock %}
+  {% block javascript %}{% endblock %}
 </body>
 
 </html>
