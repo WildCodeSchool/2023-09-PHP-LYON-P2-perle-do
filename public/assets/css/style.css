@@ -7,6 +7,10 @@
     --primary-focus: rgba(216, 27, 96, 0.125);
     --primary-inverse: #FFF;
     --backgound-color: rgba(255, 235, 228, 0.56);
+    --background-color-secondary: #f9f9f9;
+    --block-color:#FFEBE4;
+    --background-block-white: #fefefe;
+    --font-black: #333333;
 }
 
 /* Pink Dark scheme (Auto) */
@@ -47,12 +51,10 @@ a:is([aria-current], :hover, :active, :focus) {
     margin: 0;
     padding: 0;
     text-decoration: none;
-    --background-block-white: #fefefe;
-    --background-color: #f9f9f9;
-    --font-black: #333333;
 }
 body {
-    background-color: var(--background-color);
+    background-color: var(--background-color-secondary);
+    height: 100vh;
 }
 /* header */
 body header {
@@ -139,6 +141,53 @@ nav {
 .navbar-desktop {
     display: none;
 }
+
+/* search */
+.blockpage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h3 {
+    position: relative;
+    top: -5vh;
+    height: 0;
+    align-self: flex-start;
+}
+
+.blockpage article {
+    width: 75%;
+    height: 100%;
+}
+
+select {
+    width: 75%;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--block-color);
+    border-radius: 0.5rem;
+}
+
+.search {
+    width: 75%;
+    text-align: center;
+    background-color: var(--block-color);
+    border-radius: 0.5rem;
+}
+
+.cancelvalid {
+    display: flex;
+    flex-direction: row;
+}
+
+.cancelvalid article {
+    width: 5rem;
+    padding: 0;
+    margin: 1rem;
+    border-radius: 0.5rem;
+}
+
 /* -------------------media queries pour + 780 px--------------------- */
 @media screen and (min-width: 780px) {
     .grid {
@@ -148,8 +197,8 @@ nav {
         grid-column-end: 4;
     }
 
-        article {
-        height: 20vh;
+    article {
+    height: 20vh;
     }
 
     article p {
@@ -161,7 +210,7 @@ nav {
         justify-content: space-between;
         width: 100%;
         padding-left: 30%;
-        background-color: var(--background-block-white);
+        background-color: var(--background-color-secondary);
     }
         
     header img {
@@ -240,4 +289,13 @@ nav {
     .fa-power-off,.deconnexion, .deconnexion > a{
         color: var(--primary);
     }
+
+    .cancelvalid article i{
+        margin: 0 0 0 1rem;
+
+    }
+    .cancelvalid article {
+        margin: 0 0.5rem;
+    }
+
 }
