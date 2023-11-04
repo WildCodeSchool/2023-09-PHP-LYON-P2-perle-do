@@ -325,11 +325,11 @@ select {
         color: var(--primary);
     }
 
-    .cancelvalid article i{
+    .cancel-valid article i{
         margin: 0 0 0 1rem;
 
     }
-    .cancelvalid article {
+    .cancel-valid article {
         margin: 0 0.5rem;
     }
 
