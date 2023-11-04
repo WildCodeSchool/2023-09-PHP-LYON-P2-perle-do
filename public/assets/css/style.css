@@ -5,12 +5,13 @@
     --primary: #c49a6c;
     --primary-hover: #c49a6c;
     --primary-focus: rgba(216, 27, 96, 0.125);
-    --primary-inverse: #FFF;
+    --primary-inverse: #fff;
     --backgound-color: rgba(255, 235, 228, 0.56);
     --background-color-secondary: #f9f9f9;
     --block-color:#FFEBE4;
     --background-block-white: #fefefe;
     --font-black: #333333;
+    --background-button-color: #ffebe4;
 }
 
 /* Pink Dark scheme (Auto) */
@@ -48,8 +49,6 @@ a:is([aria-current], :hover, :active, :focus) {
 }
 
 * {
-    margin: 0;
-    padding: 0;
     text-decoration: none;
 }
 body {
@@ -80,20 +79,20 @@ header p {
     justify-items: center;
 }
 
-header .fa-magnifying-glass{
+header .fa-magnifying-glass {
     display: grid;
     justify-items: end;
 }
 
 /* accueil */
 .grid {
-grid-template-columns: 1fr 1fr;
-margin-right: 2rem;
-margin-left: 2rem;
-column-gap: 5rem;
-position: relative;
-top: -7vh;
-width: 90%;
+    grid-template-columns: 1fr 1fr;
+    margin-right: 2rem;
+    margin-left: 2rem;
+    column-gap: 5rem;
+    position: relative;
+    top: -7vh;
+    width: 90%;
 }
 
 .grid div:last-child {
@@ -188,6 +187,41 @@ select {
     border-radius: 0.5rem;
 }
 
+/* button */
+.buttons {
+    display: flex;
+    position: fixed;
+    bottom: 9vh;
+    width: 100%;
+}
+
+.addButton,
+.deleteButton,
+.editButton,
+.cancelButton,
+.validateButton {
+    display: flex;
+    position: relative;
+    left: 24vw;
+    padding: 0;
+    margin: 0 0.5rem;
+    background-color: var(--background-button-color);
+    border-radius: 15px;
+    width: 12%;
+    height: 6vh;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.addButton > a > p,
+.deleteButton > a,
+.editButton > a,
+.cancelButton > a,
+.validateButton > a {
+    margin: 0;
+    color: var(--font-black);
+}
 /* -------------------media queries pour + 780 px--------------------- */
 @media screen and (min-width: 780px) {
     .grid {
@@ -212,7 +246,7 @@ select {
         padding-left: 30%;
         background-color: var(--background-color-secondary);
     }
-        
+
     header img {
         display: none;
     }
@@ -220,8 +254,8 @@ select {
     header p {
         display: none;
     }
-        
-    header .fa-magnifying-glass{
+
+    header .fa-magnifying-glass {
         display: flex;
         justify-content: space-between;
     }
@@ -239,7 +273,7 @@ select {
         box-shadow: var(--card-box-shadow);
         width: 25%;
         height: 100vh;
-        padding:0 6%;
+        padding: 0 6%;
     }
 
     .navbar-desktop > ul a {
@@ -250,43 +284,44 @@ select {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        width:fit-content;
+        width: fit-content;
     }
 
-    i{
-        padding-right:1rem;
+    i {
+        padding-right: 1rem;
     }
 
     nav li {
         width: max-content;
         padding: 15px 0px;
-        }
+    }
 
-    .categorieblock{
+    .categorieblock {
         position: relative;
         display: flex;
         width: 66%;
         left: 30%;
         height: 80%;
         justify-content: space-between;
-
     }
 
-    nav img{
+    nav img {
         display: flex;
         position: relative;
         bottom:16vh;
         width: fit-content;
     }
 
-    .deconnexion{
+    .deconnexion {
         display: flex;
         position: relative;
         top:16vh;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
 
-    .fa-power-off,.deconnexion, .deconnexion > a{
+    .fa-power-off,
+    .deconnexion,
+    .deconnexion > a {
         color: var(--primary);
     }
 
@@ -298,4 +333,34 @@ select {
         margin: 0 0.5rem;
     }
 
+    .buttons {
+        display: flex;
+        position: fixed;
+        bottom: 9vh;
+        width: 100%;
+    }
+
+    .addButton,
+    .deleteButton,
+    .editButton,
+    .cancelButton,
+    .validateButton {
+        display: flex;
+        position: relative;
+        left: 52vw;
+        background-color: var(--background-button-color);
+        border-radius: 15px;
+        width: 5rem;
+        height: 10vh;
+        font-size: 1.5rem;
+    }
+
+    .addButton > a > p {
+        font-size: 1.2rem;
+    }
+
+    i.fa-solid,
+    i.fa-regular {
+        padding: 0;
+    }
 }
