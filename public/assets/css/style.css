@@ -259,14 +259,14 @@ nav {
     nav img {
         display: flex;
         position: relative;
-        bottom: 20vh;
+        bottom:16vh;
         width: fit-content;
     }
 
     .deconnexion {
         display: flex;
         position: relative;
-        top: 20vh;
+        top:16vh;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
 
