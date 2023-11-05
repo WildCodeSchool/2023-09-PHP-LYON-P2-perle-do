@@ -8,7 +8,7 @@
     --primary-inverse: #fff;
     --backgound-color: rgba(255, 235, 228, 0.56);
     --background-color-secondary: #f9f9f9;
-    --block-color:#FFEBE4;
+    --block-color: #ffebe4;
     --background-block-white: #fefefe;
     --font-black: #333333;
     --background-button-color: #ffebe4;
@@ -214,11 +214,11 @@ select {
     font-size: 1.5rem;
 }
 
-.add-button> a > p,
-.delete-button> a,
+.add-button > a > p,
+.delete-button > a,
 .edit-button > a,
-.cancel-button> a,
-.validate-button> a {
+.cancel-button > a,
+.validate-button > a {
     margin: 0;
     color: var(--font-black);
 }
@@ -232,7 +232,7 @@ select {
     }
 
     article {
-    height: 20vh;
+        height: 20vh;
     }
 
     article p {
@@ -245,6 +245,7 @@ select {
         width: 100%;
         padding-left: 30%;
         background-color: var(--background-color-secondary);
+        height: 10vh;
     }
 
     header img {
@@ -308,14 +309,14 @@ select {
     nav img {
         display: flex;
         position: relative;
-        bottom:16vh;
+        bottom: 16vh;
         width: fit-content;
     }
 
     .deconnexion {
         display: flex;
         position: relative;
-        top:16vh;
+        top: 16vh;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
 
@@ -325,9 +326,8 @@ select {
         color: var(--primary);
     }
 
-    .cancel-valid article i{
+    .cancel-valid article i {
         margin: 0 0 0 1rem;
-
     }
     .cancel-valid article {
         margin: 0 0.5rem;
@@ -336,7 +336,7 @@ select {
     .buttons {
         display: flex;
         position: fixed;
-        bottom: 9vh;
+        bottom: 3vh;
         width: 100%;
     }
 
@@ -362,5 +362,60 @@ select {
     i.fa-solid,
     i.fa-regular {
         padding: 0;
+    }
+
+    /*GRID FORM*/
+    .addProductsGrid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 1rem;
+        position: relative;
+        top: 10vh;
+        left: 30vw;
+        width: 65vw;
+        background-color: var(--background-block-white);
+        padding: 2rem 3rem;
+    }
+
+    .addProductsGrid > div {
+        width: max-content;
+    }
+
+    .addProductsGrid div:nth-child(2n) {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    .addProductsGrid div:nth-child(2n + 1) {
+        justify-content: flex-end;
+    }
+
+    .addProductsGrid div:last-child {
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    input:not(
+            [type="checkbox"],
+            [type="radio"],
+            [type="range"],
+            [type="file"]
+        ) {
+        height: 2rem;
+        margin-bottom: 1rem;
+        background-color: var(--background-button-color);
+    }
+
+    input:not([type="checkbox"], [type="radio"]),
+    select,
+    textarea {
+        width: 100%;
+        margin: 0.2rem;
+    }
+
+    #titleAddCategory {
+        position: fixed;
+        top: 15vh;
+        left: 30vw;
     }
 }
