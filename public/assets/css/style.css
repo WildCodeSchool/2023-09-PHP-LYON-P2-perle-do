@@ -187,6 +187,11 @@ select {
     border-radius: 0.5rem;
 }
 
+.cancel-valid .cancel-button,
+.cancel-valid .validate-button{
+    left: 0;
+}
+
 /* button */
 .buttons {
     display: flex;
@@ -270,14 +275,6 @@ select {
         display: none;
     }
 
-
-    .categorieblock {
-        position: relative;
-        left: 30%;
-        height: 80%;
-        width: 65%;
-    }
-
     .navbar-desktop {
         position: fixed;
         z-index: 99999;
@@ -285,7 +282,7 @@ select {
         flex-direction: column;
         background-color: var(--background-block-white);
         box-shadow: var(--card-box-shadow);
-        width: 25%;
+        width: 23%;
         height: 100vh;
         padding: 0 6%;
     }
@@ -339,10 +336,6 @@ select {
         color: var(--primary);
     }
 
-    .cancel-valid article i{
-        margin: 0 0 0 1rem;
-
-    }
     .cancel-valid article {
         margin: 0 0.5rem;
     }
@@ -379,7 +372,7 @@ select {
     }
 
     .modal {
-        height: 55vh;
+        height: 60vh;
         width : 75vh;
     }
 }
