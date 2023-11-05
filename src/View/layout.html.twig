@@ -59,9 +59,6 @@
         <p>Ajouter</p></a>
       </article>
 
-      <article class="delete-button"><a href=""><i class="fa-regular fa-trash-can"></i></a>
-      </article>
-
       <article class="edit-button"><a href=""><i class="fa-solid fa-pen"></i></a>
       </article>
 
@@ -73,9 +70,50 @@
 
       </div>
   {% endblock %}
-  {% block javascript %}{% endblock %}
+
+  {% block modaldelete %}
+<!-- Button to trigger the modal -->
+<button class="delete-button"
+  data-target="modal-delete"
+  onClick="toggleModal(event)">
+  <a href=""><i class="fa-regular fa-trash-can"></i></a>
+</button>
+
+<!-- Modal -->
+<dialog id="modal-delete">
+  <article class="modal">
+    <a href="#close"
+      aria-label="Close"
+      class="close"
+      data-target="modal-delete"
+      onClick="toggleModal(event)">
+    </a>
+    <h3>Confirmer la suppression de :</h3>
+    <p>
+      intégrer ici la recherche dans la bdd
+    </p>
+    <footer>
+      <a href="#cancel"
+        role="button"
+        class="secondary"
+        data-target="modal-delete"
+        onClick="toggleModal(event)">
+        NON
+      </a>
+      <a href="#confirm"
+        role="button"
+        data-target="modal-delete"
+        onClick="toggleModal(event)">
+        OUI
+      </a>
+    </footer>
+  </article>
+</dialog>
+  {% endblock %}
+
+  {% block javascript %}
+  <script src="/assets/script.js"></script>
+  {% endblock %}
 </body>
 
 </html>
-
-
