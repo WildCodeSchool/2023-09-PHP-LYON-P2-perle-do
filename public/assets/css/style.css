@@ -8,7 +8,7 @@
     --primary-inverse: #fff;
     --backgound-color: rgba(255, 235, 228, 0.56);
     --background-color-secondary: #f9f9f9;
-    --block-color: #FFEBE4;
+    --block-color: #ffebe4;
     --background-block-white: #fefefe;
     --font-black: #333333;
     --background-button-color: #ffebe4;
@@ -188,7 +188,7 @@ select {
 }
 
 .cancel-valid .cancel-button,
-.cancel-valid .validate-button{
+.cancel-valid .validate-button {
     left: 0;
 }
 
@@ -232,6 +232,46 @@ select {
 .modal {
     height: 40vh;
 }
+
+/*-------- GRID FORM STARTS--------- */
+.addProductsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 0.5rem;
+    row-gap: 1rem;
+    position: relative;
+    top: -4vh;
+    left: 6vw;
+    width: 90vw;
+    background-color: var(--background-block-white);
+    padding: 2rem 1rem;
+    border-radius: 15px;
+
+}
+
+.addProductsGrid div:last-child {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"]) {
+    height: 2rem;
+    margin-bottom: 1rem;
+    background-color: var(--background-button-color);
+}
+
+input:not([type="checkbox"], [type="radio"]),
+select,
+textarea {
+    width: 100%;
+    margin: 0.2rem;
+    border-style: none;
+}
+
+/*-------- GRID FORM ENDS--------- */
+
+#titleAddCategory {
+    display: none;
 
 /* -------------------media queries pour + 780 px--------------------- */
 @media screen and (min-width: 780px) {
@@ -372,7 +412,7 @@ select {
         padding: 0;
     }
 
-    /*GRID FORM*/
+    /*-------- GRID FORM STARTS--------- */
     .addProductsGrid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -426,9 +466,10 @@ select {
         top: 15vh;
         left: 30vw;
     }
-    
+    /*-------- GRID FORM ENDS--------- */
+
     .modal {
         height: 60vh;
-        width : 75vh;
+        width: 75vh;
     }
 }
