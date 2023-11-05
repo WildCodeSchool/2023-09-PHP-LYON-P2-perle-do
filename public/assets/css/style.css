@@ -7,7 +7,10 @@
     --primary-focus: rgba(216, 27, 96, 0.125);
     --primary-inverse: #fff;
     --backgound-color: rgba(255, 235, 228, 0.56);
-    --block-color : #FFEBE4;
+    --background-color-secondary: #f9f9f9;
+    --block-color: #FFEBE4;
+    --background-block-white: #fefefe;
+    --font-black: #333333;
     --background-button-color: #ffebe4;
 }
 
@@ -47,12 +50,10 @@ a:is([aria-current], :hover, :active, :focus) {
 
 * {
     text-decoration: none;
-    --background-block-white: #fefefe;
-    --background-color: #f9f9f9;
-    --font-black: #333333;
 }
 body {
-    background-color: var(--background-color);
+    background-color: var(--background-color-secondary);
+    height: 100vh;
 }
 /* header */
 body header {
@@ -139,6 +140,53 @@ nav {
 .navbar-desktop {
     display: none;
 }
+
+/* search */
+.block-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h3 {
+    position: relative;
+    top: -5vh;
+    height: 0;
+    align-self: flex-start;
+}
+
+.block-page article {
+    width: 75%;
+    height: 100%;
+}
+
+select {
+    width: 75%;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--block-color);
+    border-radius: 0.5rem;
+}
+
+.search {
+    width: 75%;
+    text-align: center;
+    background-color: var(--block-color);
+    border-radius: 0.5rem;
+}
+
+.cancel-valid {
+    display: flex;
+    flex-direction: row;
+}
+
+.cancel-valid article {
+    width: 5rem;
+    padding: 0;
+    margin: 1rem;
+    border-radius: 0.5rem;
+}
+
 /* button */
 .buttons {
     display: flex;
@@ -147,39 +195,11 @@ nav {
     width: 100%;
 }
 
-/* search */
-.blockpage {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    top: -7vh;
-    width: 90%;
-    padding-left : 1rem;
-    padding-right: 1rem;
-}
-
-.categorieblock {
-    position: relative;
-    height: 80%;
-    width: 100%;
-}
-
-h1 {
-    align-self: flex-start;
-} 
-
-.blockpage article {
-    width: 50%;
-    background-color: var(--block-color);
-}
-
-.addButton,
-.deleteButton,
-.editButton,
-.cancelButton,
-.validateButton {
+.add-button,
+.delete-button,
+.edit-button,
+.cancel-button,
+.validate-button {
     display: flex;
     position: relative;
     left: 24vw;
@@ -194,11 +214,11 @@ h1 {
     font-size: 1.5rem;
 }
 
-.addButton > a > p,
-.deleteButton > a,
-.editButton > a,
-.cancelButton > a,
-.validateButton > a {
+.add-button> a > p,
+.delete-button> a,
+.edit-button > a,
+.cancel-button> a,
+.validate-button> a {
     margin: 0;
     color: var(--font-black);
 }
@@ -218,7 +238,7 @@ h1 {
     }
 
     article {
-        height: 20vh;
+    height: 20vh;
     }
 
     article p {
@@ -230,7 +250,7 @@ h1 {
         justify-content: space-between;
         width: 100%;
         padding-left: 30%;
-        background-color: var(--background-block-white);
+        background-color: var(--background-color-secondary);
     }
 
     header img {
@@ -290,7 +310,7 @@ h1 {
         padding: 15px 0px;
     }
 
-    .categorieblock {
+    .categorie-block {
         position: relative;
         display: flex;
         width: 66%;
@@ -319,6 +339,14 @@ h1 {
         color: var(--primary);
     }
 
+    .cancel-valid article i{
+        margin: 0 0 0 1rem;
+
+    }
+    .cancel-valid article {
+        margin: 0 0.5rem;
+    }
+
     .buttons {
         display: flex;
         position: fixed;
@@ -326,11 +354,11 @@ h1 {
         width: 100%;
     }
 
-    .addButton,
-    .deleteButton,
-    .editButton,
-    .cancelButton,
-    .validateButton {
+    .add-button,
+    .delete-button,
+    .edit-button,
+    .cancel-button,
+    .validate-button {
         display: flex;
         position: relative;
         left: 52vw;
@@ -341,7 +369,7 @@ h1 {
         font-size: 1.5rem;
     }
 
-    .addButton > a > p {
+    .add-button > a > p {
         font-size: 1.2rem;
     }
 

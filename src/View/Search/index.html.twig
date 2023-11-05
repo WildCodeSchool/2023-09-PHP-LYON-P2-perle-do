@@ -1,21 +1,29 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-
-<div class="categorieblock blockpage">
-<h1>Recherche dans :</h1>
+<div class ="categorie-block block-page">
+    <h3>Recherche dans :</h3>
     <article>
-            <details role="list">
-            <summary aria-haspopup="listbox">Choix :</summary>
-            <ul role="listbox">
-                <li><a>Produits</a></li>
-                <li><a>Références Produits</a></li>
-                <li><a>Clients</a></li>
-                <li><a>Références Clients</a></li>
-                <li><a>Factures</a></li>
-                <li><a>Evènements</a></li>
-            </ul>
-        </details>
+        <select name="my_html_select_box">
+            <option>Produits </option>
+            <option>Références produit</option>
+            <option>Clients</option>
+            <option>Références clients</option>
+            <option>Factures</option>
+            <option>Evènements</option>
+        </select>
+
+        <label for="search"></label>
+        <textarea class="search" name="search" id="search" cols="30" rows="3" placeholder="recherche"></textarea>
     </article>
+
+    <div class="cancel-valid">
+        <article class="cancel-button"><a href="/search"><i class="fa-solid fa-ban"></i></a>
+        </article>
+        <article class="validate-button"><a href=""><i class="fa-regular fa-circle-check"></i></a>
+        </article>
+    </div>
+</div>
+
     
 {% endblock %}
