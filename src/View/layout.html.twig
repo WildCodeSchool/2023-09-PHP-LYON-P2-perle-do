@@ -59,9 +59,6 @@
         <p>Ajouter</p></a>
       </article>
 
-      <article class="delete-button"><a href=""><i class="fa-regular fa-trash-can"></i></a>
-      </article>
-
       <article class="edit-button"><a href=""><i class="fa-solid fa-pen"></i></a>
       </article>
 
@@ -74,9 +71,9 @@
       </div>
   {% endblock %}
 
-  {% block modal %}
+  {% block modal-delete %}
 <!-- Button to trigger the modal -->
-<button class="deleteButton"
+<button class="delete-button"
   data-target="modal-delete"
   onClick="toggleModal(event)">
   <a href=""><i class="fa-regular fa-trash-can"></i></a>
