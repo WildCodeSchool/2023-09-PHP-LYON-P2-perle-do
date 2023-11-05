@@ -225,7 +225,7 @@ select {
 
 /* modal */
 .modal {
-    height: 45vh;
+    height: 40vh;
 }
 
 /* -------------------media queries pour + 780 px--------------------- */
@@ -376,5 +376,10 @@ select {
     i.fa-solid,
     i.fa-regular {
         padding: 0;
+    }
+
+    .modal {
+        height: 55vh;
+        width : 75vh;
     }
 }
