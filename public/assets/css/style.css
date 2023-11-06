@@ -8,7 +8,7 @@
     --primary-inverse: #fff;
     --backgound-color: rgba(255, 235, 228, 0.56);
     --background-color-secondary: #f9f9f9;
-    --block-color: #FFEBE4;
+    --block-color: #ffebe4;
     --background-block-white: #fefefe;
     --font-black: #333333;
     --background-button-color: #ffebe4;
@@ -188,7 +188,7 @@ select {
 }
 
 .cancel-valid .cancel-button,
-.cancel-valid .validate-button{
+.cancel-valid .validate-button {
     left: 0;
 }
 
@@ -219,11 +219,11 @@ select {
     font-size: 1.5rem;
 }
 
-.add-button> a > p,
-.delete-button> a,
+.add-button > a > p,
+.delete-button > a,
 .edit-button > a,
-.cancel-button> a,
-.validate-button> a {
+.cancel-button > a,
+.validate-button > a {
     margin: 0;
     color: var(--font-black);
 }
@@ -233,6 +233,46 @@ select {
     height: 40vh;
 }
 
+/*-------- GRID FORM STARTS--------- */
+.add-products-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 0.5rem;
+    row-gap: 1rem;
+    position: relative;
+    top: -4vh;
+    left: 6vw;
+    width: 90vw;
+    background-color: var(--background-block-white);
+    padding: 2rem 1rem;
+    border-radius: 15px;
+
+}
+
+.add-products-grid div:last-child {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"]) {
+    height: 2rem;
+    margin-bottom: 1rem;
+    background-color: var(--background-button-color);
+}
+
+input:not([type="checkbox"], [type="radio"]),
+select,
+textarea {
+    width: 100%;
+    margin: 0.2rem;
+    border-style: none;
+}
+
+/*-------- GRID FORM ENDS--------- */
+
+#ttitle-add-category {
+    display: none;
+}
 /* -------------------media queries pour + 780 px--------------------- */
 @media screen and (min-width: 780px) {
     .grid {
@@ -243,7 +283,7 @@ select {
     }
 
     article {
-    height: 20vh;
+        height: 20vh;
     }
 
     article p {
@@ -256,6 +296,7 @@ select {
         width: 100%;
         padding-left: 30%;
         background-color: var(--background-color-secondary);
+        height: 10vh;
     }
 
     header img {
@@ -319,14 +360,14 @@ select {
     nav img {
         display: flex;
         position: relative;
-        bottom:16vh;
+        bottom: 16vh;
         width: fit-content;
     }
 
     .deconnexion {
         display: flex;
         position: relative;
-        top:16vh;
+        top: 16vh;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
 
@@ -343,7 +384,7 @@ select {
     .buttons {
         display: flex;
         position: fixed;
-        bottom: 9vh;
+        bottom: 3vh;
         width: 100%;
     }
 
@@ -366,13 +407,74 @@ select {
         font-size: 1.2rem;
     }
 
-    i.fa-solid,
-    i.fa-regular {
+    .fa-pen,
+    .fa-ban,
+    .fa-circle-check,
+    .fa-trash-can
+     {
         padding: 0;
     }
 
+    /*-------- GRID FORM STARTS--------- */
+    .add-products-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 1rem;
+        row-gap: 0;
+        position: relative;
+        top: 10vh;
+        left: 30vw;
+        width: 65vw;
+        background-color: var(--background-block-white);
+        padding: 2rem 3rem;
+    }
+
+    .add-products-grid > div {
+        width: max-content;
+    }
+
+    .add-products-grid div:nth-child(2n) {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    .add-products-grid div:nth-child(2n + 1) {
+        justify-content: flex-end;
+    }
+
+    .add-products-grid div:last-child {
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    input:not(
+            [type="checkbox"],
+            [type="radio"],
+            [type="range"],
+            [type="file"]
+        ) {
+        height: 2rem;
+        margin-bottom: 1rem;
+        background-color: var(--background-button-color);
+    }
+
+    input:not([type="checkbox"], [type="radio"]),
+    select,
+    textarea {
+        width: 100%;
+        margin: 0.2rem;
+    }
+
+    #title-add-category {
+        display:flex;
+        position: fixed;
+        top: 13vh;
+        left: 30vw;
+    }
+    /*-------- GRID FORM ENDS--------- */
     .modal {
         height: 60vh;
-        width : 75vh;
+        width: 75vh;
     }
 }
+
