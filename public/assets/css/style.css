@@ -270,7 +270,7 @@ textarea {
 
 /*-------- GRID FORM ENDS--------- */
 
-#titleAddCategory {
+#ttitle-add-category {
     display: none;
 }
 /* -------------------media queries pour + 780 px--------------------- */
@@ -465,7 +465,7 @@ textarea {
         margin: 0.2rem;
     }
 
-    #titleAddCategory {
+    #title-add-category {
         display:flex;
         position: fixed;
         top: 13vh;

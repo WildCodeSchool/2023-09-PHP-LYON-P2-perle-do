@@ -10,7 +10,7 @@ class CategoryController extends AbstractController
     {
         return $this->twig->render('Category/index.html.twig');
     }
-    public function add(): string
+    public function addCategory(): string
     {
         return $this->twig->render('Category/add.html.twig');
     }
