@@ -13,10 +13,10 @@ class CustomerManager extends AbstractManager
      */
     public function insert(array $customer): int
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`civility`, `lastname`, 
-        `firstname`, `reference`, `adress`, `zipcode`, `city`, `phone`, `email`, `description`, `created_date) 
-        VALUES (:civility, :lastname, :firstname, :reference, :adress, :zipcode, :city, :phone, 
-        :email, :description, :created_date)");
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`civility`, `lastname`, `firstname`, 
+        `reference`, `adress`, `zipcode`, `city`, `phone`, `email`, `description`, `created_date) 
+        VALUES (:civility, :lastname, :firstname, :reference, :adress, :zipcode, :city, :phone, :email, 
+        :description, :created_date)");
         $statement->bindValue('civility', $customer['civility'], PDO::PARAM_STR);
         $statement->bindValue('lastname', $customer['lastname'], PDO::PARAM_STR);
         $statement->bindValue('firstname', $customer['firstname'], PDO::PARAM_STR);
