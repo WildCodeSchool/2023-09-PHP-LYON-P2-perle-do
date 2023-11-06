@@ -272,7 +272,7 @@ textarea {
 
 #titleAddCategory {
     display: none;
-
+}
 /* -------------------media queries pour + 780 px--------------------- */
 @media screen and (min-width: 780px) {
     .grid {
@@ -407,8 +407,11 @@ textarea {
         font-size: 1.2rem;
     }
 
-    i.fa-solid,
-    i.fa-regular {
+    .fa-pen,
+    .fa-ban,
+    .fa-circle-check,
+    .fa-trash-can
+     {
         padding: 0;
     }
 
@@ -417,6 +420,7 @@ textarea {
         display: grid;
         grid-template-columns: 1fr 1fr;
         column-gap: 1rem;
+        row-gap: 0;
         position: relative;
         top: 10vh;
         left: 30vw;
@@ -462,14 +466,15 @@ textarea {
     }
 
     #titleAddCategory {
+        display:flex;
         position: fixed;
-        top: 15vh;
+        top: 13vh;
         left: 30vw;
     }
     /*-------- GRID FORM ENDS--------- */
-
     .modal {
         height: 60vh;
         width: 75vh;
     }
 }
+
