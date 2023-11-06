@@ -8,7 +8,7 @@
     --primary-inverse: #fff;
     --backgound-color: rgba(255, 235, 228, 0.56);
     --background-color-secondary: #f9f9f9;
-    --block-color:#FFEBE4;
+    --block-color: #FFEBE4;
     --background-block-white: #fefefe;
     --font-black: #333333;
     --background-button-color: #ffebe4;
@@ -187,6 +187,11 @@ select {
     border-radius: 0.5rem;
 }
 
+.cancel-valid .cancel-button,
+.cancel-valid .validate-button{
+    left: 0;
+}
+
 /* button */
 .buttons {
     display: flex;
@@ -222,6 +227,12 @@ select {
     margin: 0;
     color: var(--font-black);
 }
+
+/* modal */
+.modal {
+    height: 40vh;
+}
+
 /* -------------------media queries pour + 780 px--------------------- */
 @media screen and (min-width: 780px) {
     .grid {
@@ -264,14 +275,6 @@ select {
         display: none;
     }
 
-
-    .categorieblock {
-        position: relative;
-        left: 30%;
-        height: 80%;
-        width: 65%;
-    }
-
     .navbar-desktop {
         position: fixed;
         z-index: 99999;
@@ -279,7 +282,7 @@ select {
         flex-direction: column;
         background-color: var(--background-block-white);
         box-shadow: var(--card-box-shadow);
-        width: 25%;
+        width: 23%;
         height: 100vh;
         padding: 0 6%;
     }
@@ -333,10 +336,6 @@ select {
         color: var(--primary);
     }
 
-    .cancel-valid article i{
-        margin: 0 0 0 1rem;
-
-    }
     .cancel-valid article {
         margin: 0 0.5rem;
     }
@@ -370,5 +369,10 @@ select {
     i.fa-solid,
     i.fa-regular {
         padding: 0;
+    }
+
+    .modal {
+        height: 60vh;
+        width : 75vh;
     }
 }
