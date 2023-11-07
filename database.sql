@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 05 nov. 2023 à 18:42
+-- Généré le : mar. 07 nov. 2023 à 12:30
 -- Version du serveur : 8.0.34
 -- Version de PHP : 8.0.26
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `p2`
+-- Base de données : `perle_do`
 --
 
 -- --------------------------------------------------------
@@ -500,7 +500,19 @@ CREATE TABLE IF NOT EXISTS `type` (
   `type` varchar(100) NOT NULL,
   `discount` float(3,2) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `type`
+--
+
+INSERT INTO `type` (`id`, `type`, `discount`) VALUES
+(1, 'particulier', 0.00),
+(2, 'commercants', 0.10),
+(3, 'police', 0.10),
+(4, 'pompier', 0.10),
+(5, 'Famille', 0.20),
+(6, 'Ami', 0.20);
 
 -- --------------------------------------------------------
 
