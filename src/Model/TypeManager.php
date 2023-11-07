@@ -4,57 +4,20 @@ namespace App\Model;
 
 use PDO;
 
-class CustomerManager extends AbstractManager
+class TypeManager extends AbstractManager
 {
-    public const TABLE = 'customer';
+    // private PDO $connection;
+    // public const TABLE = 'type';
+
+    // public function getAll(): array|bool
+    // {
+    //     $statement = $this->connection->query('SELECT type FROM self::TABLE');
+    //     $types = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    //     return $types;
+    // }
 
     /**
      * Insert new customer in database
      */
-    public function insert(array $customer): int
-    {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`civility`, `lastname`, `firstname`, 
-        `reference`, `adress`, `zipcode`, `city`, `phone`, `email`, `description`, `created_date) 
-        VALUES (:civility, :lastname, :firstname, :reference, :adress, :zipcode, :city, :phone, :email, 
-        :description, :created_date)");
-        $statement->bindValue('civility', $customer['civility'], PDO::PARAM_STR);
-        $statement->bindValue('lastname', $customer['lastname'], PDO::PARAM_STR);
-        $statement->bindValue('firstname', $customer['firstname'], PDO::PARAM_STR);
-        $statement->bindValue('reference', $customer['reference'], PDO::PARAM_STR);
-        $statement->bindValue('adress', $customer['adress'], PDO::PARAM_STR);
-        $statement->bindValue('zipcode', $customer['zipcode'], PDO::PARAM_INT);
-        $statement->bindValue('city', $customer['city'], PDO::PARAM_STR);
-        $statement->bindValue('phone', $customer['phone'], PDO::PARAM_INT);
-        $statement->bindValue('email', $customer['email'], PDO::PARAM_STR);
-        $statement->bindValue('description', $customer['description'], PDO::PARAM_STR);
-        $statement->bindValue('create_date', $customer['created_date'], PDO::PARAM_STR);
-
-        $statement->execute();
-        return (int)$this->pdo->lastInsertId();
-    }
-
-    /**
-     * Update item in database
-     */
-    public function update(array $customer): bool
-    {
-        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `civility` = :civility, 
-        `lastname` = :lastname, `firstname` = :firstname, `reference` = :reference, 
-        `adress` = :adress,`zipcode` = :zipcode,`city` = :city, `phone` = :phone, 
-        `email` = :email,`description` = :description, `created_date` = :created_date WHERE id=:id");
-        $statement->bindValue('id', $customer['id'], PDO::PARAM_INT);
-        $statement->bindValue('civility', $customer['civility'], PDO::PARAM_STR);
-        $statement->bindValue('lastname', $customer['lastname'], PDO::PARAM_STR);
-        $statement->bindValue('firstname', $customer['firstname'], PDO::PARAM_STR);
-        $statement->bindValue('reference', $customer['reference'], PDO::PARAM_STR);
-        $statement->bindValue('adress', $customer['adress'], PDO::PARAM_STR);
-        $statement->bindValue('zipcode', $customer['zipcode'], PDO::PARAM_INT);
-        $statement->bindValue('city', $customer['city'], PDO::PARAM_STR);
-        $statement->bindValue('phone', $customer['phone'], PDO::PARAM_INT);
-        $statement->bindValue('email', $customer['email'], PDO::PARAM_STR);
-        $statement->bindValue('description', $customer['description'], PDO::PARAM_STR);
-        $statement->bindValue('create_date', $customer['created_date'], PDO::PARAM_STR);
-
-        return $statement->execute();
-    }
 }

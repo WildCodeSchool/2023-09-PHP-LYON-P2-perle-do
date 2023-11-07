@@ -8,6 +8,17 @@ class CustomerManager extends AbstractManager
 {
     public const TABLE = 'customer';
 
+    public function getAll(): array | bool
+    {
+        $sql = 'SELECT c.civility, c.lastname, c.firstname, 
+        c.reference, c.adress, c.zipcode, c.city, c.phone, c.email, c.description, c.created_date, t.type
+        FROM customer c JOIN type t ON c.id_type = t.id';
+        $query = $this->pdo->prepare($sql);
+        $query->execute();
+        $cust = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $cust;
+    }
+
     /**
      * Insert new customer in database
      */

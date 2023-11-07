@@ -2,7 +2,7 @@
 
 <h3 id="title-add-category"> Ajouter / Modifier un client</h3>
 
-<form method="post">
+<form action="" method="post">
 	<input type="hidden" value="{{ customer.id }}" name="id"> 
 
 	<div class="add-customer-grid" id="add-customer-form">
@@ -12,7 +12,7 @@
 		</div>
 
 		<div>
-		    <select name="civility" value="{{ customer.civility }}">
+		    <select name="civility" value="{{ customer.civility }}" id="civility">
 				<option>Monsieur</option>
 				<option>Madame</option>
         	</select>
@@ -55,7 +55,7 @@
 		</div>
 
 		<div>
-			<input type="number" value="{{ customer.tzipcode }}" id="zipcode" name="zipcode" placeholder="Code Postal">
+			<input type="number" value="{{ customer.zipcode }}" id="zipcode" name="zipcode" placeholder="Code Postal">
 		</div>
 
 		<div>
@@ -91,23 +91,15 @@
 		</div>
 
 		<div>
-			<label for="type">Type de clients</label>
+			<label for="id_type">Type de clients</label>
 		</div>
 
 		<div>
-		    <select name="type" value="{{ type.type }}">
-				<option>Particulier</option>
-				<option>Commerçant / Police / Pompier de Tassin</option>
-				<option>Famille/Amis</option>
+		    <select name="id_type" value="{{ customer.id_type = type.id }}" id="type">
+				{% for type in types %}
+				<option> {{ type.type }} </option>
+				{% endfor %}
         	</select>
-		</div>
-
-		<div>
-			<label for="discount">Réduction</label>
-		</div>
-
-		<div>
-			<input type="number" value="{{ type.discount }}" id="discount" name="discount">
 		</div>
 
 		<div>
@@ -115,7 +107,7 @@
 		</div>
 
 		<div>
-			<input type="date" value="{{ customer.created_date }}" id="created_date" name="created_date">
+			<input type="date" value="{{ customer.created_date }}" id="created_date" name="created_datePar">
 		</div>
 		<button>Enregistrer</button>
 	</div>
