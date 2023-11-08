@@ -53,7 +53,6 @@ a:is([aria-current], :hover, :active, :focus) {
 }
 body {
     background-color: var(--background-color-secondary);
-    height: 100vh;
 }
 /* header */
 body header {
@@ -125,6 +124,7 @@ nav {
 }
 
 .navbar-mobile {
+    z-index: 99999;
     background-color: var(--background-block-white);
     position: fixed;
     bottom: 1%;
@@ -231,7 +231,19 @@ select {
 .modal {
     height: 40vh;
 }
+.article-category {
+    height: auto;
+    position: relative;
+    top: -6vh;
+    left: 10vw;
+    padding: 1rem;
+    border-radius: 15px;
+    width: 80%;
+}
 
+.article-category>p{
+    margin: 0;
+}
 /*-------- GRID FORM STARTS--------- */
 .add-products-grid {
     display: grid;
@@ -525,6 +537,16 @@ button {
         background-color: var(--background-block-white);
         padding: 2rem 3rem 0 3 rem;
     }
-    
+    .article-category {
+    height: 30%;
+    position: relative;
+    left: 10vw;
+    padding: 1rem;
+    border-radius: 15px;
+    width: 20%;
+}
 
+.article-category>p{
+    margin: 0;
+}
 }
