@@ -58,4 +58,12 @@ class CustomerController extends AbstractController
             'errors' => $errors
         ]);
     }
+
+    public function showCustomer(int $id): string
+    {
+        $customerManager = new CustomerManager();
+        $customer = $customerManager->selectOneById($id);
+
+        return $this->twig->render('customer/show.html.twig', ['customer' => $customer]);
+    }
 }
