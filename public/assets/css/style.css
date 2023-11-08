@@ -393,4 +393,8 @@ select {
         flex-direction: column;
         align-items: center;
     }
+
+    .auth_page article {
+        font-size: larger;
+    }
 }
