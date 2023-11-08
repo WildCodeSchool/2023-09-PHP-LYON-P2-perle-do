@@ -53,6 +53,7 @@ a:is([aria-current], :hover, :active, :focus) {
 }
 body {
     background-color: var(--background-color-secondary);
+    height: 100vh;
 }
 /* header */
 body header {
@@ -199,11 +200,32 @@ select {
     width: 100%;
 }
 
-.add-button,
+.add-button-only {
+    z-index: 9998;
+    display: flex;
+    position: relative;
+    left: 84vw;
+    padding: 0;
+    margin: 0 0.5rem;
+    background-color: var(--background-button-color);
+    border-radius: 15px;
+    width: 12%;
+    height: 6vh;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.add-button-only > a > p {
+    margin: 0;
+    color: var(--font-black);
+}
+
 .delete-button,
 .edit-button,
 .cancel-button,
 .validate-button {
+    z-index: 9998;
     display: flex;
     position: relative;
     left: 24vw;
@@ -241,7 +263,7 @@ select {
     width: 80%;
 }
 
-.article-category>p{
+.article-category > p {
     margin: 0;
 }
 /*-------- GRID FORM STARTS--------- */
@@ -262,6 +284,26 @@ select {
 .add-products-grid div:last-child {
     grid-column-start: 1;
     grid-column-end: 3;
+}
+#add-category-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 0.5rem;
+    row-gap: 1rem;
+    position: relative;
+    left: 6vw;
+    width: 90vw;
+    background-color: var(--background-block-white);
+    padding: 2rem 1rem;
+    border-radius: 15px;
+}
+
+#add-products-grid div:last-child {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+p.errors {
+    text-align: center;
 }
 
 input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"]) {
@@ -316,7 +358,10 @@ button {
     grid-column-end: 3;
 }
 
+/***********************************************************************/
 /* -------------------media queries pour + 780 px--------------------- */
+/***********************************************************************/
+
 @media screen and (min-width: 780px) {
     .grid {
         grid-template-columns: 1fr 1fr 1fr;
@@ -437,6 +482,7 @@ button {
     .edit-button,
     .cancel-button,
     .validate-button {
+        z-index: 9998;
         display: flex;
         position: relative;
         left: 52vw;
@@ -512,6 +558,10 @@ button {
         width: 100%;
         margin: 0.2rem;
     }
+    #add-category-form {
+        left: 30vw;
+        width: 65vw;
+    }
 
     #title-add-category {
         display: flex;
@@ -538,15 +588,16 @@ button {
         padding: 2rem 3rem 0 3 rem;
     }
     .article-category {
-    height: 30%;
-    position: relative;
-    left: 10vw;
-    padding: 1rem;
-    border-radius: 15px;
-    width: 20%;
-}
+        height: 30%;
+        position: relative;
+        left: 10vw;
+        padding: 1rem;
+        border-radius: 15px;
+        width: 20%;
+    }
 
-.article-category>p{
-    margin: 0;
-}
+    .article-category > p {
+        margin: 0;
+    }
+    
 }

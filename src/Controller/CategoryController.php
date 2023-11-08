@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\CategoryManager;
+use App\Service\ValidationCategory;
 
 class CategoryController extends AbstractController
 {
@@ -23,27 +24,27 @@ class CategoryController extends AbstractController
     }
     public function addCategory(): ?string
     {
+        $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $category = array_map('trim', $_POST);
 
-            $errors = [];
-            // TODO validations (length, format...)
-            if (empty($category['name'])) {
-                $errors[] = "Le nom est obligatoire";
-            }
-            if (strlen($category['name']) > 5) {
-                $errors[] = "Le nom est trop long";
-            }
-            // if validation is ok, insert and redirection
-            $categoryManager = new CategoryManager();
-            $category = $categoryManager->addCategory($category);
+            $errorsValidation = new ValidationCategory();
+            $errorsValidation->formValidationCategory($category);
+            $errors = $errorsValidation->errors;
 
-            header('Location:/categories/');
-            return null;
+            if (empty($errors)) {
+                // if validation is ok, insert and redirection
+                $categoryManager = new CategoryManager();
+                $category = $categoryManager->addCategory($category);
+
+                header('Location:/categories/');
+                return null;
+            }
         }
-        return $this->twig->render('Category/add.html.twig');
+        return $this->twig->render('Category/add.html.twig', ["errors" => $errors]);
     }
+
 
     public function delete(): void
     {

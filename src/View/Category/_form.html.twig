@@ -1,13 +1,12 @@
 {# TODO : manage errors display #}
-
 <h3 id="title-add-category"> Ajouter/modifier une catégorie</h3>
-{% for error in errors %}
-<p> {{error}} </p>
-{% endfor %}
 <form action ="" method="post">
-<div class="add-products-grid" id="add-category-form">
+{% for error in errors %}
+<p class="errors-category"> {{error}} </p>
+{% endfor %}
+<div class="add-category-grid" id="add-category-form">
 <input type="hidden" value="{{ category.id }}" name="id"> 
-    
+
     <div>
     <label for="name">Nom</label>
     </div>
@@ -26,3 +25,6 @@
 
 </div>
 </form>
+
+</div>
+
