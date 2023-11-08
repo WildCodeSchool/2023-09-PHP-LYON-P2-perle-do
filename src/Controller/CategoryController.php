@@ -6,8 +6,15 @@ use App\Model\CategoryManager;
 
 class CategoryController extends AbstractController
 {
-    public function index(): string
+    public function indexCategory(): string
     {
-        return $this->twig->render('Category/index.html.twig');
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll('name');
+
+        return $this->twig->render('Category/index.html.twig', ['categories' => $categories]);
+    }
+    public function addCategory(): string
+    {
+        return $this->twig->render('Category/add.html.twig');
     }
 }

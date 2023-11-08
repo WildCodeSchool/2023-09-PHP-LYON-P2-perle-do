@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+<<<<<<< HEAD
 
 <div class="categorie-block">
 <article> <p>Bonjour je suis un texte</p></article>
@@ -15,8 +16,18 @@
 <article> <p>Bonjour je suis un texte</p></article>
 <article> <p>Bonjour je suis un texte</p></article>
 <article> <p>Bonjour je suis un texte</p></article>
+=======
+<div class="category-block">
+{% for category in categories %}
+<article><a href="#"></a>
+<p> {{ category.name }} </p>
+</article>
+{% endfor %} 
+>>>>>>> 17743cbbcc6ba6aefae0f7edb433bda3098481db
 </div>
+{% endblock %}
 
+{% block modaldelete %}
 {% endblock %}
 
 {% block buttons %}{% endblock %}
