@@ -1,8 +1,115 @@
 {# TODO : manage errors display #}
 
-<form method="post">
-	<input type="hidden" value="{{ customer.id }}" name="id">
-	<label for="title">Tile</label>
-	<input type="text" value="{{ customer.title }}" name="title" id="title">
-	<button>Submit</button>
+<h3 id="title-add-category"> Ajouter / Modifier un client</h3>
+
+
+<form action="" method="post">
+{% for error in errors %}
+<p> {{error}} </p>
+{% endfor %}
+	<input type="hidden" value="{{ customer.id }}" name="id"> 
+
+	<div class="add-customer-grid" id="add-customer-form">
+
+		<div>
+			<label for="civility">Civilité</label>
+		</div>
+
+		<div>
+		    <select name="civility" value="{{ customer.civility }}" id="civility">
+				<option>Monsieur</option>
+				<option>Madame</option>
+        	</select>
+		</div>
+
+		<div>
+			<label for="lastname">Nom</label>
+		</div>
+
+		<div>
+			<input type="text" value="{{ customer.lastname }}" id="lastname" name="lastname" placeholder="nom de famille" required>
+		</div>
+
+		<div>
+			<label for="firstname">Prénom</label>
+		</div>
+
+		<div>
+			<input type="text" value="{{ customer.firstname }}" id="firstname" name="firstname" placeholder="prénom" required>
+		</div>
+
+		<div>
+			<label for="reference">Référence</label>
+		</div>
+
+		<div>
+			<input type="text" value="{{ customer.reference }}" id="reference" name="reference" placeholder="reference client" required>
+		</div>
+
+		<div>
+			<label for="adress">Adresse</label>
+		</div>
+
+		<div>
+			<input type="text" value="{{ customer.adress }}" id="adress" name="adress" placeholder="adresse">
+		</div>
+
+		<div>
+			<label for="zipcode">Code Postal</label>
+		</div>
+
+		<div>
+			<input type="number" value="{{ customer.zipcode }}" id="zipcode" name="zipcode" placeholder="Code Postal">
+		</div>
+
+		<div>
+			<label for="city">Ville</label>
+		</div>
+
+		<div>
+			<input type="text" value="{{ customer.city }}" id="city" name="city" placeholder="ville">
+		</div>
+
+		<div>
+			<label for="phone">Téléphone</label>
+		</div>
+
+		<div>
+			<input type="phone" value="{{ customer.phone }}" id="phone" name="phone" placeholder="0123456789" >
+		</div>
+
+		<div>
+			<label for="email">Email</label>
+		</div>
+
+		<div>
+			<input type="email" value="{{ customer.email }}" id="email" name="email" placeholder="exemple@exemple.com">
+		</div>
+
+		<div>
+			<label for="description">Remarque</label>
+		</div>
+
+		<div>
+			<input type="texte" value="{{ customer.description }}" id="description" name="description">
+		</div>
+
+		<div>
+			<label for="id_type">Type de clients</label>
+		</div>
+
+		<div>
+		    <select name="id_type" id="id_type">
+				{% for type in types %}
+				<option value="{{ type.id }}"> {{ type.type }} </option>
+				{% endfor %}
+        	</select>
+		</div>
+		<button>Enregistrer</button>
+	</div>
+
+
 </form>
+
+
+

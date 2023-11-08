@@ -1,4 +1,17 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+<div class="category-block">
+
+{% for customer in customers %}
+<article>
+    <a href="#"></a>
+        <p> {{ customer.lastname }} </p>
+        <p> {{ customer.firstname }}</p>
+        <p> {{ customer.type }}</p>
+    </a>
+</article>
+{% endfor %} 
+</div>
 {% endblock %}
+

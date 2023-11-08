@@ -6,7 +6,7 @@ use App\Model\SearchManager;
 
 class SearchController extends AbstractController
 {
-    public function index(): string
+    public function indexSearch(): string
     {
         return $this->twig->render('search/index.html.twig');
     }
