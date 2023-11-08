@@ -382,6 +382,7 @@ button {
     .category-block {
         position: relative;
         display: flex;
+        flex-wrap: wrap;
         width: 66%;
         left: 30%;
         height: 80%;
