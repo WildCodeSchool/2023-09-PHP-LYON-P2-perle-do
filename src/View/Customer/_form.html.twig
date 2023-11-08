@@ -2,6 +2,9 @@
 
 <h3 id="title-add-category"> Ajouter / Modifier un client</h3>
 
+{% for error in errors %}
+<p> {{error}} </p>
+{% endfor %}
 <form action="" method="post">
 	<input type="hidden" value="{{ customer.id }}" name="id"> 
 
@@ -71,7 +74,7 @@
 		</div>
 
 		<div>
-			<input type="phone" value="{{ customer.zipcode }}" id="phone" name="phone" placeholder="0123456789">
+			<input type="phone" value="{{ customer.phone }}" id="phone" name="phone" placeholder="0123456789" >
 		</div>
 
 		<div>
@@ -95,19 +98,11 @@
 		</div>
 
 		<div>
-		    <select name="id_type" value="{{ customer.id_type = type.id }}" id="type">
+		    <select name="id_type" id="id_type">
 				{% for type in types %}
-				<option> {{ type.type }} </option>
+				<option value="{{ type.id }}"> {{ type.type }} </option>
 				{% endfor %}
         	</select>
-		</div>
-
-		<div>
-			<label for="created_date">date de création</label>
-		</div>
-
-		<div>
-			<input type="date" value="{{ customer.created_date }}" id="created_date" name="created_datePar">
 		</div>
 		<button>Enregistrer</button>
 	</div>

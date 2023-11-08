@@ -10,13 +10,13 @@ class CustomerManager extends AbstractManager
 
     public function getAll(): array | bool
     {
-        $sql = 'SELECT c.civility, c.lastname, c.firstname, 
-        c.reference, c.adress, c.zipcode, c.city, c.phone, c.email, c.description, c.created_date, t.type
-        FROM customer c JOIN type t ON c.id_type = t.id';
+        $sql = 'SELECT c.civility, c.lastname, c.firstname, c.reference, 
+        c.adress, c.zipcode, c.city, c.phone, c.email, c.description, c.created_date, t.type, t.discount
+        FROM customer c JOIN `type` t ON c.id_type = t.id';
         $query = $this->pdo->prepare($sql);
         $query->execute();
-        $cust = $query->fetchAll(PDO::FETCH_ASSOC);
-        return $cust;
+        $customers = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $customers;
     }
 
     /**
@@ -25,20 +25,22 @@ class CustomerManager extends AbstractManager
     public function insert(array $customer): int
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`civility`, `lastname`, 
-        `firstname`, `reference`, `adress`, `zipcode`, `city`, `phone`, `email`, `description`, `created_date) 
+        `firstname`, `reference`, `adress`, `zipcode`, `city`, `phone`, `email`, `description`, `created_date`, 
+        `id_type`) 
         VALUES (:civility, :lastname, :firstname, :reference, :adress, :zipcode, :city, :phone, 
-        :email, :description, :created_date)");
-        $statement->bindValue('civility', $customer['civility'], PDO::PARAM_STR);
-        $statement->bindValue('lastname', $customer['lastname'], PDO::PARAM_STR);
-        $statement->bindValue('firstname', $customer['firstname'], PDO::PARAM_STR);
-        $statement->bindValue('reference', $customer['reference'], PDO::PARAM_STR);
-        $statement->bindValue('adress', $customer['adress'], PDO::PARAM_STR);
-        $statement->bindValue('zipcode', $customer['zipcode'], PDO::PARAM_INT);
-        $statement->bindValue('city', $customer['city'], PDO::PARAM_STR);
-        $statement->bindValue('phone', $customer['phone'], PDO::PARAM_INT);
-        $statement->bindValue('email', $customer['email'], PDO::PARAM_STR);
-        $statement->bindValue('description', $customer['description'], PDO::PARAM_STR);
-        $statement->bindValue('create_date', $customer['created_date'], PDO::PARAM_STR);
+        :email, :description, :created_date, :id_type)");
+        $statement->bindValue(':civility', $customer['civility'], PDO::PARAM_STR);
+        $statement->bindValue(':lastname', $customer['lastname'], PDO::PARAM_STR);
+        $statement->bindValue(':firstname', $customer['firstname'], PDO::PARAM_STR);
+        $statement->bindValue(':reference', $customer['reference'], PDO::PARAM_STR);
+        $statement->bindValue(':adress', $customer['adress'], PDO::PARAM_STR);
+        $statement->bindValue(':zipcode', $customer['zipcode'], PDO::PARAM_INT);
+        $statement->bindValue(':city', $customer['city'], PDO::PARAM_STR);
+        $statement->bindValue(':phone', $customer['phone'], PDO::PARAM_INT);
+        $statement->bindValue(':email', $customer['email'], PDO::PARAM_STR);
+        $statement->bindValue(':description', $customer['description'], PDO::PARAM_STR);
+        $statement->bindValue(':created_date', $customer['created_date'], PDO::PARAM_STR);
+        $statement->bindValue(':id_type', $customer['id_type'], PDO::PARAM_INT);
 
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
