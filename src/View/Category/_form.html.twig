@@ -1,8 +1,26 @@
 {# TODO : manage errors display #}
 
-<form method="post">
-	<input type="hidden" value="{{ category.id }}" name="id">
-	<label for="title">Tile</label>
-	<input type="text" value="{{ category.title }}" name="title" id="title">
-	<button>Submit</button>
+<h3 id="title-add-category"> Ajouter/modifier une catégorie</h3>
+
+<form action ="" method="post">
+<div class="add-products-grid" id="add-category-form">
+<input type="hidden" value="{{ category.id }}" name="id"> 
+    
+    <div>
+    <label for="name">Nom</label>
+    </div>
+
+    <div>
+    <input type="text" id="name" value="{{ category.name }}" name="name" placeholder="Nom" required>
+    </div>
+
+    <div><label for="file">Charger une image</div>
+    <br>
+    <div>
+    <input type="file" id="file" name="file">
+    </div>
+    <br>
+    <button>Enregistrer</button>
+
+</div>
 </form>

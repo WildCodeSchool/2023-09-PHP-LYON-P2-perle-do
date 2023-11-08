@@ -1,70 +1,11 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+{% include 'Category/_form.html.twig' %}
+{% endblock %}
 
-<h3 id="title-add-category"> Ajouter une catégorie</h3>
+{% block buttons %}
+{% endblock %}
 
-<div class="add-products-grid" id="add-category-form">
-
-    <div>
-    <label for="category">Catégorie</label>
-    </div>
-
-    <div>
-    <input type="text" id="category" name="category" placeholder="catégorie" required>
-    </div>
-
-    <div>
-    <label for="materials">Matériaux</label>
-    </div>
-
-    <div>
-    <input type="text" id="materials" name="material" placeholder="matériaux" required>
-    </div>
-
-    <div>
-    <label for="reference">Réference</label>
-    </div>
-
-    <div>
-    <input type="text" id="reference" name="reference" placeholder="reference" required>
-    </div>
-
-    <div>
-    <label for="price">Prix</label>
-    </div>
-
-    <div>
-    <input type="number" id="price" name="price" placeholder="prix" required>
-    </div>
-
-    <div>
-    <label for="description">Description</label>
-    </div>
-
-    <div>
-    <input type="text-area" id="description" name="description" placeholder="description" required>
-    </div>
-
-    <div>
-    <label for="quantity">Quantité</label>
-    </div>
-
-    <div>
-    <input type="number" id="quantity" name="quantity" placeholder="quantité" required>
-    </div>
-
-    <div>
-    <label for="origin">Provenance</label>
-    </div>
-
-    <div>
-    <input type="text" id="origin" name="origin" placeholder="origine" required>
-    </div>
-
-    <div>
-    <label for="file">Charger une image
-    <input type="file" id="file" name="file">
-    </div>
-</div>
+{% block modaldelete %}
 {% endblock %}

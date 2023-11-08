@@ -246,7 +246,6 @@ select {
     background-color: var(--background-block-white);
     padding: 2rem 1rem;
     border-radius: 15px;
-
 }
 
 .add-products-grid div:last-child {
@@ -403,6 +402,11 @@ textarea {
         font-size: 1.5rem;
     }
 
+    button {
+        background-color: var(--background-button-color);
+        border: none;
+        color: var(--font-black);
+    }
     .add-button > a > p {
         font-size: 1.2rem;
     }
@@ -410,8 +414,7 @@ textarea {
     .fa-pen,
     .fa-ban,
     .fa-circle-check,
-    .fa-trash-can
-     {
+    .fa-trash-can {
         padding: 0;
     }
 
@@ -466,7 +469,7 @@ textarea {
     }
 
     #title-add-category {
-        display:flex;
+        display: flex;
         position: fixed;
         top: 13vh;
         left: 30vw;
@@ -477,4 +480,3 @@ textarea {
         width: 75vh;
     }
 }
-
