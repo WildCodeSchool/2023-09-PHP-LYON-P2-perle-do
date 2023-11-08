@@ -41,6 +41,11 @@ return [
     'search' => ['SearchController','index',],
     // page ajout utilisateur
     'register' => ['AuthController','index'],
+    'register/add' => ['AuthController','register'],
+    'register/show' => ['AuthController','show', ['id']],
+    'register/edit' => ['AuthController','edit', ['id']],
+    'register/delete' => ['AuthController','delete'],
+
     // page de déconnection
     'logout' => ['AuthController','logout'],
 

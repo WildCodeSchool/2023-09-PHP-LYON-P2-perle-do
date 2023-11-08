@@ -1,20 +1,23 @@
 {% extends 'layout.html.twig' %}
 
 {% block navbar %}
-{{parent()}}
+	{{parent()}}
 {% endblock %}
 
 {% block content %}
-<div class="auth-page">   
-<h1>Items</h1>
-    <ul>
-        {% for user in users %}
-            <article></article><li><a href="/User/show?id={{ user.id }}">{{ user.lastname }}. {{ user.name }}. {{ user.pseudo }}. {{ user.role }}</a></li></article>
-        {% else %}
-            <li>Nothing to display</li>
-        {% endfor %}
-    </ul>
-    <a href="/items/add">Ajouter</a></div> 
+	<div class="auth_page">
+		<h1>Liste des utilisateurs</h1>
+		<ul>
+			{% for user in users %}
+				<article>
+					<li><a href="/register/show?id={{ user.id }}">{{ user.lastname }} {{ user.name }} {{ user.pseudo }} {{ user.role }}</a></li>
+				</article>
+			{% endfor %}
+		</ul>
+		<article>
+			<a href="register/add">Ajouter un compte</a>
+		</article>
+	</div>
 {% endblock %}
 
 {% block buttons %}{% endblock %}

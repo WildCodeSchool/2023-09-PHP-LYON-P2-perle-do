@@ -51,9 +51,14 @@ a:is([aria-current], :hover, :active, :focus) {
 * {
     text-decoration: none;
 }
+
 body {
     background-color: var(--background-color-secondary);
     height: 100vh;
+}
+
+ul li {
+    list-style: none;
 }
 /* header */
 body header {
@@ -243,7 +248,7 @@ select {
     }
 
     article {
-    height: 20vh;
+    height: auto;
     }
 
     article p {
@@ -311,6 +316,7 @@ select {
     .categorie-block {
         position: relative;
         display: flex;
+        flex-direction: column;
         width: 66%;
         left: 30%;
         height: 80%;

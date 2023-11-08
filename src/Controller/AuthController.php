@@ -56,4 +56,40 @@ class AuthController extends AbstractController
 
         return $this->twig->render('User/index.html.twig', ['users' => $users]);
     }
+
+    public function edit(int $id): ?string
+    {
+        $userManager = new AuthManager();
+        $user = $userManager->selectOneById($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // clean $_POST data
+            $user = array_map('trim', $_POST);
+
+            // TODO validations (length, format...)
+
+            // if validation is ok, update and redirection
+            $userManager->update($user);
+
+            header('Location: /register/show?id=' . $id);
+
+            // we are redirecting so we don't want any content rendered
+            return null;
+        }
+
+        return $this->twig->render('User/edit.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
+    public function delete(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $userManager = new AuthManager();
+            $userManager->delete((int)$id);
+
+            header('Location:/register');
+        }
+    }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Model;
 
+use PDO;
+
 class AuthManager extends AbstractManager
 {
     public const TABLE = 'user';
@@ -21,9 +23,9 @@ class AuthManager extends AbstractManager
             " (`lastname`, `name`, `pseudo`, `password`, `role`)
         VALUES (:lastname, :name, :pseudo, :password, :role)");
         $statement->bindValue(':lastname', $credentials['lastname']);
-        $statement->bindValue(':name', password_hash($credentials['name'], PASSWORD_DEFAULT));
+        $statement->bindValue(':name', $credentials['name']);
         $statement->bindValue(':pseudo', $credentials['pseudo']);
-        $statement->bindValue(':password', $credentials['password']);
+        $statement->bindValue(':password', password_hash($credentials['password'], PASSWORD_DEFAULT));
         $statement->bindValue(':role', $credentials['role']);
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
@@ -36,5 +38,14 @@ class AuthManager extends AbstractManager
         $statement->execute();
 
         return $statement->fetch();
+    }
+
+    public function update(array $user): bool
+    {
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `pseudo` = :pseudo WHERE id=:id");
+        $statement->bindValue('id', $user['id'], PDO                      ::PARAM_INT);
+        $statement->bindValue('pseudo', $user['pseudo'], PDO::PARAM_STR);
+
+        return $statement->execute();
     }
 }
