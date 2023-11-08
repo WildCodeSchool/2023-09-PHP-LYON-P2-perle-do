@@ -1,0 +1,36 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class="auth_page">
+        <div>
+            <h1>Ajouter un utilisateur</h1>
+            <p>Remplir le formulaire pour ajouter un utilisateur</p>
+            <form action="" method="post">
+                <div class="mb-3">
+                    <label for="pseudo" class="form-label">Nom d'utilisateur</label>
+                    <input class="form-control" type="pseudo" id="pseudo" name="pseudo" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Mot de passe</label>
+                    <input class="form-control" type="password" id="password" name="password" required>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Prénom</label>
+                    <input class="form-control" type="text" id="name" name="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="lastname" class="form-label">Nom</label>
+                    <input class="form-control" type="text" id="lastname" name="lastname" required>
+                </div>
+                <div class="mb-3">
+                    <label for="role" class="form-label">Nom</label>
+                    <input class="form-control" type="text" id="role" name="role" required>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-success">Create account</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block buttons %}{% endblock %} 

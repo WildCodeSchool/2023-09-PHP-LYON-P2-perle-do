@@ -1,4 +1,15 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}Perle Do{% endblock %}
 {% block content %}
+    <div class="auth_page">
+        <h1>Perle Do - Administration</h1>        
+        {% if user %}
+            <p>
+                Bonjour <strong>{{ user.pseudo }}</strong>!
+            </p>
+        {% else %}
+        {% include "Auth/login.html.twig" %}
+        {% endif %}
+    </div>
 {% endblock %}

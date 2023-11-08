@@ -37,8 +37,9 @@
       <li><a href=""><i class="fa-solid fa-chart-column color"></i>Chiffre d'affaire</a></li>
       <li><a href=""><i class="fa-regular fa-calendar color"></i>Evênements</a></li>
       <li><a href="/invoices"><i class="fa-solid fa-receipt color"></i>Factures</a></li>
-      <li><a href=""><i class="fa-solid fa-cart-shopping color"></i>Panier</a></li>
-      <li class="deconnexion"><a href="/"><i class="fa-solid fa-power-off"></i>Deconnexion</a></li>
+      <li><a href=""><i class="fa-solid fa-cart-shopping color"></i>Panier</a></li>    
+      <li><a href="/register"><i class="fa-solid fa-user-group"></i>Ajout utilisateur</a></li>
+      {% if user %}<li class="logout"><a href="/"><i class="fa-solid fa-power-off"></i>Deconnexion</a></li>{% endif %}
     </ul>
   </nav>
   {% endblock %}
@@ -67,17 +68,17 @@
 
       <article class="validate-button"><a href=""><i class="fa-regular fa-circle-check"></i></a>
       </article>
+      
+      <button class="delete-button" data-target="modal-delete" onClick="toggleModal(event)">
+      <a href=""><i class="fa-regular fa-trash-can"></i></a>
+      </button>
 
       </div>
   {% endblock %}
 
   {% block modaldelete %}
 <!-- Button to trigger the modal -->
-<button class="delete-button"
-  data-target="modal-delete"
-  onClick="toggleModal(event)">
-  <a href=""><i class="fa-regular fa-trash-can"></i></a>
-</button>
+
 
 <!-- Modal -->
 <dialog id="modal-delete">

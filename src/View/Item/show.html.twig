@@ -1,11 +1,11 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Item {{ item.title }}</h1>
-    <p>{{ item.id }}. {{ item.title }}</p>
-    <a href="/items/edit?id={{ item.id }}">Edit</a>
+    <h1>Utilisateurs {{ user.title }}</h1>
+    <p>{{ user.id }}. {{ user.title }}</p>
+    <a href="/items/edit?id={{ user.id }}">Edit</a>
     <form action="/items/delete" method="POST">
-        <input type="hidden" name="id" value="{{ item.id }}">
+        <input type="hidden" name="id" value="{{ user.id }}">
         <button>Delete</button>
     </form>
     <a href="/items">Back</a>
