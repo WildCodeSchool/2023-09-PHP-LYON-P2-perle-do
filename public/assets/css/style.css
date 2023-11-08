@@ -307,6 +307,30 @@ button {
 
 .p-customer {
     margin: 0;
+
+}
+
+.show-customer{
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    gap:0.5rem;
+}
+.show-customer p:first-child{
+    grid-row-start: 1;
+    grid-row-end: 3;
+    align-self: center;
+}
+.edit-button-customer{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    width: 60%;
+    justify-self: end;
+}
+.delete-button-customer{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    width: 30%;
+    justify-self: center;
 }
 
 /* -------------------media queries pour + 780 px--------------------- */

@@ -52,7 +52,12 @@ class CustomerController extends AbstractController
     {
         $customerManager = new CustomerManager();
         $customer = $customerManager->getCustomerById($id);
+        $typeManager = new TypeManager();
+        $type = $typeManager->getTypeById($id);
 
-        return $this->twig->render('customer/show.html.twig', ['customer' => $customer]);
+        return $this->twig->render('customer/show.html.twig', [
+            'customer' => $customer,
+            'type' => $type,
+        ]);
     }
 }
