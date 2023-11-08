@@ -5,16 +5,14 @@
 {% endblock %}
 
 {% block content %}
-
-<div class="categorieblock">
-<article> <p>Bonjour je suis un texte</p></article>
-<article> <p>Bonjour je suis un texte</p></article>
-<article> <p>Bonjour je suis un texte</p></article>
-<article> <p>Bonjour je suis un texte</p></article>
-<article> <p>Bonjour je suis un texte</p></article>
-<article> <p>Bonjour je suis un texte</p></article>
-<article> <p>Bonjour je suis un texte</p></article>
-<article> <p>Bonjour je suis un texte</p></article>
+<div class="category-block">
+{% for category in categories %}
+<article><a href="#"></a>
+<p> {{ category.name }} </p>
+</article>
+{% endfor %} 
 </div>
+{% endblock %}
 
+{% block modaldelete %}
 {% endblock %}
