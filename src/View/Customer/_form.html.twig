@@ -2,10 +2,11 @@
 
 <h3 id="title-add-category"> Ajouter / Modifier un client</h3>
 
+
+<form action="" method="post">
 {% for error in errors %}
 <p> {{error}} </p>
 {% endfor %}
-<form action="" method="post">
 	<input type="hidden" value="{{ customer.id }}" name="id"> 
 
 	<div class="add-customer-grid" id="add-customer-form">

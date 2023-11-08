@@ -4,13 +4,14 @@ namespace App\Controller;
 
 use App\Model\CustomerManager;
 use App\Model\TypeManager;
+use App\Service\ValidationService;
 
 class CustomerController extends AbstractController
 {
     public function indexCustomer(): string
     {
         $customerManager = new CustomerManager();
-        $customers = $customerManager->getAll();
+        $customers = $customerManager->getAllCustomer();
 
         return $this->twig->render('Customer/index.html.twig', ['customers' => $customers]);
     }
@@ -24,23 +25,11 @@ class CustomerController extends AbstractController
             $customer = array_map('trim', $_POST);
             $customer['created_date'] = date("Y-m-d");
 
-            // TODO validations (length, format...)
-            if (empty($customer['lastname'])) {
-                $errors[] = 'Le nom est obligatoire';
-            }
-            if (strlen($customer['lastname']) > 50) {
-                $errors[] = 'Le nom ou le prénom est trop long';
-            }
-            if (!empty($customer['email'])) {
-                if (!filter_var($customer['email'], FILTER_VALIDATE_EMAIL)) {
-                    $errors[] = "L'adresse mail n'est pas au bon format";
-                }
-            }
-            if (!empty($customer['phone'])) {
-                if (!preg_match('/[0-9]{10}/', $customer['phone'])) {
-                    $errors[] = 'Le numéro n\'est pas au bon format';
-                }
-            }
+
+            $errorsValidation = new ValidationService();
+            $errorsValidation->formValidationCustomer($customer);
+            $errorsValidation->formValidationCustomer2($customer);
+            $errors = $errorsValidation->errors;
 
             if (empty($errors)) {
                 // if validation is ok, insert and redirection

@@ -8,7 +8,7 @@ class CustomerManager extends AbstractManager
 {
     public const TABLE = 'customer';
 
-    public function getAll(): array | bool
+    public function getAllCustomer(): array | bool
     {
         $sql = 'SELECT c.civility, c.lastname, c.firstname, c.reference, 
         c.adress, c.zipcode, c.city, c.phone, c.email, c.description, c.created_date, t.type, t.discount
