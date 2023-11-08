@@ -29,7 +29,7 @@ class CustomerController extends AbstractController
                 $errors[] = 'Le nom est obligatoire';
             }
             if (strlen($customer['lastname']) > 50) {
-                $errors[] = 'Le nom est trop long';
+                $errors[] = 'Le nom ou le prénom est trop long';
             }
             if (!empty($customer['email'])) {
                 if (!filter_var($customer['email'], FILTER_VALIDATE_EMAIL)) {
