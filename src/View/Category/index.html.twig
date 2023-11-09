@@ -1,18 +1,25 @@
 {% extends 'layout.html.twig' %}
 
-{% block navbar %}
-{{parent()}}
-{% endblock %}
+        {% block navbar %}
+        {{parent()}}
+        {% endblock %}
 
-{% block content %}
-<div class="category-block">
-{% for category in categories %}
-<article><a href="#"></a>
-<p> {{ category.name }} </p>
-</article>
-{% endfor %} 
-</div>
-{% endblock %}
+        {% block content %}
+   
+        <div class="customer-block">
+                {% for category in categories %}
+                <article class="article-category"><a href="#"></a>
+                <p> {{ category.name }} </p>
+                </article>
+                {% endfor %} 
+        </div>
+        {% endblock %}
 
-{% block modaldelete %}
-{% endblock %}
+        {% block buttons %}  
+                <div class="buttons">
+                <article class="add-button-only"><a href="/categories/add">
+                <p>Ajouter</p></a>
+                </article>
+                </div>
+        {% endblock %}
+        {% block modaldelete %} {% endblock %}
