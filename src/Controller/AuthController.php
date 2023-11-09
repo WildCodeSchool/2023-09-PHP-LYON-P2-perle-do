@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\AuthManager;
+use App\Service\ValidationService;
 
 class AuthController extends AbstractController
 {
@@ -30,15 +31,30 @@ class AuthController extends AbstractController
 
     public function register()
     {
+        $errors = [];
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            //      @todo make some controls and if errors send them to the view
-            $credentials = $_POST;
-            $userManager = new AuthManager();
-            if ($userManager->insert($credentials)) {
-                return $this->login();
+            // clean $_POST data
+            $user = array_map('trim', $_POST);
+
+
+            $errorsValidation = new ValidationService();
+            $errorsValidation->userValidation($user);
+            $errorsValidation->userValidationExtra($user);
+            $errors = $errorsValidation->errors;
+
+            if (empty($errors)) {
+                // if validation is ok, insert and redirection
+                $authManager = new AuthManager();
+                $authManager->insert($user);
+
+                header('Location:/register');
+                return null;
             }
         }
-        return $this->twig->render('User/register.html.twig');
+                return $this->twig->render('User/register.html.twig', [
+                    'errors' => $errors
+                ]);
     }
 
     public function show(int $id): string

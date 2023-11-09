@@ -50,16 +50,17 @@ a:is([aria-current], :hover, :active, :focus) {
 
 * {
     text-decoration: none;
+
 }
 
-body {
+html {
     background-color: var(--background-color-secondary);
-    height: 100vh;
 }
 
 ul li {
     list-style: none;
 }
+
 /* header */
 body header {
     display: grid;
@@ -109,7 +110,7 @@ article {
     margin-top: 1rem;
     border-radius: 2rem;
     width: 100%;
-    height: 15vh;
+    height: auto;
     font-size: 2rem;
     text-align: center;
 }
@@ -117,6 +118,7 @@ article {
 article p {
     font-size: 1rem;
 }
+
 /* navbar */
 
 nav ul {
@@ -139,9 +141,11 @@ nav {
     right: 1vw;
     box-shadow: var(--card-box-shadow);
 }
-.navbar-mobile > ul a {
+
+.navbar-mobile>ul a {
     color: var(--font-black);
 }
+
 .navbar-desktop {
     display: none;
 }
@@ -223,11 +227,11 @@ select {
     font-size: 1.5rem;
 }
 
-.add-button > a > p,
-.delete-button > a,
-.edit-button > a,
-.cancel-button > a,
-.validate-button > a {
+.add-button>a>p,
+.delete-button>a,
+.edit-button>a,
+.cancel-button>a,
+.validate-button>a {
     margin: 0;
     color: var(--font-black);
 }
@@ -315,12 +319,13 @@ button {
     .grid {
         grid-template-columns: 1fr 1fr 1fr;
     }
+
     .grid div:last-child {
         grid-column-end: 4;
     }
 
     article {
-    height: auto;
+        height: auto;
     }
 
     article p {
@@ -366,7 +371,7 @@ button {
         padding: 0 6%;
     }
 
-    .navbar-desktop > ul a {
+    .navbar-desktop>ul a {
         color: var(--font-black);
     }
 
@@ -412,7 +417,7 @@ button {
 
     .fa-power-off,
     .deconnexion,
-    .deconnexion > a {
+    .deconnexion>a {
         color: var(--primary);
     }
 
@@ -442,15 +447,14 @@ button {
         font-size: 1.5rem;
     }
 
-    .add-button > a > p {
+    .add-button>a>p {
         font-size: 1.2rem;
     }
 
     .fa-pen,
     .fa-ban,
     .fa-circle-check,
-    .fa-trash-can
-    {
+    .fa-trash-can {
         padding: 0;
     }
 
@@ -468,7 +472,7 @@ button {
         padding: 2rem 3rem;
     }
 
-    .add-products-grid > div {
+    .add-products-grid>div {
         width: max-content;
     }
 
@@ -477,6 +481,7 @@ button {
         padding: 0;
         margin: 0;
     }
+
     .add-products-grid div:nth-child(2n + 1) {
         justify-content: flex-end;
     }
@@ -486,12 +491,10 @@ button {
         grid-column-end: 3;
     }
 
-    input:not(
-            [type="checkbox"],
-            [type="radio"],
-            [type="range"],
-            [type="file"]
-        ) {
+    input:not([type="checkbox"],
+        [type="radio"],
+        [type="range"],
+        [type="file"]) {
         height: 2rem;
         margin-bottom: 1rem;
         background-color: var(--background-button-color);
@@ -505,11 +508,12 @@ button {
     }
 
     #title-add-category {
-        display:flex;
+        display: flex;
         position: fixed;
         top: 6vh;
         left: 30vw;
     }
+
     /*-------- GRID FORM ENDS--------- */
     .modal {
         height: 60vh;
@@ -529,7 +533,9 @@ button {
 
     .auth_page article {
         font-size: larger;
+        height: auto;
     }
+
     /* css pour le add/edit cutomer */
 
     .add-customer-grid {
@@ -542,7 +548,26 @@ button {
         background-color: var(--background-block-white);
         padding: 2rem 3rem 0 3 rem;
     }
-    
 
+    .article_error article {
+        margin-top: 1rem;
+        border-radius: 2rem;
+        width: auto;
+        height: auto;
+        font-size: 2rem;
+        text-align: center;
+        margin: auto;
+        
+    }
+
+    .auth_error {
+        margin: 1%, 1%, 1%, 1%;
+        color: rgb(150, 0, 0);
+        text-align: center;
+        margin-block-end: 0em;
+        font-size: 1em;
 }
 
+
+
+}
