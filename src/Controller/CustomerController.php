@@ -62,6 +62,14 @@ class CustomerController extends AbstractController
         ]);
     }
 
+    public function deleteCustomer($id): void
+    {
+
+            $costumerManager = new CustomerManager();
+            $costumerManager->delete((int)$id);
+
+            header('Location:/customers');
+    }
     public function editCustomer(int $id): ?string
     {
         $errors = [];
