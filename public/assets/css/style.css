@@ -400,6 +400,12 @@ button {
     justify-self: center;
 }
 
+.add-button-customer {
+    position: fixed;
+    bottom: 10vh;
+    width: 20%;
+}
+
 /* -------------------media queries pour + 780 px--------------------- */
 /***********************************************************************/
 
@@ -670,6 +676,10 @@ button {
 
     .p-customer {
         font-size: 0.85rem;
+    }
+
+    .add-button-customer {
+        left: 22vw;
     }
 
     .article_error article {
