@@ -50,11 +50,17 @@ a:is([aria-current], :hover, :active, :focus) {
 
 * {
     text-decoration: none;
+
 }
-body {
+
+html {
     background-color: var(--background-color-secondary);
-    height: 100vh;
 }
+
+ul li {
+    list-style: none;
+}
+
 /* header */
 body header {
     display: grid;
@@ -104,7 +110,7 @@ article {
     margin-top: 1rem;
     border-radius: 2rem;
     width: 100%;
-    height: 15vh;
+    height: auto;
     font-size: 2rem;
     text-align: center;
 }
@@ -112,6 +118,7 @@ article {
 article p {
     font-size: 1rem;
 }
+
 /* navbar */
 
 nav ul {
@@ -135,9 +142,11 @@ nav {
     right: 1vw;
     box-shadow: var(--card-box-shadow);
 }
-.navbar-mobile > ul a {
+
+.navbar-mobile>ul a {
     color: var(--font-black);
 }
+
 .navbar-desktop {
     display: none;
 }
@@ -240,11 +249,11 @@ select {
     font-size: 1.5rem;
 }
 
-.add-button > a > p,
-.delete-button > a,
-.edit-button > a,
-.cancel-button > a,
-.validate-button > a {
+.add-button>a>p,
+.delete-button>a,
+.edit-button>a,
+.cancel-button>a,
+.validate-button>a {
     margin: 0;
     color: var(--font-black);
 }
@@ -398,12 +407,13 @@ button {
     .grid {
         grid-template-columns: 1fr 1fr 1fr;
     }
+
     .grid div:last-child {
         grid-column-end: 4;
     }
 
     article {
-        height: 20vh;
+        height: auto;
     }
 
     article p {
@@ -413,6 +423,7 @@ button {
     body header {
         display: flex;
         justify-content: space-between;
+        height: 0.5vh;
         width: 100%;
         padding-left: 30%;
         background-color: var(--background-color-secondary);
@@ -448,7 +459,7 @@ button {
         padding: 0 6%;
     }
 
-    .navbar-desktop > ul a {
+    .navbar-desktop>ul a {
         color: var(--font-black);
     }
 
@@ -494,7 +505,7 @@ button {
 
     .fa-power-off,
     .deconnexion,
-    .deconnexion > a {
+    .deconnexion>a {
         color: var(--primary);
     }
 
@@ -555,7 +566,7 @@ button {
         padding: 2rem 3rem;
     }
 
-    .add-products-grid > div {
+    .add-products-grid>div {
         width: max-content;
     }
 
@@ -564,6 +575,7 @@ button {
         padding: 0;
         margin: 0;
     }
+
     .add-products-grid div:nth-child(2n + 1) {
         justify-content: flex-end;
     }
@@ -573,12 +585,10 @@ button {
         grid-column-end: 3;
     }
 
-    input:not(
-            [type="checkbox"],
-            [type="radio"],
-            [type="range"],
-            [type="file"]
-        ) {
+    input:not([type="checkbox"],
+        [type="radio"],
+        [type="range"],
+        [type="file"]) {
         height: 2rem;
         margin-bottom: 1rem;
         background-color: var(--background-button-color);
@@ -601,10 +611,27 @@ button {
         top: 6vh;
         left: 30vw;
     }
+
     /*-------- GRID FORM ENDS--------- */
     .modal {
         height: 60vh;
         width: 75vh;
+    }
+
+    .auth_page {
+        position: relative;
+        display: flex;
+        width: 66%;
+        left: 30%;
+        height: 10%;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .auth_page article {
+        font-size: larger;
+        height: auto;
     }
 
     /* css pour le add/edit cutomer */
@@ -640,7 +667,26 @@ button {
         left: 30%;
         height: 85vh;
     }
+
     .p-customer {
         font-size: 0.85rem;
+    }
+
+    .article_error article {
+        margin-top: 1rem;
+        border-radius: 2rem;
+        width: auto;
+        height: auto;
+        font-size: 2rem;
+        text-align: center;
+        margin: auto;
+    }
+
+    .auth_error {
+        margin: 1%, 1%, 1%, 1%;
+        color: rgb(150, 0, 0);
+        text-align: center;
+        margin-block-end: 0em;
+        font-size: 1em;
     }
 }
