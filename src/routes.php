@@ -30,7 +30,7 @@ return [
     'customers/edit' => ['CustomerController', 'editCustomer', ['id']],
     'customers/show' => ['CustomerController', 'showCustomer', ['id']],
     'customers/add' => ['CustomerController', 'addCustomer',],
-    'customers/delete' => ['CustomerController', 'deleteCustomer',],
+    'customers/delete' => ['CustomerController', 'deleteCustomer', ['id']],
     // pages factures
     'invoices' => ['InvoiceController', 'indexInvoice',],
     'invoices/edit' => ['InvoiceController', 'editInvoice', ['id']],

@@ -61,14 +61,12 @@ class CustomerController extends AbstractController
         ]);
     }
 
-    public function deleteCustomer(): void
+    public function deleteCustomer($id): void
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = trim($_POST['id']);
+
             $costumerManager = new CustomerManager();
             $costumerManager->delete((int)$id);
 
             header('Location:/customers');
-        }
     }
 }
