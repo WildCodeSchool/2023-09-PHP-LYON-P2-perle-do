@@ -6,11 +6,9 @@
 		<div>
 			<h1>Ajouter un utilisateur</h1>
 			<p>Remplir le formulaire pour ajouter un utilisateur</p>
-			<article class="article_error">
 				{% for error in errors %}
 					<p class="auth_error">{{error}}</p>
 				{% endfor %}
-			</article>
 			<form action="" method="post">
 				<div class="mb-3">
 					<label for="pseudo" class="form-label">Nom d'utilisateur</label>
