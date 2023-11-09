@@ -305,6 +305,34 @@ button {
     grid-column-end: 3;
 }
 
+.p-customer {
+    margin: 0;
+
+}
+
+.show-customer{
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    gap:0.5rem;
+}
+.show-customer p:first-child{
+    grid-row-start: 1;
+    grid-row-end: 3;
+    align-self: center;
+}
+.edit-button-customer{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    width: 60%;
+    justify-self: end;
+}
+.delete-button-customer{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    width: 30%;
+    justify-self: center;
+}
+
 /* -------------------media queries pour + 780 px--------------------- */
 @media screen and (min-width: 780px) {
     .grid {
@@ -521,7 +549,21 @@ button {
         background-color: var(--background-block-white);
         padding: 2rem 3rem 0 3 rem;
     }
-    
 
+    .block-customer {
+        display: flex;
+        padding: 5rem;
+    }
+    .customer-block {
+    position: relative;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 66%;
+    left: 30%;
+    }
+    .p-customer {
+        font-size: 0.85rem;
+    }
 }
 
