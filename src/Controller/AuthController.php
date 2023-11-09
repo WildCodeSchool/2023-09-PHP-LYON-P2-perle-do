@@ -65,7 +65,7 @@ class AuthController extends AbstractController
         return $this->twig->render('User/show.html.twig', ['user' => $user]);
     }
 
-    public function index(): string
+    public function indexAuth(): string
     {
         $userManager = new AuthManager();
         $users = $userManager->selectAll('id');
@@ -75,27 +75,30 @@ class AuthController extends AbstractController
 
     public function edit(int $id): ?string
     {
-        $userManager = new AuthManager();
-        $user = $userManager->selectOneById($id);
+        $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $user = array_map('trim', $_POST);
 
-            // TODO validations (length, format...)
 
-            // if validation is ok, update and redirection
-            $userManager->update($user);
+            $errorsValidation = new ValidationService();
+            $errorsValidation->userValidation($user);
+            $errorsValidation->userValidationExtra($user);
+            $errors = $errorsValidation->errors;
 
-            header('Location: /register/show?id=' . $id);
+            if (empty($errors)) {
+                // if validation is ok, insert and redirection
+                $authManager = new AuthManager();
+                $id = $authManager->update($user);
 
-            // we are redirecting so we don't want any content rendered
-            return null;
+                header('Location:/register/show?id=' . $id);
+                return null;
+            }
         }
-
-        return $this->twig->render('User/edit.html.twig', [
-            'user' => $user,
-        ]);
+                return $this->twig->render('User/edit.html.twig', [
+                    'errors' => $errors
+                ]);
     }
 
     public function delete(): void

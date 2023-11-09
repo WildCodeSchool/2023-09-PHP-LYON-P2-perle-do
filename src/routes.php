@@ -9,38 +9,38 @@
 return [
     '' => ['AuthController', 'login',],
     'home' => ['HomeController','index',],
-    // pages catégories
-    'categories' => ['CategoryController','index',],
-    'categories/edit' => ['CategoryController', 'edit', ['id']],
-    'categories/add' => ['CategoryController', 'add',],
-    'categories/delete' => ['CategoryController', 'delete',],
-    // pages matériaux
-    'materials' => ['MaterialController','index',],
-    'materials/edit' => ['MaterialController', 'edit', ['id']],
-    'materials/add' => ['MaterialController', 'add',],
-    'materials/delete' => ['MaterialController', 'delete',],
-    // pages produits
-    'products' => ['ProductController','index',],
-    'products/edit' => ['ProductController', 'edit', ['id']],
-    'products/show' => ['ProductController', 'show', ['id']],
-    'products/add' => ['ProductController', 'add',],
-    'products/delete' => ['ProductController', 'delete',],
-    // pages clients
-    'customers' => ['CustomerController', 'index',],
-    'customers/edit' => ['CustomerController', 'edit', ['id']],
-    'customers/show' => ['CustomerController', 'show', ['id']],
-    'customers/add' => ['CustomerController', 'add',],
-    'customers/delete' => ['CustomerController', 'delete',],
-    // pages factures
-    'invoices' => ['InvoiceController', 'index',],
-    'invoices/edit' => ['InvoiceController', 'edit', ['id']],
-    'invoices/show' => ['InvoiceController', 'show', ['id']],
-    'invoices/add' => ['InvoiceController', 'add',],
-    'invoices/delete' => ['InvoiceController', 'delete',],
-    // pages recherche
-    'search' => ['SearchController','index',],
+     // pages catégories
+     'categories' => ['CategoryController','indexCategory',],
+     'categories/edit' => ['CategoryController', 'editCategory', ['id']],
+     'categories/add' => ['CategoryController', 'addCategory',],
+     'categories/delete' => ['CategoryController', 'deleteCategory',],
+     // pages matériaux
+     'materials' => ['MaterialController','indexMaterial',],
+     'materials/edit' => ['MaterialController', 'editMaterial', ['id']],
+     'materials/add' => ['MaterialController', 'addMaterial',],
+     'materials/delete' => ['MaterialController', 'deleteMaterial',],
+     // pages produits
+     'products' => ['ProductController','indexProduct',],
+     'products/edit' => ['ProductController', 'editProduct', ['id']],
+     'products/show' => ['ProductController', 'showProduct', ['id']],
+     'products/add' => ['ProductController', 'addProduct',],
+     'products/delete' => ['ProductController', 'deleteProduct',],
+     // pages clients
+     'customers' => ['CustomerController', 'indexCustomer',],
+     'customers/edit' => ['CustomerController', 'editCustomer', ['id']],
+     'customers/show' => ['CustomerController', 'showCustomer', ['id']],
+     'customers/add' => ['CustomerController', 'addCustomer',],
+     'customers/delete' => ['CustomerController', 'deleteCustomer',],
+     // pages factures
+     'invoices' => ['InvoiceController', 'indexInvoice',],
+     'invoices/edit' => ['InvoiceController', 'editInvoice', ['id']],
+     'invoices/show' => ['InvoiceController', 'showInvoice', ['id']],
+     'invoices/add' => ['InvoiceController', 'addInvoice',],
+     'invoices/delete' => ['InvoiceController', 'deleteInvoice',],
+     // pages recherche
+     'search' => ['SearchController','indexSearch',],
     // page ajout utilisateur
-    'register' => ['AuthController','index'],
+    'register' => ['AuthController','indexAuth'],
     'register/add' => ['AuthController','register'],
     'register/show' => ['AuthController','show', ['id']],
     'register/edit' => ['AuthController','edit', ['id']],
