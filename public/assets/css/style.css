@@ -117,6 +117,7 @@ article {
 
 article p {
     font-size: 1rem;
+    justify-self: left;
 }
 
 /* navbar */
@@ -207,27 +208,6 @@ select {
     position: fixed;
     bottom: 9vh;
     width: 100%;
-}
-
-.add-button-only {
-    z-index: 9998;
-    display: flex;
-    position: relative;
-    left: 84vw;
-    padding: 0;
-    margin: 0 0.5rem;
-    background-color: var(--background-button-color);
-    border-radius: 15px;
-    width: 12%;
-    height: 6vh;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-}
-
-.add-button-only > a > p {
-    margin: 0;
-    color: var(--font-black);
 }
 
 .delete-button,
@@ -402,7 +382,7 @@ button {
 
 .add-button-customer {
     position: fixed;
-    bottom: 10vh;
+    bottom: 2vh;
     width: 20%;
 }
 

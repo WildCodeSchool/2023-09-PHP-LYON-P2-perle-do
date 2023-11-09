@@ -17,8 +17,12 @@
         <p>{{ customer.type }}</p>
         <p>Réduction :</p>
         <p>{{ type.discount }}</p>
-        <button class="edit-button-customer"><a href="/customers/edit?id={{ customer.id }}"><i class="fa-solid fa-pen"></i></a>
-        </button>
+        <a href="/customers/edit?id={{ customer.id }}">
+            <button class="edit-button-customer">
+                <i class="fa-solid fa-pen">
+                </i>
+            </button>
+        </a>
         <button class="delete-button-customer"
             data-target="modal-delete"
             onClick="toggleModal(event)">
