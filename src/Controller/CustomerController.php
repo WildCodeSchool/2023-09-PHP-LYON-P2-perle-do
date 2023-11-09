@@ -29,6 +29,7 @@ class CustomerController extends AbstractController
             $errorsValidation = new ValidationService();
             $errorsValidation->formValidationCustomer($customer);
             $errorsValidation->formValidationCustomer2($customer);
+            $errorsValidation->formValidationCustomer3($customer);
             $errors = $errorsValidation->errors;
 
             if (empty($errors)) {
@@ -58,6 +59,42 @@ class CustomerController extends AbstractController
         return $this->twig->render('customer/show.html.twig', [
             'customer' => $customer,
             'type' => $type,
+        ]);
+    }
+
+    public function editCustomer(int $id): ?string
+    {
+        $errors = [];
+        $customerManager = new CustomerManager();
+        $customer = $customerManager->getCustomerById($id);
+
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // clean $_POST data
+            $updatedCustomer = array_map('trim', $_POST);
+            // TODO validations (length, format...)
+            $errorsValidation = new ValidationService();
+            $errorsValidation->formValidationCustomer($updatedCustomer);
+            $errorsValidation->formValidationCustomer2($updatedCustomer);
+            $errorsValidation->formValidationCustomer3($updatedCustomer);
+            $errors = $errorsValidation->errors;
+
+            if (empty($errors)) {
+            // if validation is ok, update and redirection
+                $customerManager->update($updatedCustomer);
+
+                header('Location: /customers/show?id=' . $id);
+
+            // we are redirecting so we don't want any content rendered
+                return null;
+            }
+        }
+        $typeManager = new TypeManager();
+        $types = $typeManager->selectAll();
+        return $this->twig->render('customer/edit.html.twig', [
+            'customer' => $customer,
+            'types' => $types,
+            'errors' => $errors
         ]);
     }
 }
