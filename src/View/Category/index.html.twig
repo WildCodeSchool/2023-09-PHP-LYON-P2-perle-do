@@ -1,15 +1,12 @@
 {% extends 'layout.html.twig' %}
-
-        {% block navbar %}
-        {{parent()}}
-        {% endblock %}
-
+        
         {% block content %}
    
         <div class="customer-block">
                 {% for category in categories %}
-                <article class="article-category"><a href="#"></a>
-                <p> {{ category.name }} </p>
+                <article class="article-category">
+                <a href="/materials?id={{category.id}}">
+                <p> {{ category.name }} </p></a>
                 </article>
                 {% endfor %} 
         </div>
@@ -22,4 +19,5 @@
                 </article>
                 </div>
         {% endblock %}
+        
         {% block modaldelete %} {% endblock %}

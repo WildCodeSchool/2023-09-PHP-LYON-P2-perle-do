@@ -1,4 +1,18 @@
 {% extends 'layout.html.twig' %}
+  {% block navbar %}
+        {{parent()}}
+        {% endblock %}
 
 {% block content %}
+
+<div class="customer-block">
+{% for material in materials %}
+<article class="article-category"><a href="#"></a>
+<p> {{ material.materialName }} </p>
+</article>
+{% endfor %} <button class="add-button-customer">
+<a href="/customers/add">Ajouter un client</a>
+</button>
+</div>
+
 {% endblock %}
