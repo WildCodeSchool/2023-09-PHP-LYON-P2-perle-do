@@ -372,6 +372,9 @@ button {
     grid-column-end: 2;
     width: 60%;
     justify-self: end;
+    background-color: var(--block-color);
+    color: var(--primary);
+    margin-bottom: 1rem;
 }
 .delete-button-customer {
     grid-column-start: 2;

@@ -17,12 +17,10 @@
         <p>{{ customer.type }}</p>
         <p>Réduction :</p>
         <p>{{ type.discount }}</p>
-        <a href="/customers/edit?id={{ customer.id }}">
-            <button class="edit-button-customer">
-                <i class="fa-solid fa-pen">
-                </i>
-            </button>
+        <a href="/customers/edit?id={{ customer.id }}" role="button" class="edit-button-customer">
+            <i class="fa-solid fa-pen"></i>
         </a>
+        </button>
         <button class="delete-button-customer"
             data-target="modal-delete"
             onClick="toggleModal(event)">
@@ -40,7 +38,7 @@
                 </a>
                 <h3>Confirmer la suppression de :</h3>
                 <p>
-                intégrer ici la recherche dans la bdd
+                {{ customer.firstname }} {{ customer.lastname }}
                 </p>
                 <footer>
                     <a href="#cancel"
