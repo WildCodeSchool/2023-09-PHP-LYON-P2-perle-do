@@ -1,12 +1,14 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+<div class="auth_page">
     <h1>Utilisateurs {{ user.title }}</h1>
     <p>{{ user.id }}. {{ user.title }}</p>
-    <a href="/items/edit?id={{ user.id }}">Edit</a>
-    <form action="/items/delete" method="POST">
+    <a href="/register/edit?id={{ user.id }}">Edit</a>
+    <form action="/register/delete" method="POST">
         <input type="hidden" name="id" value="{{ user.id }}">
         <button>Delete</button>
     </form>
-    <a href="/items">Back</a>
+    <a href="/register">Back</a>
+</div>
 {% endblock %}
