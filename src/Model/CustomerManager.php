@@ -10,7 +10,7 @@ class CustomerManager extends AbstractManager
 
     public function getAllCustomer(): array | bool
     {
-        $sql = 'SELECT c.civility, c.lastname, c.firstname, c.reference, 
+        $sql = 'SELECT c.id, c.civility, c.lastname, c.firstname, c.reference, 
         c.adress, c.zipcode, c.city, c.phone, c.email, c.description, c.created_date, t.type, t.discount
         FROM customer c JOIN `type` t ON c.id_type = t.id';
         $query = $this->pdo->prepare($sql);
@@ -19,6 +19,16 @@ class CustomerManager extends AbstractManager
         return $customers;
     }
 
+    public function getCustomerById(int $id): array|false
+    {
+        $sql = 'SELECT c.id, c.civility, c.lastname, c.firstname, c.reference, 
+        c.adress, c.zipcode, c.city, c.phone, c.email, c.description, c.created_date, t.type, t.discount
+        FROM customer c JOIN `type` t ON c.id_type = t.id WHERE c.id=:id';
+        $query = $this->pdo->prepare($sql);
+        $query->bindValue('id', $id, \PDO::PARAM_INT);
+        $query->execute();
+        return $query->fetch();
+    }
     /**
      * Insert new customer in database
      */
@@ -54,7 +64,8 @@ class CustomerManager extends AbstractManager
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `civility` = :civility, 
         `lastname` = :lastname, `firstname` = :firstname, `reference` = :reference, 
         `adress` = :adress,`zipcode` = :zipcode,`city` = :city, `phone` = :phone, 
-        `email` = :email,`description` = :description, `created_date` = :created_date WHERE id=:id");
+        `email` = :email,`description` = :description, `created_date` = :created_date, `id_type` = :id_type
+        WHERE id=:id");
         $statement->bindValue('id', $customer['id'], PDO::PARAM_INT);
         $statement->bindValue('civility', $customer['civility'], PDO::PARAM_STR);
         $statement->bindValue('lastname', $customer['lastname'], PDO::PARAM_STR);
@@ -67,6 +78,7 @@ class CustomerManager extends AbstractManager
         $statement->bindValue('email', $customer['email'], PDO::PARAM_STR);
         $statement->bindValue('description', $customer['description'], PDO::PARAM_STR);
         $statement->bindValue('create_date', $customer['created_date'], PDO::PARAM_STR);
+        $statement->bindValue(':id_type', $customer['id_type'], PDO::PARAM_INT);
 
         return $statement->execute();
     }
