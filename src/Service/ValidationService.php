@@ -53,13 +53,13 @@ class ValidationService
         if (empty($user['lastname'])) {
             $this->errors[] = "Le nom est obligatoire";
         }
-        if (strlen($user['lastname']) > 20) {
+        if (strlen($user['lastname']) > 100) {
             $this->errors[] = "Le nom est trop long";
         }
         if (empty($user['pseudo'])) {
             $this->errors[] = "Le pseudo est obligatoire";
         }
-        if (strlen($user['pseudo']) > 5) {
+        if (strlen($user['pseudo']) > 20) {
             $this->errors[] = "Le pseudo est trop long";
         }
     }
@@ -74,9 +74,6 @@ class ValidationService
         }
         if (empty($user['password'])) {
             $this->errors[] = "Le mot de passe est obligatoire";
-        }
-        if (strlen($user['password']) > 100) {
-            $this->errors[] = "Le mot de passe est trop long";
         }
     }
 }

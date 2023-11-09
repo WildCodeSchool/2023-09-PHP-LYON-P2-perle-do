@@ -34,7 +34,7 @@ class AuthManager extends AbstractManager
     public function selectOneById(int $id): array
     {
         $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE id=:id");
-        $statement->bindValue('id', $id, \PDO::PARAM_STR);
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
         return $statement->fetch();
@@ -43,7 +43,7 @@ class AuthManager extends AbstractManager
     public function update(array $user): bool
     {
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `pseudo` = :pseudo WHERE id=:id");
-        $statement->bindValue('id', $user['id'], PDO                      ::PARAM_INT);
+        $statement->bindValue('id', $user['id'], PDO::PARAM_INT);
         $statement->bindValue('pseudo', $user['pseudo'], PDO::PARAM_STR);
 
         return $statement->execute();
