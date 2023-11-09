@@ -15,7 +15,7 @@ class ValidationCategory
         if (empty($category['name'])) {
             $this->errors[] = "Le nom est obligatoire";
         }
-        if (strlen($category['name']) > 5) {
+        if (strlen($category['name']) > 50) {
             $this->errors[] = "Le nom est trop long";
         }
     }

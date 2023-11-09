@@ -302,6 +302,12 @@ select {
     grid-column-start: 1;
     grid-column-end: 3;
 }
+
+.input-file {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
 p.errors {
     text-align: center;
 }
@@ -360,26 +366,25 @@ button {
 
 .p-customer {
     margin: 0;
-
 }
 
-.show-customer{
+.show-customer {
     display: grid;
     grid-template-columns: 0.5fr 1fr;
-    gap:0.5rem;
+    gap: 0.5rem;
 }
-.show-customer p:first-child{
+.show-customer p:first-child {
     grid-row-start: 1;
     grid-row-end: 3;
     align-self: center;
 }
-.edit-button-customer{
+.edit-button-customer {
     grid-column-start: 1;
     grid-column-end: 2;
     width: 60%;
     justify-self: end;
 }
-.delete-button-customer{
+.delete-button-customer {
     grid-column-start: 2;
     grid-column-end: 3;
     width: 30%;
@@ -615,30 +620,25 @@ button {
         padding: 2rem 3rem 0 3 rem;
     }
     .article-category {
-        height: 30%;
-        position: relative;
-        left: 10vw;
-        padding: 1rem;
-        border-radius: 15px;
-        width: 20%;
+        left: 10%;
+        top: 0%;
+        height: fit-content;
+        margin: 0;
     }
 
     .article-category > p {
-        margin: 0;
+        height: 20vh;
+        align-items: center;
     }
-    
 
-    .block-customer {
-        display: flex;
-        padding: 5rem;
-    }
     .customer-block {
-    position: relative;
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 66%;
-    left: 30%;
+        position: relative;
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: 1fr 1fr 1fr;
+        width: 66%;
+        left: 30%;
+        height: 85vh;
     }
     .p-customer {
         font-size: 0.85rem;
