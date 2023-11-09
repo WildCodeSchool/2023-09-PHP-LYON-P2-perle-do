@@ -71,17 +71,17 @@ class CustomerController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
-            $customer = array_map('trim', $_POST);
+            $updatedCustomer = array_map('trim', $_POST);
             // TODO validations (length, format...)
             $errorsValidation = new ValidationService();
-            $errorsValidation->formValidationCustomer($customer);
-            $errorsValidation->formValidationCustomer2($customer);
-            $errorsValidation->formValidationCustomer3($customer);
+            $errorsValidation->formValidationCustomer($updatedCustomer);
+            $errorsValidation->formValidationCustomer2($updatedCustomer);
+            $errorsValidation->formValidationCustomer3($updatedCustomer);
             $errors = $errorsValidation->errors;
 
             if (empty($errors)) {
             // if validation is ok, update and redirection
-                $customerManager->update($customer);
+                $customerManager->update($updatedCustomer);
 
                 header('Location: /customers/show?id=' . $id);
 
