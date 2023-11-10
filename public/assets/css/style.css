@@ -387,6 +387,8 @@ button {
     position: fixed;
     bottom: 2vh;
     width: 20%;
+    background-color: var(--block-color);
+    color: var(--primary);
 }
 
 /* -------------------media queries pour + 780 px--------------------- */
