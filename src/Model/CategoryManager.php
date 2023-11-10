@@ -13,7 +13,7 @@ class CategoryManager extends AbstractManager
             $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . "(`name`) VALUES (:name)");
             $statement->bindValue(':name', $category['name'], PDO::PARAM_STR);
             $statement->execute();
-             return (int)$this->pdo->lastInsertId();
+            return (int)$this->pdo->lastInsertId();
     }
     public function delete(int $id): void
     {
