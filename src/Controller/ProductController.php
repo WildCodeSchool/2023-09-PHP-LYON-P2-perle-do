@@ -6,8 +6,11 @@ use App\Model\ProductManager;
 
 class ProductController extends AbstractController
 {
-    public function index(): string
+    public function indexProduct($categoryId, $materialId): string
     {
-        return $this->twig->render('Product/index.html.twig');
+        $productManager = new ProductManager();
+        $products = $productManager -> getProductByCategoryAndMaterial($categoryId, $materialId);
+
+        return $this->twig->render('Product/index.html.twig', ['products' => $products]);
     }
 }

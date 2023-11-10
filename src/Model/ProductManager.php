@@ -6,7 +6,7 @@ use PDO;
 
 class ProductManager extends AbstractManager
 {
-    public function selectProductByCategoryAndMaterial($categoryId, $materialId): array|false
+    public function getProductByCategoryAndMaterial($categoryId, $materialId): array|false
     {
         $sql = "SELECT * FROM product p
         JOIN category c ON c.id=p.id_category
