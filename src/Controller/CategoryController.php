@@ -9,51 +9,71 @@ class CategoryController extends AbstractController
 {
     public function indexCategory(): string
     {
-        $categoryManager = new CategoryManager();
-        $categories = $categoryManager->selectAll('name');
+        if (isset($_SESSION['user_id']) === true) {
+            $categoryManager = new CategoryManager();
+            $categories = $categoryManager->selectAll('name');
 
-        return $this->twig->render('Category/index.html.twig', ['categories' => $categories]);
+            return $this->twig->render('Category/index.html.twig', ['categories' => $categories]);
+        } else {
+            header('Location: /');
+            die();
+        }
     }
 
     public function show(int $id): string
     {
-        $categoryManager = new CategoryManager();
-        $item = $categoryManager->selectOneById($id);
+        if (isset($_SESSION['user_id']) === true) {
+            $categoryManager = new CategoryManager();
+            $item = $categoryManager->selectOneById($id);
 
-        return $this->twig->render('Category/index.html.twig', ['item' => $item]);
+            return $this->twig->render('Category/index.html.twig', ['item' => $item]);
+        } else {
+            header('Location: /');
+            die();
+        }
     }
+
     public function addCategory(): ?string
     {
-        $errors = [];
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // clean $_POST data
-            $category = array_map('trim', $_POST);
+        if (isset($_SESSION['user_id']) === true) {
+            $errors = [];
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                // clean $_POST data
+                $category = array_map('trim', $_POST);
 
-            $errorsValidation = new ValidationCategory();
-            $errorsValidation->formValidationCategory($category);
-            $errors = $errorsValidation->errors;
+                $errorsValidation = new ValidationCategory();
+                $errorsValidation->formValidationCategory($category);
+                $errors = $errorsValidation->errors;
 
-            if (empty($errors)) {
-                // if validation is ok, insert and redirection
-                $categoryManager = new CategoryManager();
-                $category = $categoryManager->addCategory($category);
+                if (empty($errors)) {
+                    // if validation is ok, insert and redirection
+                    $categoryManager = new CategoryManager();
+                    $category = $categoryManager->addCategory($category);
 
-                header('Location:/categories/');
-                return null;
+                    header('Location:/categories/');
+                    return null;
+                }
             }
+            return $this->twig->render('Category/add.html.twig', ["errors" => $errors]);
+        } else {
+            header('Location: /');
+            die();
         }
-        return $this->twig->render('Category/add.html.twig', ["errors" => $errors]);
     }
-
 
     public function delete(): void
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = trim($_POST['id']);
-            $categoryManager = new CategoryManager();
-            $categoryManager->delete((int)$id);
+        if (isset($_SESSION['user_id']) === true) {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $id = trim($_POST['id']);
+                $categoryManager = new CategoryManager();
+                $categoryManager->delete((int)$id);
 
-            header('Location:/Category/index.html.twig.php');
+                header('Location:/Category/index.html.twig.php');
+            }
+        } else {
+            header('Location: /');
+            die();
         }
     }
 }
