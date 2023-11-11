@@ -390,7 +390,14 @@ button {
     background-color: var(--block-color);
     color: var(--primary);
 }
-
+/* pages produits */
+.product{
+    position: relative;
+    top: -5vh;
+    height: 0;
+    align-self: flex-start;
+    left: 30vw;
+}
 /* -------------------media queries pour + 780 px--------------------- */
 /***********************************************************************/
 

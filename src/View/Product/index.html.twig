@@ -1,10 +1,19 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+<h3 class="product">{{ products[0].categoryName}} / {{ products[0].materialName }}</h3>
 <div class="customer-block">
     {% for product in products %}
-        <article class="article-category"><a href="#"></a>
-            <p> {{ product.productName }}  {{ product.price }} </p>
+        <article class="article-category">
+            <a href="#">
+                <p><strong>{{ product.productName }}</strong></p> 
+                <p>{{ product.price }} € </p>
+                <p>{{ product.referenceProduct }}</p>
+            </a>
         </article>
     {% endfor %}
+{% endblock %}
+{% block buttons %}
+{% endblock %}
+{% block modaldelete %}
 {% endblock %}

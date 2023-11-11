@@ -6,7 +6,7 @@
     {% for customer in customers %}
         <article classe="block-customer">
             <a href="/customers/show?id={{customer.id}}">
-                <p class="p-customer"> {{ customer.lastname }}  {{ customer.firstname }} </p>
+                <p class="p-customer"> <strong>{{ customer.lastname }}  {{ customer.firstname }} </strong></p>
                 <p class="p-customer"> {{ customer.city }} </p>
                 <p class="p-customer"> {{ customer.type }} </p>
             </a>
