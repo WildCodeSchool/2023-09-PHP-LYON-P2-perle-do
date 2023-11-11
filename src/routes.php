@@ -20,7 +20,7 @@ return [
     'materials/add' => ['MaterialController', 'addMaterial',],
     'materials/delete' => ['MaterialController', 'deleteMaterial',],
     // pages produits
-    'products' => ['ProductController','indexProduct',],
+    'products' => ['ProductController','indexProduct',['categoryId', 'materialId']],
     'products/edit' => ['ProductController', 'editProduct', ['id']],
     'products/show' => ['ProductController', 'showProduct', ['id']],
     'products/add' => ['ProductController', 'addProduct',],

@@ -1,4 +1,10 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+<div class="customer-block">
+    {% for product in products %}
+        <article class="article-category"><a href="#"></a>
+            <p> {{ product.productName }}  {{ product.price }} </p>
+        </article>
+    {% endfor %}
 {% endblock %}
