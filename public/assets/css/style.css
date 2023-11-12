@@ -164,6 +164,7 @@ h3 {
     top: -5vh;
     height: 0;
     align-self: flex-start;
+    padding-bottom: 0.5rem;
 }
 
 .block-page article {
@@ -397,6 +398,10 @@ button {
     height: 0;
     align-self: flex-start;
     left: 30vw;
+}
+
+.product-span {
+    font-size: 1rem;
 }
 /* -------------------media queries pour + 780 px--------------------- */
 /***********************************************************************/
@@ -690,5 +695,12 @@ button {
         text-align: center;
         margin-block-end: 0em;
         font-size: 1em;
+    }
+
+    /* page liste produits */
+    .fa-cart-shopping,
+    .fa-plus,
+    .fa-minus {
+        padding: 0;
     }
 }
