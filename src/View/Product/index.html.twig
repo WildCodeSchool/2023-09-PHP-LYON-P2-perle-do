@@ -1,4 +1,34 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+<h3 class="product">{{ products[0].categoryName}} / {{ products[0].materialName }}</h3>
+<div class="customer-block">
+    {% for product in products %}
+        <article class="article-category">
+            <a href="#">
+                <ul>
+                    <li><strong>{{ product.productName }}</strong></li> 
+                    <li>{{ product.price }} € </li>
+                    <li>{{ product.description }} </li>
+                    <li>{{ product.referenceProduct }}</li>
+                </ul>
+            </a>
+
+            
+            <a href="" role="button" class="cart-shopping">
+                <i class="fa-solid fa-minus color"></i>
+            </a>
+            <span class="product-span">1</span>
+            <a href="" role="button" class="cart-shopping">
+                <i class="fa-solid fa-plus color"></i>
+            </a>
+            <a href="" role="button" class="cart-shopping">
+                <i class="fa-solid fa-cart-shopping color"></i>
+            </a>
+        </article>
+    {% endfor %}
+{% endblock %}
+{% block buttons %}
+{% endblock %}
+{% block modaldelete %}
 {% endblock %}
