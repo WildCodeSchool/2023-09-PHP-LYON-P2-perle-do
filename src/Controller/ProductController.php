@@ -11,7 +11,6 @@ class ProductController extends AbstractController
         $productManager = new ProductManager();
         $products = $productManager->getProductsByCategoryAndMaterial($category, $material);
         if (isset($_SESSION['user_id']) === true) {
-
             return $this->twig->render('Product/index.html.twig', [
                 'products' => $products,
                 'category' => $category,
