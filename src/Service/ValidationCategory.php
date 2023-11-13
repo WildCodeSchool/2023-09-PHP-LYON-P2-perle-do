@@ -10,7 +10,7 @@ class ValidationCategory
         $this->errors = [];
     }
 
-    public function formValidationCategory($category): void
+    public function formValidationCategory(array $category): void
     {
         if (empty($category['name'])) {
             $this->errors[] = "Le nom est obligatoire";

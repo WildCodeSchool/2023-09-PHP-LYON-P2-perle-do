@@ -62,7 +62,7 @@ class CustomerController extends AbstractController
         ]);
     }
 
-    public function deleteCustomer($id): void
+    public function deleteCustomer(int $id): void
     {
 
             $costumerManager = new CustomerManager();

@@ -10,7 +10,7 @@ class ValidationService
         $this->errors = [];
     }
 
-    public function formValidationCustomer($customer): void
+    public function formValidationCustomer(array $customer): void
     {
         if (empty($customer['lastname'])) {
             $this->errors[] = "Le nom est obligatoire";
@@ -29,7 +29,7 @@ class ValidationService
         }
     }
 
-    public function formValidationCustomer2($customer): void
+    public function formValidationCustomer2(array $customer): void
     {
         if (strlen($customer['city']) > 50) {
             $this->errors[] = "Le nom de la ville est trop long";
@@ -42,7 +42,7 @@ class ValidationService
         }
     }
 
-    public function formValidationCustomer3($customer): void
+    public function formValidationCustomer3(array $customer): void
     {
         if (!empty($customer['phone']) && !preg_match('/[0-9]{10}/', $customer['phone'])) {
             $this->errors[] = "Le numéro de téléphone n\'est pas au bon format";
@@ -52,7 +52,7 @@ class ValidationService
         }
     }
 
-    public function userValidation($user): void
+    public function userValidation(array $user): void
     {
         if (empty($user['lastname'])) {
             $this->errors[] = "Le nom est obligatoire";
@@ -68,7 +68,7 @@ class ValidationService
         }
     }
 
-    public function userValidationExtra($user): void
+    public function userValidationExtra(array $user): void
     {
         if (empty($user['name'])) {
             $this->errors[] = "Le prénom est obligatoire";
