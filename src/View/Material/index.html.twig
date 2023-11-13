@@ -4,11 +4,11 @@
         {% endblock %}
 
 {% block content %}
-
+        <h3 class="product"> {{ materials[0].categoryName }} </h3>
 <div class="customer-block">
 {% for material in materials %}
-<article class="article-category"><a href="#"></a>
-<p> {{ material.materialName }} </p>
+<article class="article-category"><a href="/products?categoryId={{ material.categoryId }}&materialId={{ material.materialId }}">
+<p> {{ material.materialName }} </p></a>
 </article>
 {% endfor %} <button class="add-button-customer">
 <a href="/customers/add">Ajouter un client</a>
@@ -16,3 +16,4 @@
 </div>
 
 {% endblock %}
+{% block buttons %}{% endblock %}

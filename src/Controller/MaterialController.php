@@ -6,12 +6,14 @@ use App\Model\MaterialManager;
 
 class MaterialController extends AbstractController
 {
-    public function indexMaterial(int $id): string
+    public function indexMaterial(int $categoryId): string
     {
         $materialManager = new MaterialManager();
-        $materials = $materialManager -> getMaterialById($id);
+        $materials = $materialManager -> getAllMaterial($categoryId);
 
-        return $this->twig->render('Material/index.html.twig', ['materials' => $materials]);
+        return $this->twig->render('Material/index.html.twig', [
+            'materials' => $materials,
+            'category' => $categoryId,]);
     }
 
     //   public function showMaterial(int $id): string
