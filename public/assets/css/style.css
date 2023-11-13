@@ -399,9 +399,16 @@ button {
     align-self: flex-start;
     left: 30vw;
 }
-
+php
 .product-span {
     font-size: 1rem;
+}
+.container-plus-minus {
+    display: flex;
+    justify-content: space-around;
+}
+.cart-shopping {
+    width: 30%;
 }
 /* -------------------media queries pour + 780 px--------------------- */
 /***********************************************************************/
@@ -698,7 +705,7 @@ button {
     }
 
     /* page liste produits */
-    .fa-cart-shopping,
+    .shop-product,
     .fa-plus,
     .fa-minus {
         padding: 0;
