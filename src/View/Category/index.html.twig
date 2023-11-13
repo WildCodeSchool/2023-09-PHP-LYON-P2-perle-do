@@ -1,23 +1,26 @@
 {% extends 'layout.html.twig' %}
         
         {% block content %}
-   
         <div class="customer-block">
                 {% for category in categories %}
                 <article class="article-category">
                 <a href="/materials?id={{category.id}}">
                 <p> {{ category.name }} </p></a>
+                <article class="article-category"><a href="#"></a>
+                        <p> {{ category.name }} </p>
+                        <a href="/categories/edit?id={{ category.id }}" role="button" class="edit-button-category">
+                                <i class="fa-solid fa-pen"></i>
+                        </a>
                 </article>
                 {% endfor %} 
         </div>
+        <a href="/categories/add" role="button" class="add-button-customer">
+                                Nouvelle categorie
+                        </a>
+
         {% endblock %}
 
         {% block buttons %}  
-                <div class="buttons">
-                <article class="add-button-only"><a href="/categories/add">
-                <p>Ajouter</p></a>
-                </article>
-                </div>
         {% endblock %}
         
         {% block modaldelete %} {% endblock %}

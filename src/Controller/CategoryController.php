@@ -56,4 +56,34 @@ class CategoryController extends AbstractController
             header('Location:/Category/index.html.twig.php');
         }
     }
+    public function editCategory(int $id): ?string
+    {
+        $errors = [];
+        $categoryManager = new CategoryManager();
+        $category = $categoryManager->selectOneById($id);
+
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // clean $_POST data
+            $updatedCategory = array_map('trim', $_POST);
+            // TODO validations (length, format...)
+            $errorsValidation = new ValidationCategory();
+            $errorsValidation->formValidationCategory($category);
+            $errors = $errorsValidation->errors;
+
+            if (empty($errors)) {
+            // if validation is ok, update and redirection
+                $categoryManager->updateCategory($updatedCategory);
+
+                header('Location: /categories');
+
+            // we are redirecting so we don't want any content rendered
+                return null;
+            }
+        }
+        return $this->twig->render('category/edit.html.twig', [
+            'category' => $category,
+            'errors' => $errors
+        ]);
+    }
 }
