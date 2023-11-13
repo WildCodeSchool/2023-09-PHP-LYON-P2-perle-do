@@ -38,7 +38,6 @@ class AuthController extends AbstractController
                 // clean $_POST data
                 $user = array_map('trim', $_POST);
 
-
                 $errorsValidation = new ValidationService();
                 $errorsValidation->userValidation($user);
                 $errorsValidation->userValidationExtra($user);

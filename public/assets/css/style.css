@@ -117,6 +117,7 @@ article {
 
 article p {
     font-size: 1rem;
+    justify-self: left;
 }
 
 /* navbar */
@@ -163,6 +164,7 @@ h3 {
     top: -5vh;
     height: 0;
     align-self: flex-start;
+    padding-bottom: 0.5rem;
 }
 
 .block-page article {
@@ -207,27 +209,6 @@ select {
     position: fixed;
     bottom: 9vh;
     width: 100%;
-}
-
-.add-button-only {
-    z-index: 9998;
-    display: flex;
-    position: relative;
-    left: 84vw;
-    padding: 0;
-    margin: 0 0.5rem;
-    background-color: var(--background-button-color);
-    border-radius: 15px;
-    width: 12%;
-    height: 6vh;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-}
-
-.add-button-only > a > p {
-    margin: 0;
-    color: var(--font-black);
 }
 
 .delete-button,
@@ -392,6 +373,9 @@ button {
     grid-column-end: 2;
     width: 60%;
     justify-self: end;
+    background-color: var(--block-color);
+    color: var(--primary);
+    margin-bottom: 1rem;
 }
 .delete-button-customer {
     grid-column-start: 2;
@@ -402,10 +386,23 @@ button {
 
 .add-button-customer {
     position: fixed;
-    bottom: 10vh;
+    bottom: 2vh;
     width: 20%;
+    background-color: var(--block-color);
+    color: var(--primary);
+}
+/* pages produits */
+.product{
+    position: relative;
+    top: -5vh;
+    height: 0;
+    align-self: flex-start;
+    left: 30vw;
 }
 
+.product-span {
+    font-size: 1rem;
+}
 /* -------------------media queries pour + 780 px--------------------- */
 /***********************************************************************/
 
@@ -698,5 +695,12 @@ button {
         text-align: center;
         margin-block-end: 0em;
         font-size: 1em;
+    }
+
+    /* page liste produits */
+    .fa-cart-shopping,
+    .fa-plus,
+    .fa-minus {
+        padding: 0;
     }
 }

@@ -6,10 +6,17 @@ use App\Model\ProductManager;
 
 class ProductController extends AbstractController
 {
-    public function index(): string
+    public function indexProduct(int $category, int $material): string
     {
+        $productManager = new ProductManager();
+        $products = $productManager->getProductsByCategoryAndMaterial($category, $material);
         if (isset($_SESSION['user_id']) === true) {
-            return $this->twig->render('Product/index.html.twig');
+
+            return $this->twig->render('Product/index.html.twig', [
+                'products' => $products,
+                'category' => $category,
+                'material' => $material,
+            ]);
         } else {
             header('Location: /');
             die();
