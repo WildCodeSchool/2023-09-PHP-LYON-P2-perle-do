@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 07 nov. 2023 à 12:30
+-- Généré le : ven. 10 nov. 2023 à 10:03
 -- Version du serveur : 8.0.34
 -- Version de PHP : 8.0.26
 
@@ -85,7 +85,14 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `id_type` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_type` (`id_type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `customer`
+--
+
+INSERT INTO `customer` (`id`, `created_date`, `civility`, `lastname`, `firstname`, `reference`, `adress`, `zipcode`, `city`, `phone`, `email`, `description`, `id_type`) VALUES
+(1, '2023-11-10', 'Mr', 'GUIOT', 'Romain', 'C0001', '17 rue Delandine', 69002, 'Lyon', NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -114,13 +121,21 @@ CREATE TABLE IF NOT EXISTS `invoice` (
   `id` int NOT NULL AUTO_INCREMENT,
   `num_invoice` varchar(100) NOT NULL,
   `date` date NOT NULL,
-  `total` decimal(5,2) NOT NULL,
+  `total` decimal(6,2) NOT NULL,
   `discount` float(5,2) NOT NULL,
-  `payment_type` varchar(100) NOT NULL,
+  `payment_type_id` int NOT NULL,
   `id_customer` int NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `payment_type_id` (`payment_type_id`),
   KEY `id_customer` (`id_customer`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `invoice`
+--
+
+INSERT INTO `invoice` (`id`, `num_invoice`, `date`, `total`, `discount`, `payment_type_id`, `id_customer`) VALUES
+(1, 'F0001', '2023-11-10', '150.00', 0.00, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -186,6 +201,31 @@ INSERT INTO `material` (`id`, `name`) VALUES
 (28, 'OEIL DE LUCIE'),
 (29, 'FELDSPATH'),
 (32, 'AUTRES');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `payment_type`
+--
+
+DROP TABLE IF EXISTS `payment_type`;
+CREATE TABLE IF NOT EXISTS `payment_type` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `payment_type`
+--
+
+INSERT INTO `payment_type` (`id`, `name`) VALUES
+(1, 'Carte Bancaire'),
+(2, 'AMEX'),
+(3, 'Chèque'),
+(4, 'Virement'),
+(5, 'Espèces'),
+(6, 'Offert');
 
 -- --------------------------------------------------------
 
@@ -512,7 +552,7 @@ INSERT INTO `type` (`id`, `type`, `discount`) VALUES
 (3, 'police', 0.10),
 (4, 'pompier', 0.10),
 (5, 'Famille', 0.20),
-(6, 'Ami', 0.20);
+(6, 'amis', 0.20);
 
 -- --------------------------------------------------------
 
@@ -527,7 +567,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `name` varchar(100) NOT NULL,
   `login` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `role` varchar(100) NOT NULL,
+  `role` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -568,7 +608,8 @@ ALTER TABLE `customer_workshop`
 -- Contraintes pour la table `invoice`
 --
 ALTER TABLE `invoice`
-  ADD CONSTRAINT `invoice_ibfk_1` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id`);
+  ADD CONSTRAINT `invoice_ibfk_1` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id`),
+  ADD CONSTRAINT `invoice_ibfk_2` FOREIGN KEY (`payment_type_id`) REFERENCES `payment_type` (`id`) ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `invoice_workshop`
