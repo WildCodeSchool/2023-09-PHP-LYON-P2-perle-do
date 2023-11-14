@@ -4,11 +4,11 @@
 <div class="auth_page">
     <h1>Utilisateurs {{ user.title }}</h1>
     <p>{{ user.id }}. {{ user.title }}</p>
-    <a href="/register/edit?id={{ user.id }}">Edit</a>
-    <form action="/register/delete" method="POST">
+    <a href="/user/edit?id={{ user.id }}">Edit</a>
+    <form action="/user/delete" method="POST">
         <input type="hidden" name="id" value="{{ user.id }}">
         <button>Delete</button>
     </form>
-    <a href="/register">Back</a>
+    <a href="/user">Back</a>
 </div>
 {% endblock %}

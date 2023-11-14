@@ -10,12 +10,12 @@
 		<ul>
 			{% for user in users %}
 				<article>
-					<li><a href="/register/show?id={{ user.id }}">{{ user.lastname }} {{ user.name }} {{ user.pseudo }} {{ user.role }}</a></li>
+					<li><a href="/user/show?id={{ user.id }}">{{ user.lastname }} {{ user.name }} {{ user.pseudo }} {{ user.role }}</a></li>
 				</article>
 			{% endfor %}
 		</ul>
 		<article>
-			<a href="register/add">Ajouter un compte</a>
+			<a href="user/add">Ajouter un compte</a>
 		</article>
 	</div>
 {% endblock %}

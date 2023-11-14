@@ -40,11 +40,11 @@ return [
     // pages recherche
     'search' => ['SearchController','indexSearch',],
     // page ajout utilisateur
-    'register' => ['AuthController','indexAuth'],
-    'register/add' => ['AuthController','register'],
-    'register/show' => ['AuthController','show', ['id']],
-    'register/edit' => ['AuthController','edit', ['id']],
-    'register/delete' => ['AuthController','delete'],
+    'user' => ['UserController','indexUser'],
+    'user/add' => ['UserController','register'],
+    'user/show' => ['UserController','show', ['id']],
+    'user/edit' => ['UserController','edit', ['id']],
+    'user/delete' => ['UserController','delete'],
 
     // page de déconnection
     'logout' => ['AuthController','logout'],
