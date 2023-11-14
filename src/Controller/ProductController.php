@@ -27,34 +27,39 @@ class ProductController extends AbstractController
 
     public function addProduct(): ?string
     {
-        $errors = [];
+        if (isset($_SESSION['user_id'])) {
+            $errors = [];
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // clean $_POST data
-            $product = array_map('trim', $_POST);
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                // clean $_POST data
+                $product = array_map('trim', $_POST);
 
-            $errorsValidation = new ValidationProduct();
-            $errorsValidation->formValidationProduct($product);
-            $errorsValidation->formValidationProduct2($product);
-            $errors = $errorsValidation->errors;
+                $errorsValidation = new ValidationProduct();
+                $errorsValidation->formValidationProduct($product);
+                $errorsValidation->formValidationProduct2($product);
+                $errors = $errorsValidation->errors;
 
-            if (empty($errors)) {
-                // if validation is ok, insert and redirection
-                $productManager = new ProductManager();
-                $id = $productManager->insertProduct($product);
+                if (empty($errors)) {
+                    // if validation is ok, insert and redirection
+                    $productManager = new ProductManager();
+                    $id = $productManager->insertProduct($product);
 
-                header('Location:/products/show?id=' . $id);
-                return null;
+                    header('Location:/products/show?id=' . $id);
+                    return null;
+                }
             }
+            $categoryManager = new CategoryManager();
+            $categorys = $categoryManager->selectAll();
+            $materialManager = new MaterialManager();
+            $materials = $materialManager->selectAll();
+            return $this->twig->render('product/add.html.twig', [
+                'categorys' => $categorys,
+                'materials' => $materials,
+                'errors' => $errors
+            ]);
+        } else {
+            header('Location: /');
+            die();
         }
-        $categoryManager = new CategoryManager();
-        $categorys = $categoryManager->selectAll();
-        $materialManager = new MaterialManager();
-        $materials = $materialManager->selectAll();
-        return $this->twig->render('product/add.html.twig', [
-            'categorys' => $categorys,
-            'materials' => $materials,
-            'errors' => $errors
-        ]);
     }
 }
