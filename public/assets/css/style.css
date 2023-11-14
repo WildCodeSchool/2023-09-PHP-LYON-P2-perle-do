@@ -415,6 +415,11 @@ button {
     font-size: 1rem;
     margin: 0;
 }
+
+#p-prix {
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
 /* -------------------media queries pour + 780 px--------------------- */
 /***********************************************************************/
 
@@ -723,4 +728,5 @@ button {
     h3 {
         margin-top: 0;
     }
+
 }

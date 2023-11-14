@@ -9,7 +9,7 @@ class ProductManager extends AbstractManager
     public const TABLE = 'product';
     public function getProductsByCategoryAndMaterial($categoryId, $materialId): array|false
     {
-        $sql = "SELECT p.name AS productName, c.id AS categoryId, m.id AS materialId, p.price, 
+        $sql = "SELECT p.id, p.name AS productName, c.id AS categoryId, m.id AS materialId, p.price, 
         p.reference AS referenceProduct, c.name AS categoryName, m.name AS materialName, p.description
         FROM product p
         JOIN category c ON c.id=p.id_category
@@ -40,5 +40,18 @@ class ProductManager extends AbstractManager
 
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
+    }
+
+    public function getProductById(int $id): array|false
+    {
+        $sql = 'SELECT p.id, p.name productname, p.reference, p.price, p.description, p.origin, 
+        p.quantity, p.picture, c.name categoryName, m.name materialName
+        FROM product p JOIN category c ON p.id_category = c.id
+        JOIN material m ON p.id_material = m.id
+        WHERE p.id=:id';
+        $query = $this->pdo->prepare($sql);
+        $query->bindValue('id', $id, \PDO::PARAM_INT);
+        $query->execute();
+        return $query->fetch();
     }
 }

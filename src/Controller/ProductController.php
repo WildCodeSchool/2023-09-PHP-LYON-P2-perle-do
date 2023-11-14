@@ -62,4 +62,25 @@ class ProductController extends AbstractController
             die();
         }
     }
+
+    public function showProduct(int $id): string
+    {
+        if (isset($_SESSION['user_id']) === true) {
+            $productManager = new ProductManager();
+            $product = $productManager->getProductById($id);
+            $categoryManager = new CategoryManager();
+            $category = $categoryManager->selectOneById($id);
+            $materialManager = new MaterialManager();
+            $material = $materialManager->selectOneById($id);
+
+            return $this->twig->render('product/show.html.twig', [
+                'product' => $product,
+                'category' => $category,
+                'material' => $material,
+            ]);
+        } else {
+            header('Location: /');
+            die();
+        }
+    }
 }
