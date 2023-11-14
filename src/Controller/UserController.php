@@ -13,7 +13,7 @@ class UserController extends AbstractController
         if (isset($_SESSION['user_id'])) {
             $userManager = new UserManager();
             $user = $userManager->selectOneById($id);
-
+            var_dump($id);
             return $this->twig->render('User/show.html.twig', ['user' => $user]);
         } else {
             header('Location: /');
@@ -38,11 +38,11 @@ class UserController extends AbstractController
     {
         if (isset($_SESSION['user_id'])) {
             $errors = [];
-
+            $userManager = new UserManager();
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // clean $_POST data
                 $user = array_map('trim', $_POST);
-
+                //var_dump($user);
 
                 $errorsValidation = new UserService();
                 $errorsValidation->userValidation($user);
@@ -51,8 +51,7 @@ class UserController extends AbstractController
 
                 if (empty($errors)) {
                     // if validation is ok, insert and redirection
-                    $userManager = new UserManager();
-                    $id = $userManager->update($user);
+                    $userManager->update($user);
 
                     header('Location:/user/show?id=' . $id);
                     return null;
@@ -61,9 +60,9 @@ class UserController extends AbstractController
                         'errors' => $errors
                     ]);
                 }
-            }
-
-            return $this->twig->render('User/edit.html.twig');
+            }   
+            $aData = $userManager->selectOneById($id);
+            return $this->twig->render('User/edit.html.twig', ['userToEdit' => $aData]);
         } else {
             header('Location: /');
             die();

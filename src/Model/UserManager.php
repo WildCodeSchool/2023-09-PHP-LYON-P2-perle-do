@@ -10,11 +10,18 @@ class UserManager extends AbstractManager
 
     public function update(array $user): bool
     {
-        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `pseudo` = :pseudo, `password` = :password, 
+        $sqlPassword = '';
+        if (!empty($user['password']))
+            $sqlPassword = "`password` = :password,";
+
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `pseudo` = :pseudo, " . $sqlPassword . " 
         `lastname` = :lastname, `name` = :name, `role_id` = :role_id WHERE id=:id");
         $statement->bindValue('id', $user['id'], PDO::PARAM_INT);
         $statement->bindValue('pseudo', $user['pseudo'], PDO::PARAM_STR);
-        $statement->bindValue(':password', password_hash($user['password'], PASSWORD_DEFAULT));
+
+        if (!empty($sqlPassword))
+            $statement->bindValue(':password', password_hash($user['password'], PASSWORD_DEFAULT));
+
         $statement->bindValue(':lastname', $user['lastname']);
         $statement->bindValue(':name', $user['name']);
         $statement->bindValue(':role_id', $user['role_id']);
