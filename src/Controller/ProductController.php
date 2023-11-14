@@ -12,13 +12,17 @@ class ProductController extends AbstractController
     public function indexProduct(int $category, int $material): string
     {
         $productManager = new ProductManager();
-        $products = $productManager -> getProductsByCategoryAndMaterial($category, $material);
-
-        return $this->twig->render('Product/index.html.twig', [
-            'products' => $products,
-            'category' => $category,
-            'material' => $material,
-        ]);
+        $products = $productManager->getProductsByCategoryAndMaterial($category, $material);
+        if (isset($_SESSION['user_id']) === true) {
+            return $this->twig->render('Product/index.html.twig', [
+                'products' => $products,
+                'category' => $category,
+                'material' => $material,
+            ]);
+        } else {
+            header('Location: /');
+            die();
+        }
     }
 
     public function addProduct(): ?string

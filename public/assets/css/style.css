@@ -50,6 +50,7 @@ a:is([aria-current], :hover, :active, :focus) {
 
 * {
     text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 }
 
@@ -165,6 +166,8 @@ h3 {
     height: 0;
     align-self: flex-start;
     padding-bottom: 0.5rem;
+    text-align: left;
+    margin-top: 2rem;
 }
 
 .block-page article {
@@ -386,8 +389,7 @@ button {
 
 .add-button-customer {
     position: fixed;
-    bottom: 2vh;
-    width: 20%;
+    bottom: 10vh;
     background-color: var(--block-color);
     color: var(--primary);
 }
@@ -397,11 +399,17 @@ button {
     top: -5vh;
     height: 0;
     align-self: flex-start;
-    left: 30vw;
 }
 
 .product-span {
     font-size: 1rem;
+}
+.container-plus-minus {
+    display: flex;
+    justify-content: space-around;
+}
+.cart-shopping {
+    width: 30%;
 }
 /* -------------------media queries pour + 780 px--------------------- */
 /***********************************************************************/
@@ -420,7 +428,7 @@ button {
     }
 
     article p {
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
 
     body header {
@@ -677,6 +685,8 @@ button {
 
     .add-button-customer {
         left: 22vw;
+        bottom: 2vh;
+        width: 20%;
     }
 
     .article_error article {
@@ -698,9 +708,15 @@ button {
     }
 
     /* page liste produits */
-    .fa-cart-shopping,
+    .shop-product,
     .fa-plus,
     .fa-minus {
         padding: 0;
+    }
+    .product{
+        left: 30vw;
+    }
+    h3 {
+        margin-top: 0;
     }
 }
