@@ -47,13 +47,13 @@ class ProductController extends AbstractController
                 return null;
             }
         }
-        // $categoryManager = new CategoryManager();
-        // $categorys = $categoryManager->selectAll();
-        // $materialManager = new MaterialManager();
-        // $materials = $materialManager->selectAll();
+        $categoryManager = new CategoryManager();
+        $categorys = $categoryManager->selectAll();
+        $materialManager = new MaterialManager();
+        $materials = $materialManager->selectAll();
         return $this->twig->render('product/add.html.twig', [
-            // 'categorys' => $categorys,
-            // 'materials' => $materials,
+            'categorys' => $categorys,
+            'materials' => $materials,
             'errors' => $errors
         ]);
     }

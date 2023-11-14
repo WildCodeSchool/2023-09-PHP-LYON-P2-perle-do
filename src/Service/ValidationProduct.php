@@ -35,7 +35,7 @@ class ValidationProduct
         if (strlen($product['description']) > 255) {
             $this->errors[] = "La description est trop longue";
         }
-        if (strlen($product['origine']) > 100) {
+        if (strlen($product['origin']) > 100) {
             $this->errors[] = "L\'indication de l'origine est trop longue";
         }
     }
