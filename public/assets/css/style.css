@@ -612,6 +612,7 @@ button {
         margin: 0.2rem;
     }
     #add-category-form {
+        top: 5vh;
         left: 30vw;
         width: 65vw;
     }

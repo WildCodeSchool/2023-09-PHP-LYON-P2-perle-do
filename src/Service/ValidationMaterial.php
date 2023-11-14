@@ -10,13 +10,13 @@ class ValidationMaterial
         $this->errors = [];
     }
 
-    public function formValidationMaterial(array $category): void
+    public function formValidationMaterial(array $material): void
     {
-        if (empty($category['name'])) {
+        if (empty($material['name'])) {
             $this->errors[] = "Le nom est obligatoire";
         }
-        if (strlen($category['name']) > 50) {
-            $this->errors[] = "Le nom est trop long";
-        }
+        // if (strlen($material['name']) > 50) {
+        //     $this->errors[] = "Le nom est trop long";
+        // }
     }
 }
