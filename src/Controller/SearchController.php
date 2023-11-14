@@ -8,6 +8,11 @@ class SearchController extends AbstractController
 {
     public function indexSearch(): string
     {
-        return $this->twig->render('search/index.html.twig');
+        if (isset($_SESSION['user_id']) === true) {
+            return $this->twig->render('search/index.html.twig');
+        } else {
+            header('Location: /');
+            die();
+        }
     }
 }

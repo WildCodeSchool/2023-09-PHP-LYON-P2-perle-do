@@ -8,6 +8,11 @@ class InvoiceController extends AbstractController
 {
     public function index(): string
     {
-        return $this->twig->render('Customer/index.html.twig');
+        if (isset($_SESSION['user_id']) === true) {
+            return $this->twig->render('Customer/index.html.twig');
+        } else {
+            header('Location: /');
+            die();
+        }
     }
 }

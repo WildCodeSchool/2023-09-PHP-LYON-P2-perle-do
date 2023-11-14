@@ -8,6 +8,11 @@ class MaterialController extends AbstractController
 {
     public function index(): string
     {
-        return $this->twig->render('Material/index.html.twig');
+        if (isset($_SESSION['user_id']) === true) {
+            return $this->twig->render('Material/index.html.twig');
+        } else {
+            header('Location: /');
+            die();
+        }
     }
 }
