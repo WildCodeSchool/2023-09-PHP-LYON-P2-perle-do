@@ -37,9 +37,8 @@ class MaterialManager extends AbstractManager
 
     public function addMaterial(array $material): int
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (name) VALUES (':name')");
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . "(`name`) VALUES (:name)");
         $statement->bindValue(':name', $material['name'], PDO::PARAM_STR);
-
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
     }

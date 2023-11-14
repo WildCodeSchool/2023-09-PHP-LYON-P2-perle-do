@@ -28,7 +28,6 @@ class MaterialController extends AbstractController
             $errors = [];
 
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                // clean $_POST data
                 $material = array_map('trim', $_POST);
 
                 $errorsValidation = new ValidationMaterial();
@@ -36,15 +35,14 @@ class MaterialController extends AbstractController
                 $errors = $errorsValidation->errors;
 
                 if (empty($errors)) {
-                    // if validation is ok, insert and redirection
                     $materialManager = new MaterialManager();
                     $material = $materialManager->addMaterial($material);
 
-                    header('Location:/material/');
+                    header('Location:/materials/');
                     return null;
                 }
             }
-            return $this->twig->render('material/add.html.twig', ["errors" => $errors]);
+            return $this->twig->render('material/add.html.twig', ['errors' => $errors]);
         } else {
             header('Location: /');
             die();
