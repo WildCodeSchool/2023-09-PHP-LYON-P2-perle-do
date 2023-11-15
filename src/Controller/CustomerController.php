@@ -10,7 +10,7 @@ class CustomerController extends AbstractController
 {
     public function indexCustomer(): string
     {
-        if (isset($_SESSION['user_id']) === true) {
+        if (isset($_SESSION['user_id'])) {
             $customerManager = new CustomerManager();
             $customers = $customerManager->getAllCustomer();
 
@@ -23,7 +23,7 @@ class CustomerController extends AbstractController
 
     public function addCustomer(): ?string
     {
-        if (isset($_SESSION['user_id']) === true) {
+        if (isset($_SESSION['user_id'])) {
             $errors = [];
 
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -61,7 +61,7 @@ class CustomerController extends AbstractController
 
     public function showCustomer(int $id): string
     {
-        if (isset($_SESSION['user_id']) === true) {
+        if (isset($_SESSION['user_id'])) {
             $customerManager = new CustomerManager();
             $customer = $customerManager->getCustomerById($id);
             $typeManager = new TypeManager();
@@ -79,9 +79,9 @@ class CustomerController extends AbstractController
 
     public function deleteCustomer(int $id): void
     {
-        if (isset($_SESSION['user_id']) === true) {
-            $costumerManager = new CustomerManager();
-            $costumerManager->delete((int)$id);
+        if (isset($_SESSION['user_id'])) {
+            $customerManager = new CustomerManager();
+            $customerManager->delete((int)$id);
 
             header('Location:/customers');
         } else {
@@ -92,7 +92,7 @@ class CustomerController extends AbstractController
 
     public function editCustomer(int $id): ?string
     {
-        if (isset($_SESSION['user_id']) === true) {
+        if (isset($_SESSION['user_id'])) {
             $errors = [];
             $customerManager = new CustomerManager();
             $customer = $customerManager->getCustomerById($id);
