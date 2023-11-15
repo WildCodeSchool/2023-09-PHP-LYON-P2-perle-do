@@ -124,12 +124,13 @@ class ProductController extends AbstractController
                 }
             }
             $categoryManager = new CategoryManager();
-            $categorys = $categoryManager->selectAll();
+            $categories = $categoryManager->selectAll();
             $materialManager = new MaterialManager();
             $materials = $materialManager->selectAll();
+
             return $this->twig->render('product/edit.html.twig', [
                 'product' => $product,
-                'categorys' => $categorys,
+                'categorys' => $categories,
                 'materials' => $materials,
                 'errors' => $errors
             ]);

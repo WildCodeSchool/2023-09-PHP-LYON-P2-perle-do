@@ -12,10 +12,12 @@
 			<label for="id_category">Catégorie du produit</label>
 		</div>
 
+
+
 		<div>
 		    <select name="id_category" id="id_category">
 				{% for category in categorys %}
-				<option value="{{ category.categoryName }}"> {{ category.name }} </option>
+				<option value={{ category.id }} {% if category.name == product.categoryName %}selected{% endif %}>{{ category.name }}</option>
 				{% endfor %}
         	</select>
 		</div>
@@ -27,7 +29,7 @@
 		<div>
 		    <select name="id_material" id="id_material">
 				{% for material in materials %}
-				<option value="{{ material.id }}"> {{ material.name }} </option>
+				<option value={{ material.id }} {% if material.name == product.materialName %}selected{% endif %}> {{ material.name }} </option>
 				{% endfor %}
         	</select>
 		</div>
