@@ -65,7 +65,7 @@ class ProductController extends AbstractController
 
     public function showProduct(int $id): string
     {
-        if (isset($_SESSION['user_id']) === true) {
+        if (isset($_SESSION['user_id'])) {
             $productManager = new ProductManager();
             $product = $productManager->getProductById($id);
             $categoryManager = new CategoryManager();
