@@ -11,7 +11,7 @@ class MaterialManager extends AbstractManager
     public function getAllMaterial($categoryId): array|false
     {
             $sql = "SELECT DISTINCT m.name materialName, m.id materialId, c.id categoryId,
-             c.name categoryName FROM material as m
+            c.name categoryName FROM material as m
                 JOIN product as p ON m.id = p.id_material
                 JOIN category as c ON c.id = p.id_category
                 WHERE c.id=:categoryId";

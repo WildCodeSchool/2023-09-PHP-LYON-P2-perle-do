@@ -83,4 +83,18 @@ class ProductController extends AbstractController
             die();
         }
     }
+
+    public function deleteProduct(int $id): void
+    {
+        if (isset($_SESSION['user_id'])) {
+                $productManager = new ProductManager();
+                $product = $productManager->selectOneById($id);
+                $productManager->delete((int)$id);
+                header('Location:/products?categoryId=' . $product['id_category'] .
+                '&materialId=' . $product['id_material']);
+        } else {
+            header('Location: /');
+            die();
+        }
+    }
 }
