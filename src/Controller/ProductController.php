@@ -97,4 +97,49 @@ class ProductController extends AbstractController
             die();
         }
     }
+    public function editProduct(int $id): ?string
+    {
+        if (isset($_SESSION['user_id'])) {
+            $errors = [];
+            $productManager = new ProductManager();
+            $product = $productManager->getProductById($id);
+            $categoryManager = new CategoryManager();
+            $category = $categoryManager->selectOneById($id);
+            $materialManager = new MaterialManager();
+            $material = $materialManager->selectOneById($id);
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                // clean $_POST data
+                $updatedProduct = array_map('trim', $_POST);
+                // TODO validations (length, format...)
+                $errorsValidation = new ValidationProduct();
+                $errorsValidation->formValidationProduct($updatedProduct);
+                $errorsValidation->formValidationProduct2($updatedProduct);
+                $errors = $errorsValidation->errors;
+
+                if (empty($errors)) {
+                    // if validation is ok, update and redirection
+                    $productManager->update($updatedProduct);
+
+                    header('Location: /products/show?id=' . $id);
+
+                    // we are redirecting so we don't want any content rendered
+                    return null;
+                }
+            }
+            $categoryManager = new CategoryManager();
+            $category = $categoryManager->selectAll();
+            $materialManager = new MaterialManager();
+            $material = $materialManager->selectAll();
+            return $this->twig->render('product/edit.html.twig', [
+                'product' => $product,
+                'category' => $category,
+                'material' => $material,
+                'errors' => $errors
+            ]);
+        } else {
+            header('Location: /');
+            die();
+        }
+    }
 }
