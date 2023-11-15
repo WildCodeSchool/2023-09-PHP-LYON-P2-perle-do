@@ -103,10 +103,6 @@ class ProductController extends AbstractController
             $errors = [];
             $productManager = new ProductManager();
             $product = $productManager->getProductById($id);
-            $categoryManager = new CategoryManager();
-            $category = $categoryManager->selectOneById($id);
-            $materialManager = new MaterialManager();
-            $material = $materialManager->selectOneById($id);
 
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // clean $_POST data
@@ -128,13 +124,13 @@ class ProductController extends AbstractController
                 }
             }
             $categoryManager = new CategoryManager();
-            $category = $categoryManager->selectAll();
+            $categorys = $categoryManager->selectAll();
             $materialManager = new MaterialManager();
-            $material = $materialManager->selectAll();
+            $materials = $materialManager->selectAll();
             return $this->twig->render('product/edit.html.twig', [
                 'product' => $product,
-                'category' => $category,
-                'material' => $material,
+                'categorys' => $categorys,
+                'materials' => $materials,
                 'errors' => $errors
             ]);
         } else {
