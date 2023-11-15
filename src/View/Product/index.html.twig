@@ -13,20 +13,24 @@
                     <li>{{ product.referenceProduct }}</li>
                 </ul>
             </a>
-
-            
-            <a href="" role="button" class="cart-shopping">
-                <i class="fa-solid fa-minus color"></i>
-            </a>
-            <span class="product-span">1</span>
-            <a href="" role="button" class="cart-shopping">
-                <i class="fa-solid fa-plus color"></i>
-            </a>
-            <a href="" role="button" class="cart-shopping">
-                <i class="fa-solid fa-cart-shopping color"></i>
+            <div class=container-plus-minus>
+                <button class="cart-shopping minus">
+                    <i class="fa-solid fa-minus color"></i>
+                </button>
+                <span class="product-span number">1</span>
+                <button class="cart-shopping plus">
+                    <i class="fa-solid fa-plus color"></i>
+                </button>
+            </div>
+            <a href="" role="button class="cart-shopping_product">
+                <i class="fa-solid fa-cart-shopping color shop-product"></i>
             </a>
         </article>
     {% endfor %}
+</div>
+<a href="/products/add" role="button" class="add-button-customer">
+    Nouveau Produit
+</a>
 {% endblock %}
 {% block buttons %}
 {% endblock %}

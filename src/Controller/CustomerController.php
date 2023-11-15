@@ -80,8 +80,8 @@ class CustomerController extends AbstractController
     public function deleteCustomer(int $id): void
     {
         if (isset($_SESSION['user_id'])) {
-            $costumerManager = new CustomerManager();
-            $costumerManager->delete((int)$id);
+            $customerManager = new CustomerManager();
+            $customerManager->delete((int)$id);
 
             header('Location:/customers');
         } else {

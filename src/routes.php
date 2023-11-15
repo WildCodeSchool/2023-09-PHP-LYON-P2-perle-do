@@ -15,7 +15,7 @@ return [
     'categories/add' => ['CategoryController', 'addCategory',],
     'categories/delete' => ['CategoryController', 'deleteCategory',],
     // pages matériaux
-    'materials' => ['MaterialController','indexMaterial',],
+    'materials' => ['MaterialController','indexMaterial',['categoryId']],
     'materials/edit' => ['MaterialController', 'editMaterial', ['id']],
     'materials/add' => ['MaterialController', 'addMaterial',],
     'materials/delete' => ['MaterialController', 'deleteMaterial',],
