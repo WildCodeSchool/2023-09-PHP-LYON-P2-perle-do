@@ -507,7 +507,7 @@ button {
     nav img {
         display: flex;
         position: relative;
-        bottom: 16vh;
+        bottom: 5vh;
         width: fit-content;
     }
 
@@ -616,6 +616,7 @@ button {
         margin: 0.2rem;
     }
     #add-category-form {
+        top: 5vh;
         left: 30vw;
         width: 65vw;
     }

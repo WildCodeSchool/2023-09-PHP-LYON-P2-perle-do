@@ -1,27 +1,25 @@
 {% extends 'layout.html.twig' %}
 
-{% block navbar %}
-{{parent()}}
-{% endblock %}
-
 {% block content %}
-<h3 class="product">
-{{ materials[0].categoryName }}
-</h3>
-<div class="customer-block">
+	<h3 class="product">
+		{{ materials[0].categoryName }}
+	</h3>
+	<div class="customer-block">
 
-{% for material in materials %}
-<article class="article-category">
-<a href="/products?categoryId={{ material.categoryId }}&materialId={{ material.materialId }}">
-<p> {{ material.materialName }} </p>
-</a>
-</article>
+		{% for material in materials %}
+			<article class="article-category">
+				<a href="/products?categoryId={{ material.categoryId }}&materialId={{ material.materialId }}">
+					<p>
+						{{ material.materialName }}
+					</p>
+				</a>
+			</article>
 
-{% endfor %}
-<button class="add-button-customer">
-<a href="/customers/add">Ajouter un client</a>
-</button>
-</div>
+		{% endfor %}
+		<button class="add-button-customer">
+			<a href="materials/add">Nouveau matériaux</a>
+		</button>
+	</div>
 {% endblock %}
 
 {% block buttons %}{% endblock %}
