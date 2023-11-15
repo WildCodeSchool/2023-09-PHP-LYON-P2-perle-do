@@ -42,4 +42,14 @@ class MaterialManager extends AbstractManager
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
     }
+
+    public function updateMaterial(array $material): bool
+    {
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `id` = :id, `name` = :name
+        WHERE id=:id");
+        $statement->bindValue('id', $material['id'], PDO::PARAM_INT);
+        $statement->bindValue('name', $material['name'], PDO::PARAM_STR);
+
+        return $statement->execute();
+    }
 }
