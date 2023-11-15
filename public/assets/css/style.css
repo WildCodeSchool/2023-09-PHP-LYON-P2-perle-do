@@ -119,6 +119,7 @@ article {
 article p {
     font-size: 1rem;
     justify-self: left;
+    color:var(--font-black);
 }
 
 /* navbar */
@@ -249,6 +250,9 @@ select {
 .article-category {
     height: auto;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
     top: -6vh;
     left: 10vw;
     padding: 1rem;
@@ -419,6 +423,13 @@ button {
 #p-prix {
     grid-row-start: 1;
     grid-row-end: 2;
+}
+.fa-pen{
+    color:var(--font-black  )
+}
+a.edit-button-category{
+    background-color:var(--backgound-color);
+    border-color:transparent;
 }
 /* -------------------media queries pour + 780 px--------------------- */
 /***********************************************************************/
@@ -670,8 +681,8 @@ button {
     .article-category {
         left: 10%;
         top: 0%;
-        height: fit-content;
         margin: 0;
+        width: 100%;
     }
 
     .article-category > p {
@@ -728,6 +739,11 @@ button {
     }
     h3 {
         margin-top: 0;
+    }
+    a.edit-button-category{
+        display:flex;
+        width: 4vw;
+        justify-content: center;
     }
 
 }
