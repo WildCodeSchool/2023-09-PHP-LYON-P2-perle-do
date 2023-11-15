@@ -13,7 +13,6 @@ class UserController extends AbstractController
         if (isset($_SESSION['user_id'])) {
             $userManager = new UserManager();
             $user = $userManager->selectOneById($id);
-            var_dump($id);
             return $this->twig->render('User/show.html.twig', ['user' => $user]);
         } else {
             header('Location: /');
@@ -60,7 +59,7 @@ class UserController extends AbstractController
                         'errors' => $errors
                     ]);
                 }
-            }   
+            }
             $aData = $userManager->selectOneById($id);
             return $this->twig->render('User/edit.html.twig', ['userToEdit' => $aData]);
         } else {
