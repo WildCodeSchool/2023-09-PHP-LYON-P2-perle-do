@@ -38,11 +38,11 @@ class MaterialController extends AbstractController
                     $materialManager = new MaterialManager();
                     $material = $materialManager->addMaterial($material);
 
-                    header('Location:/materials/');
+                    header('Location:/materials/add');
                     return null;
                 }
             }
-            return $this->twig->render('material/add.html.twig', ['errors' => $errors]);
+            return $this->twig->render('material/add.html.twig', ['errors' => $errors,]);
         } else {
             header('Location: /');
             die();

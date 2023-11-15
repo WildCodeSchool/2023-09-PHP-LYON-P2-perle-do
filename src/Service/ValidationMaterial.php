@@ -15,8 +15,5 @@ class ValidationMaterial
         if (empty($material['name'])) {
             $this->errors[] = "Le nom est obligatoire";
         }
-        // if (strlen($material['name']) > 50) {
-        //     $this->errors[] = "Le nom est trop long";
-        // }
     }
 }
