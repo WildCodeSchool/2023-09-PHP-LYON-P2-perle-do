@@ -1,27 +1,22 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+<div class="customer-block">
+  {% for category in categories %}
+    <article class="article-category">
+      <a href="/materials?categoryId={{ category.id }}"><p>{{ category.name }}</p></a>
+      <a href="/categories/edit?id={{ category.id }}" role="button" class="edit-button-category"><i class="fa-solid fa-pen"></i></a>
+    </article>
+  {% endfor %}
 
-	<div class="customer-block">
-		{% for category in categories %}
-			<article class="article-category">
-				<a href="/materials?categoryId={{category.id}}">
-					<p>
-						{{ category.name }}
-					</p>
-				</a>
-				<a href="/categories/edit?id={{ category.id }}" role="button" class="edit-button-category">
-					<i class="fa-solid fa-pen"></i>
-				</a>
-			</article>
-		{% endfor %}
-	</div>
-	<a href="/categories/add" role="button" class="add-button-customer">
-		Nouvelle categorie
-	</a>
+  <a href="/categories/add" role="button" class="add-button-customer">Nouvelle categorie</a>
+  <div class="customer-block">
+{% endblock %}
+
+{% block buttons %}
 
 {% endblock %}
 
-{% block buttons %}{% endblock %}
+{% block modaldelete %}
 
-{% block modaldelete %}{% endblock %}
+{% endblock %}
