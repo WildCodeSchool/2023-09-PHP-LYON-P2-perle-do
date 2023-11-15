@@ -25,7 +25,7 @@ class CustomerManager extends AbstractManager
         c.adress, c.zipcode, c.city, c.phone, c.email, c.description, c.created_date, t.type, t.discount
         FROM customer c JOIN `type` t ON c.id_type = t.id WHERE c.id=:id';
         $query = $this->pdo->prepare($sql);
-        $query->bindValue('id', $id, \PDO::PARAM_INT);
+        $query->bindValue('id', $id, (PDO::PARAM_INT));
         $query->execute();
         return $query->fetch();
     }

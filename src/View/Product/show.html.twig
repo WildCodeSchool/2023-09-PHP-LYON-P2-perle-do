@@ -1,4 +1,64 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+<div class ="category-block block-page">
+    <h3>{{ product.categoryName }} / {{ product.materialName }} / {{ product.productname}}</h3>
+    <h4>{{ product.reference }}</h4>
+    <article class=show-customer>
+        <p id="p-prix">Prix :</p>
+        <p>{{ product.price }} €</p>
+        <p>Description :</p>
+        <p>{{ product.description }}</p>
+        <p>Origine : </p>
+        <p>{{ product.origine }}</p>
+        <p>Quantité : </p>
+        <p>{{ product.quantity }}</p>
+        <p>{{ product.picture }}</p>
+        
+        <a href="/products/edit?id={{ product.id }}" role="button" class="edit-button-customer">
+            <i class="fa-solid fa-pen"></i>
+        </a>
+        <button class="delete-button-customer"
+            data-target="modal-delete"
+            onClick="toggleModal(event)">
+            <a href=""><i class="fa-regular fa-trash-can"></i></a>
+        </button>
+
+            <!-- Modal -->
+        <dialog id="modal-delete">
+            <article class="modal">
+                <a href="#close"
+                aria-label="Close"
+                class="close"
+                data-target="modal-delete"
+                onClick="toggleModal(event)">
+                </a>
+                <h3>Confirmer la suppression de :</h3>
+                <p>
+                {{ product.categoryName }} / {{ product.materialName }} / {{ product.productname}}
+                </p>
+                <footer>
+                    <a href="#cancel"
+                        role="button"
+                        class="secondary"
+                        data-target="modal-delete"
+                        onClick="toggleModal(event)">
+                        NON
+                    </a>
+                    <a href="/products/delete?id= {{ product.id }}"
+                        role="button"
+                        data-target="modal-delete"
+                        >
+                        OUI
+                    </a>
+                </footer>
+            </article>
+        </dialog>
+    </article>
+</div>
+{% endblock %}
+
+{% block buttons %}
+{% endblock %}
+{% block modaldelete %}
 {% endblock %}

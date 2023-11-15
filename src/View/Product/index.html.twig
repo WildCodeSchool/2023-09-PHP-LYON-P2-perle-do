@@ -5,7 +5,7 @@
 <div class="customer-block">
     {% for product in products %}
         <article class="article-category">
-            <a href="#">
+            <a href="/products/show?id={{ product.id }}">
                 <ul>
                     <li><strong>{{ product.productName }}</strong></li> 
                     <li>{{ product.price }} € </li>
