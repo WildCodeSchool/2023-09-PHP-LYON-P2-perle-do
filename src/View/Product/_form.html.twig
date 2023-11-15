@@ -15,7 +15,7 @@
 		<div>
 		    <select name="id_category" id="id_category">
 				{% for category in categorys %}
-				<option value="{{ category.id }}"> {{ category.name }} </option>
+				<option value="{{ category.categoryName }}"> {{ category.name }} </option>
 				{% endfor %}
         	</select>
 		</div>
@@ -37,7 +37,7 @@
 		</div>
 
 		<div>
-		    <input type="text" value="{{ product.name }}" id="name" name="name" placeholder="nom du produit" required>
+		    <input type="text" value="{{ product.productname }}" id="name" name="name" placeholder="nom du produit" required>
 		</div>
 
 		<div>
@@ -65,7 +65,7 @@
 		</div>
 
 		<div>
-			<label for="origin">origine</label>
+			<label for="origin">Origine</label>
 		</div>
 
 		<div>
