@@ -4,7 +4,7 @@
 <div class="customer-block">
   {% for category in categories %}
     <article class="article-category">
-      <a href="/materials?categoryId={{ category.id }}"><p>{{ category.name }}</p></a>
+      <a href="/materials?categoryId={{ category.id }}"><strong>{{ category.name }}</strong></a>
       <a href="/categories/edit?id={{ category.id }}" role="button" class="edit-button-category"><i class="fa-solid fa-pen"></i></a>
     </article>
   {% endfor %}

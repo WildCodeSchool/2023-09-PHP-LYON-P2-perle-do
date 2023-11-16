@@ -5,7 +5,7 @@
   <div class="customer-block">
     {% for material in materials %}
       <article class="article-category">
-        <a href="/products?categoryId={{ material.categoryId }}&materialId={{ material.materialId }}"><p>{{ material.materialName }}</p></a>
+        <a href="/products?categoryId={{ material.categoryId }}&materialId={{ material.materialId }}"><strong>{{ material.materialName }}</strong></a>
         <a href="materials/edit?id={{ material.materialId }}" role="button" class="edit-button-category"><i class="fa-solid fa-pen"></i></a>
       </article>
     {% endfor %}
