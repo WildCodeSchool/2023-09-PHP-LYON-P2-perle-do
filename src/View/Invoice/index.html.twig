@@ -1,4 +1,84 @@
 {% extends 'layout.html.twig' %}
 
+{% block navbar %}{% endblock %}
+{% block header %}{% endblock %}
 {% block content %}
+    <div class="container-head-invoice">
+        <img src="/assets/images/logo2.png" alt="logo de perle do" class="img-invoice">
+        <h2>Facture n° (insérer numéro de facture)</h2>
+        <p>date : insérer la date ici</p>
+    </div>
+
+    <div class="container-name-invoice">
+        <div class="container-society">
+            <ul>
+                <li>
+                    <h3 class="society">Perle DO</h3>
+                </li>
+                <li>SAS au capital de 1 000 €</li>
+                <li>75-77 avenue Victor Hugo</li>
+                <li>69160 Tassin La Demi-Lune</li>
+                <li>Siret : 978 254 878 00017</li>
+                <li>N° TVA : FR61978254878</li>
+            </ul>
+        </div>
+        <ul>
+            <li>nom du client</li>
+            <li>adresse du client</li>
+            <li>cp du client + ville</li>
+            <li>Référence client</li>
+        </ul>
+    </div>
+
+    <table role="grid">
+        <thead>
+            <tr class="thead">
+                <th scope="col">Référence</th>
+                <th scope="col">Nom du produit</th>
+                <th scope="col">Prix Unitaire</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Montant TTC</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>inserer les ref produits</td>
+                <td>inserer les noms</td>
+                <td>inserer le prix unitaires</td>
+                <td>inserer les quantités</td>
+                <td>inserer montants</td>
+            </tr>
+            <tr>
+                <td>inserer les ref produits</td>
+                <td>inserer les noms</td>
+                <td>inserer le prix unitaires</td>
+                <td>inserer les quantités</td>
+                <td>inserer montants</td>
+            </tr>
+            <tr>
+                <td>inserer les ref produits</td>
+                <td>inserer les noms</td>
+                <td>inserer le prix unitaires</td>
+                <td>inserer les quantités</td>
+                <td>inserer montants</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="container-name-invoice">
+        <div class="container-society">
+            <p>Echéance : {{ now|date("j F Y", "Europe/Paris") }}</p>
+            <p>Règlement : mettre ici le mode règlmement</p>
+        </div>
+        <div class"total-invoice">
+            <ul>
+            <li>Sous-Total : insérer le calcul du total</li>
+            <li>Remise : insérer la remise</li>
+            <li>Total : insérer le total après remise</li>
+            <li>Dont Tva : insérer le montant de la TVA</li>
+            </ul>
+        </div>
+    </div>
+
+
+
 {% endblock %}
