@@ -482,9 +482,8 @@ ul {
 
 strong {
     color: var(--font-black);
-    display: flex;
     justify-content: center;
-    position: relative;
+    position: relative;height: 1px;
     top: -0.2em;
 }
 
@@ -504,6 +503,15 @@ a.cart-shopping {
     background-color: var(--block-color);
     border-color: transparent;
 }
+
+h1,p,a{
+    text-align: center;
+    color: var(--font-black);
+}
+
+ p,a{
+        color: var(--font-black);
+    }
 /* -------------------media queries pour + 780 px--------------------- */
 /***********************************************************************/
 
@@ -850,7 +858,6 @@ a.cart-shopping {
     }
 
     strong {
-        display: flex;
         font-size: calc(10px + 0.390625vw);
         height: 5vh;
         justify-content: center;
@@ -859,5 +866,13 @@ a.cart-shopping {
     .block-page article {
         position: relative;
         top: 5vh;
+    }
+    p,a{
+        color: var(--font-black);
+    }
+
+    .article-customer{
+            top: 0vh;
+    left: 0vw;
     }
 }
