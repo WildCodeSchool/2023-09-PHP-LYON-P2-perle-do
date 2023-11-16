@@ -184,10 +184,12 @@ h3 {
 
 h4 {
     margin: 0;
+    position: relative;
+    top: -4vh;
 }
 .block-page article {
     position: relative;
-    top:-4vh;
+    top: -4vh;
     width: 85%;
     height: 100%;
 }
@@ -306,7 +308,7 @@ select {
     column-gap: 0.5rem;
     row-gap: 1rem;
     position: relative;
-    top:-2vh;
+    top: -2vh;
     left: 6vw;
     width: 90vw;
     background-color: var(--background-block-white);
@@ -483,7 +485,7 @@ strong {
     display: flex;
     justify-content: center;
     position: relative;
-    top:-0.2em;
+    top: -0.2em;
 }
 
 li {
@@ -773,7 +775,6 @@ a.cart-shopping {
         top: 5vh;
         width: 55%;
         left: 30%;
-
     }
 
     .product-block {
@@ -831,7 +832,7 @@ a.cart-shopping {
         top: 8vh;
     }
 
-    h4{
+    h4 {
         position: relative;
         top: 5vh;
     }
@@ -855,7 +856,7 @@ a.cart-shopping {
         justify-content: center;
         align-items: center;
     }
-    .block-page article{
+    .block-page article {
         position: relative;
         top: 5vh;
     }
