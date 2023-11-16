@@ -54,4 +54,24 @@ class ProductManager extends AbstractManager
         $query->execute();
         return $query->fetch();
     }
+
+    public function update(array $product): bool
+    {
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `name` = :name, 
+        `reference` = :reference, `price` = :price, `description` = :description,`origin` = :origin, 
+        `quantity` = :quantity, `picture` = :picture,`id_category` = :id_category, `id_material` = :id_material
+        WHERE id=:id");
+        $statement->bindValue('id', $product['id'], PDO::PARAM_INT);
+        $statement->bindValue('name', $product['name'], PDO::PARAM_STR);
+        $statement->bindValue('reference', $product['reference'], PDO::PARAM_STR);
+        $statement->bindValue('price', $product['price'], PDO::PARAM_INT);
+        $statement->bindValue('description', $product['description'], PDO::PARAM_STR);
+        $statement->bindValue('origin', $product['origin'], PDO::PARAM_STR);
+        $statement->bindValue('quantity', $product['quantity'], PDO::PARAM_INT);
+        $statement->bindValue('picture', $product['picture'], PDO::PARAM_STR);
+        $statement->bindValue('id_category', $product['id_category'], PDO::PARAM_INT);
+        $statement->bindValue(':id_material', $product['id_material'], PDO::PARAM_INT);
+
+        return $statement->execute();
+    }
 }
