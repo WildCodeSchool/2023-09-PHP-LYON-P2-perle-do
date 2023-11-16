@@ -69,7 +69,7 @@ class CategoryController extends AbstractController
                 $categoryManager = new CategoryManager();
                 $categoryManager->delete((int)$id);
 
-                header('Location:/Category/index.html.twig.php');
+                header('Location:/Categories');
             }
         } else {
             header('Location: /');

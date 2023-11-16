@@ -10,7 +10,7 @@
         <p>Description :</p>
         <p>{{ product.description }}</p>
         <p>Origine : </p>
-        <p>{{ product.origine }}</p>
+        <p>{{ product.origin }}</p>
         <p>Quantité : </p>
         <p>{{ product.quantity }}</p>
         <p>{{ product.picture }}</p>
@@ -23,39 +23,40 @@
             onClick="toggleModal(event)">
             <a href=""><i class="fa-regular fa-trash-can"></i></a>
         </button>
-
-            <!-- Modal -->
-        <dialog id="modal-delete">
-            <article class="modal">
-                <a href="#close"
-                aria-label="Close"
-                class="close"
-                data-target="modal-delete"
-                onClick="toggleModal(event)">
-                </a>
-                <h3>Confirmer la suppression de :</h3>
-                <p>
-                {{ product.categoryName }} / {{ product.materialName }} / {{ product.productname}}
-                </p>
-                <footer>
-                    <a href="#cancel"
-                        role="button"
-                        class="secondary"
-                        data-target="modal-delete"
-                        onClick="toggleModal(event)">
-                        NON
-                    </a>
-                    <a href="/products/delete?id= {{ product.id }}"
-                        role="button"
-                        data-target="modal-delete"
-                        >
-                        OUI
-                    </a>
-                </footer>
-            </article>
-        </dialog>
     </article>
+    
+<!-- Modal -->
+    <dialog id="modal-delete">
+        <article class="modal">
+            <a href="#close"
+            aria-label="Close"
+            class="close"
+            data-target="modal-delete"
+            onClick="toggleModal(event)">
+            </a>
+            <h3>Confirmer la suppression de :</h3>
+            <p>
+            {{ product.categoryName }} / {{ product.materialName }} / {{ product.productname}}
+            </p>
+            <footer>
+                <a href="#cancel"
+                    role="button"
+                    class="secondary"
+                    data-target="modal-delete"
+                    onClick="toggleModal(event)">
+                    NON
+                </a>
+                <a href="/products/delete?id={{ product.id }}"
+                    role="button"
+                    data-target="modal-delete"
+                    >
+                    OUI
+                </a>
+            </footer>
+        </article>
+    </dialog>
 </div>
+
 {% endblock %}
 
 {% block buttons %}

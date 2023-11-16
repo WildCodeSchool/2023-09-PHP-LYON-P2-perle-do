@@ -14,9 +14,9 @@
 		</div>
 
 		<div>
-		    <select name="civility" value="{{ customer.civility }}" id="civility">
-				<option>Monsieur</option>
-				<option>Madame</option>
+		    <select name="civility" id="civility">
+				<option value={{ customer.civility }} {% if customer.civility == 'Monsieur' %}selected{% endif %}>Monsieur</option>
+				<option value={{ customer.civility }} {% if customer.civility == 'Madame' %}selected{% endif %}>Madame</option>
         	</select>
 		</div>
 
@@ -99,7 +99,7 @@
 		<div>
 		    <select name="id_type" id="id_type">
 				{% for type in types %}
-				<option value="{{ type.id }}"> {{ type.type }} </option>
+				<option value={{ type.id }} {% if type.type == customer.type %}selected{% endif %}> {{ type.type }} </option>
 				{% endfor %}
         	</select>
 		</div>

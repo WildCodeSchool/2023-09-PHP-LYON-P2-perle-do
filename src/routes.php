@@ -24,7 +24,7 @@ return [
     'products/edit' => ['ProductController', 'editProduct', ['id']],
     'products/show' => ['ProductController', 'showProduct', ['id']],
     'products/add' => ['ProductController', 'addProduct',],
-    'products/delete' => ['ProductController', 'deleteProduct',],
+    'products/delete' => ['ProductController', 'deleteProduct', ['id']],
     // pages clients
     'customers' => ['CustomerController', 'indexCustomer',],
     'customers/edit' => ['CustomerController', 'editCustomer', ['id']],
