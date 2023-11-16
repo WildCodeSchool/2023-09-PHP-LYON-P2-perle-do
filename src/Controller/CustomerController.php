@@ -48,7 +48,7 @@ class CustomerController extends AbstractController
                 }
             }
             $typeManager = new TypeManager();
-            $types = $typeManager->selectAll();
+            $types = $typeManager->selectAll('type');
             return $this->twig->render('customer/add.html.twig', [
                 'types' => $types,
                 'errors' => $errors
@@ -119,7 +119,7 @@ class CustomerController extends AbstractController
                 }
             }
             $typeManager = new TypeManager();
-            $types = $typeManager->selectAll();
+            $types = $typeManager->selectAll('type');
             return $this->twig->render('customer/edit.html.twig', [
                 'customer' => $customer,
                 'types' => $types,

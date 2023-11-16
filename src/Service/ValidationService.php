@@ -26,7 +26,7 @@ class ValidationService
         }
         if (strlen($customer['adress']) > 100) {
             $this->errors[] =
-            "L\'adresse est trop longue, raccourci-la";
+            "L\'adresse est trop longue, raccourcis-la";
         }
     }
 

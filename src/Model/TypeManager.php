@@ -18,14 +18,4 @@ class TypeManager extends AbstractManager
         $query->execute();
         return $query->fetch();
     }
-
-    public function selectAll(string $orderBy = 'type', string $direction = 'ASC'): array
-    {
-        $query = 'SELECT * FROM ' . static::TABLE;
-        if ($orderBy) {
-            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
-        }
-
-        return $this->pdo->query($query)->fetchAll();
-    }
 }
