@@ -50,8 +50,6 @@ a:is([aria-current], :hover, :active, :focus) {
 
 * {
     text-decoration: none;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-
 }
 
 html {
@@ -84,6 +82,7 @@ header p {
     grid-column-start: 1;
     grid-column-end: 4;
     justify-items: center;
+    font-size: calc(12px + 0.390625vw);
 }
 
 header .fa-magnifying-glass {
@@ -119,8 +118,19 @@ article {
 article p {
     font-size: 1rem;
     justify-self: left;
+    color: var(--font-black);
 }
 
+.article-customer {
+    border-radius: 15px;
+    width: 80%;
+    font-size: 2rem;
+    text-align: center;
+    padding: 0.5rem;
+    position: relative;
+    top: -5vh;
+    left: 11vw;
+}
 /* navbar */
 
 nav ul {
@@ -145,7 +155,7 @@ nav {
     box-shadow: var(--card-box-shadow);
 }
 
-.navbar-mobile>ul a {
+.navbar-mobile > ul a {
     color: var(--font-black);
 }
 
@@ -162,16 +172,25 @@ nav {
 
 h3 {
     position: relative;
-    top: -5vh;
+    top: -6.5vh;
+    left: 3vw;
+    width: 80%;
     height: 0;
     align-self: flex-start;
-    padding-bottom: 0.5rem;
-    text-align: left;
-    margin-top: 2rem;
+    padding: 0;
+    margin: 0;
+    font-size: calc(16px + 0.390625vw);
 }
 
+h4 {
+    margin: 0;
+    position: relative;
+    top: -4vh;
+}
 .block-page article {
-    width: 75%;
+    position: relative;
+    top: -4vh;
+    width: 85%;
     height: 100%;
 }
 
@@ -233,11 +252,11 @@ select {
     font-size: 1.5rem;
 }
 
-.add-button>a>p,
-.delete-button>a,
-.edit-button>a,
-.cancel-button>a,
-.validate-button>a {
+.add-button > a > p,
+.delete-button > a,
+.edit-button > a,
+.cancel-button > a,
+.validate-button > a {
     margin: 0;
     color: var(--font-black);
 }
@@ -246,14 +265,19 @@ select {
 .modal {
     height: 40vh;
 }
+
 .article-category {
     height: auto;
     position: relative;
-    top: -6vh;
-    left: 10vw;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    top: -5vh;
+    left: 10.5vw;
     padding: 1rem;
     border-radius: 15px;
     width: 80%;
+    margin: 1rem 0;
 }
 
 .article-category > p {
@@ -284,6 +308,7 @@ select {
     column-gap: 0.5rem;
     row-gap: 1rem;
     position: relative;
+    top: -2vh;
     left: 6vw;
     width: 90vw;
     background-color: var(--background-block-white);
@@ -328,25 +353,23 @@ textarea {
 /* css pour le add/edit cutomer */
 
 .add-customer-grid {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 0.5rem;
     row-gap: 0.5rem;
     top: -4vh;
-    left: 6vw;
-    width: 90vw;
+    left: 8vw;
+    width: 85%;
     background-color: var(--background-block-white);
-    padding: 2rem 1rem 0 1 rem;
+    padding: 2rem 1rem 0 1rem;
     border-radius: 15px;
 }
 
 .add-customer-grid select {
     width: 100%;
-    height: 2rem;
-    justify-content: center;
-    align-items: center;
+    height: 2.2rem;
     background-color: var(--block-color);
-    border-radius: 0.5rem;
     padding: 0 1rem;
 }
 
@@ -355,6 +378,7 @@ button {
     color: var(--font-black);
     grid-column-start: 1;
     grid-column-end: 3;
+    border-color: transparent;
 }
 
 .p-customer {
@@ -363,7 +387,7 @@ button {
 
 .show-customer {
     display: grid;
-    grid-template-columns: 0.5fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 0.5rem;
 }
 .show-customer p:first-child {
@@ -374,31 +398,44 @@ button {
 .edit-button-customer {
     grid-column-start: 1;
     grid-column-end: 2;
-    width: 60%;
-    justify-self: end;
+    width: 100%;
     background-color: var(--block-color);
     color: var(--primary);
     margin-bottom: 1rem;
+    border-color: transparent;
+}
+
+.fa-trash-can {
+    color: var(--font-black);
 }
 .delete-button-customer {
     grid-column-start: 2;
     grid-column-end: 3;
-    width: 30%;
-    justify-self: center;
+    background-color: var(--block-color);
+    color: var(--font-black);
+    width: 100%;
+    border-color: transparent;
 }
 
 .add-button-customer {
     position: fixed;
     bottom: 10vh;
     background-color: var(--block-color);
-    color: var(--primary);
+    color: var(--font-black);
+    border-color: transparent;
+    box-shadow: var(--card-box-shadow);
 }
 /* pages produits */
-.product{
+.product {
     position: relative;
-    top: -5vh;
+    top: -6.5vh;
+    left: 3vw;
+    width: 80%;
     height: 0;
     align-self: flex-start;
+    padding: 0;
+    margin: 0;
+    font-size: calc(16px + 0.390625vw);
 }
 
 .product-span {
@@ -410,7 +447,7 @@ button {
     justify-content: space-around;
 }
 .cart-shopping {
-    width: 15%;
+    width: 85%;
     padding: 0.5rem 0 0.5rem 0;
     font-size: 1rem;
     margin: 0;
@@ -419,6 +456,65 @@ button {
 #p-prix {
     grid-row-start: 1;
     grid-row-end: 2;
+}
+.fa-pen {
+    color: var(--font-black);
+}
+a.edit-button-category {
+    background-color: var(--block-color);
+    border-color: transparent;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+.article-product {
+    height: auto;
+    position: relative;
+    top: -5vh;
+    left: 23.5vw;
+    padding: 0.5rem;
+    border-radius: 15px;
+    width: 55%;
+    margin: 1rem 0;
+}
+
+strong {
+    color: var(--font-black);
+    justify-content: center;
+    position: relative;
+    height: 1px;
+    top: -0.2em;
+}
+
+li {
+    color: var(--font-black);
+    margin: 0;
+}
+
+.cart-shopping.minus,
+.cart-shopping.plus {
+    border-color: transparent;
+    width: 3rem;
+}
+
+a.cart-shopping {
+    color: var(--font-black);
+    background-color: var(--block-color);
+    border-color: transparent;
+}
+
+h1,
+p,
+a {
+    text-align: center;
+    color: var(--font-black);
+}
+
+p,
+a {
+    color: var(--font-black);
 }
 /* -------------------media queries pour + 780 px--------------------- */
 /***********************************************************************/
@@ -479,8 +575,9 @@ button {
         padding: 0 6%;
     }
 
-    .navbar-desktop>ul a {
+    .navbar-desktop > ul a {
         color: var(--font-black);
+        font-size: small;
     }
 
     nav ul {
@@ -525,7 +622,7 @@ button {
 
     .fa-power-off,
     .deconnexion,
-    .deconnexion>a {
+    .deconnexion > a {
         color: var(--primary);
     }
 
@@ -586,7 +683,7 @@ button {
         padding: 2rem 3rem;
     }
 
-    .add-products-grid>div {
+    .add-products-grid > div {
         width: max-content;
     }
 
@@ -605,10 +702,12 @@ button {
         grid-column-end: 3;
     }
 
-    input:not([type="checkbox"],
-        [type="radio"],
-        [type="range"],
-        [type="file"]) {
+    input:not(
+            [type="checkbox"],
+            [type="radio"],
+            [type="range"],
+            [type="file"]
+        ) {
         height: 2rem;
         margin-bottom: 1rem;
         background-color: var(--background-button-color);
@@ -653,6 +752,7 @@ button {
     .auth_page article {
         font-size: larger;
         height: auto;
+        padding: 0.5rem;
     }
 
     /* css pour le add/edit cutomer */
@@ -668,10 +768,11 @@ button {
         padding: 2rem 3rem 0 3 rem;
     }
     .article-category {
-        left: 10%;
+        left: 5%;
         top: 0%;
-        height: fit-content;
         margin: 0;
+        padding: 0.5rem;
+        height: fit-content;
     }
 
     .article-category > p {
@@ -682,11 +783,22 @@ button {
     .customer-block {
         position: relative;
         display: grid;
-        gap: 2rem;
+        row-gap: 2rem;
         grid-template-columns: 1fr 1fr 1fr;
-        width: 66%;
+        top: 5vh;
+        width: 55%;
         left: 30%;
-        height: 85vh;
+    }
+
+    .product-block {
+        position: relative;
+        display: grid;
+        row-gap: 2rem;
+        column-gap: 2rem;
+        grid-template-columns: 1fr 1fr 1fr;
+        top: 5vh;
+        width: 55%;
+        left: 30%;
     }
 
     .p-customer {
@@ -694,8 +806,9 @@ button {
     }
 
     .add-button-customer {
+        position: fixed;
         left: 22vw;
-        bottom: 2vh;
+        bottom: 3vh;
         width: 20%;
     }
 
@@ -730,5 +843,48 @@ button {
     h3 {
         margin-top: 0;  
     }
+    h3.product {
+        position: fixed;
+        left: 30vw;
+        top: 8vh;
+    }
 
+    h4 {
+        position: relative;
+        top: 5vh;
+    }
+    a.edit-button-category {
+        display: flex;
+        width: 4vw;
+        justify-content: center;
+    }
+
+    .article-product {
+        left: 1vw;
+        top: 1vh;
+        width: 100%;
+        margin: 0;
+    }
+
+    strong {
+        font-size: calc(10px + 0.390625vw);
+        height: 5vh;
+        justify-content: center;
+        align-items: center;
+    }
+    .block-page article {
+        position: relative;
+        top: 2vh;
+        padding: 1rem;
+    }
+    p,
+    a {
+        color: var(--font-black);
+        margin: 0;
+    }
+
+    .article-customer {
+        top: 0vh;
+        left: 0vw;
+    }
 }
