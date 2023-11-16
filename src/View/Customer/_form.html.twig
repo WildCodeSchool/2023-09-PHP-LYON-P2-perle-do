@@ -2,10 +2,12 @@
 
 
 <form action="" method="post">
-{% for error in errors %}
-<p> {{error}} </p>
-{% endfor %}
-	<input type="hidden" value="{{ customer.id }}" name="id"> 
+	{% for error in errors %}
+		<p>
+			{{error}}
+		</p>
+	{% endfor %}
+	<input type="hidden" value="{{ customer.id }}" name="id">
 
 	<div class="add-customer-grid" id="add-customer-form">
 
@@ -14,10 +16,10 @@
 		</div>
 
 		<div>
-		    <select name="civility" id="civility">
-				<option value={{ customer.civility }} {% if customer.civility == 'Monsieur' %}selected{% endif %}>Monsieur</option>
-				<option value={{ customer.civility }} {% if customer.civility == 'Madame' %}selected{% endif %}>Madame</option>
-        	</select>
+			<select name="civility" id="civility">
+				<option value="Monsieur" {% if customer.civility == "Monsieur" %} selected {% endif %}>Monsieur</option>
+				<option value="Madame " {% if customer.civility == "Madame" %} selected {% endif %}> Madame </option>
+			</select>
 		</div>
 
 		<div>
@@ -73,7 +75,7 @@
 		</div>
 
 		<div>
-			<input type="phone" value="{{ customer.phone }}" id="phone" name="phone" placeholder="0123456789" >
+			<input type="phone" value="{{ customer.phone }}" id="phone" name="phone" placeholder="0123456789">
 		</div>
 
 		<div>
@@ -97,17 +99,14 @@
 		</div>
 
 		<div>
-		    <select name="id_type" id="id_type">
+			<select name="id_type" id="id_type">
 				{% for type in types %}
-				<option value={{ type.id }} {% if type.type == customer.type %}selected{% endif %}> {{ type.type }} </option>
+					<option value={{ type.id }} {% if type.type == customer.type %} selected {% endif %}>
+						{{ type.type }}
+					</option>
 				{% endfor %}
-        	</select>
+			</select>
 		</div>
 		<button>Enregistrer</button>
 	</div>
-
-
 </form>
-
-
-
