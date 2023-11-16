@@ -4,6 +4,7 @@
 <h3 class="product">{{ products[0].categoryName }} / {{ products[0].materialName }}</h3>
   <div class="product-block">
     {% for product in products %}
+<<<<<<< HEAD
       <article class="article-product">
         <a href="/products/show?id={{ product.id }}">
           <ul>
@@ -21,6 +22,30 @@
         </div>
         <a href="" role="button" class="cart-shopping"><i class="fa-solid fa-cart-shopping"></i></a>
       </article>
+=======
+        <article class="article-category">
+            <a href="/products/show?id={{ product.id }}">
+                <ul>
+                    <li><strong>{{ product.productName }}</strong></li> 
+                    <li>{{ product.price }} € </li>
+                    <li>{{ product.description }} </li>
+                    <li>{{ product.referenceProduct }}</li>
+                </ul>
+            </a>
+            <div class=container-plus-minus>
+                <button class="cart-shopping minus">
+                    <i class="fa-solid fa-minus color"></i>
+                </button>
+                <span class="product-span number">1</span>
+                <button class="cart-shopping plus">
+                    <i class="fa-solid fa-plus color"></i>
+                </button>
+            </div>
+            <a href="" role="button" class="cart-shopping_product">
+                <i class="fa-solid fa-cart-shopping color shop-product"></i>
+            </a>
+        </article>
+>>>>>>> 9c45597eda60cdefe6bfa09ab5329c56bdb13a77
     {% endfor %}
   </div>
 

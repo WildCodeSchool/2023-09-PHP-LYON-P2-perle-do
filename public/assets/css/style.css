@@ -836,8 +836,12 @@ a {
     .fa-minus {
         padding: 0;
     }
+    .product{
+        left: 30vw;
+        width: 50%;
+    }
     h3 {
-        margin-top: 0;
+        margin-top: 0;  
     }
     h3.product {
         position: fixed;
