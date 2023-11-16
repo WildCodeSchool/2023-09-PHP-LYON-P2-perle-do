@@ -483,7 +483,8 @@ ul {
 strong {
     color: var(--font-black);
     justify-content: center;
-    position: relative;height: 1px;
+    position: relative;
+    height: 1px;
     top: -0.2em;
 }
 
@@ -504,14 +505,17 @@ a.cart-shopping {
     border-color: transparent;
 }
 
-h1,p,a{
+h1,
+p,
+a {
     text-align: center;
     color: var(--font-black);
 }
 
- p,a{
-        color: var(--font-black);
-    }
+p,
+a {
+    color: var(--font-black);
+}
 /* -------------------media queries pour + 780 px--------------------- */
 /***********************************************************************/
 
@@ -748,6 +752,7 @@ h1,p,a{
     .auth_page article {
         font-size: larger;
         height: auto;
+        padding: 0.5rem;
     }
 
     /* css pour le add/edit cutomer */
@@ -865,14 +870,17 @@ h1,p,a{
     }
     .block-page article {
         position: relative;
-        top: 5vh;
+        top: 2vh;
+        padding: 1rem;
     }
-    p,a{
+    p,
+    a {
         color: var(--font-black);
+        margin: 0;
     }
 
-    .article-customer{
-            top: 0vh;
-    left: 0vw;
+    .article-customer {
+        top: 0vh;
+        left: 0vw;
     }
 }
