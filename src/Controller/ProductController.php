@@ -11,9 +11,14 @@ class ProductController extends AbstractController
 {
     public function indexProduct(int $category, int $material): string
     {
-        $productManager = new ProductManager();
-        $products = $productManager->getProductsByCategoryAndMaterial($category, $material);
+
         if (isset($_SESSION['user_id'])) {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $_SESSION['cart'][$_POST['product_id']] = $_POST['quantity'];
+            }
+
+            $productManager = new ProductManager();
+            $products = $productManager->getProductsByCategoryAndMaterial($category, $material);
             return $this->twig->render('Product/index.html.twig', [
                 'products' => $products,
                 'category' => $category,

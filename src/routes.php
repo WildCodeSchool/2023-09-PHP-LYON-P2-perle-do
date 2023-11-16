@@ -37,6 +37,10 @@ return [
     'invoices/show' => ['InvoiceController', 'showInvoice', ['id']],
     'invoices/add' => ['InvoiceController', 'addInvoice',],
     'invoices/delete' => ['InvoiceController', 'deleteInvoice',],
+    // page panier
+    'shop' => ['ShopController', 'indexShop',],
+
+
     // pages recherche
     'search' => ['SearchController','indexSearch',],
     // page ajout utilisateur
