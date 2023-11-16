@@ -47,7 +47,7 @@
   {% block header %}
     <header>
         <a href="javascript:window.history.back();"><i class="fa-solid fa-chevron-left"></i></a>
-        <img src="/assets/images/logo2.png" alt="logo de perle do">
+        <a href="/"><img src="/assets/images/logo2.png" alt="logo de perle do"></a>
         <p>{{ now|date("l j F Y", "Europe/Paris") }}</p>
         <a href="/search"><i class="fa-solid fa-magnifying-glass"></i></a>
     </header>
@@ -55,31 +55,8 @@
 
   {% block content %}{% endblock %}
 
-  {% block buttons %}
-      <div class="buttons"><article class="add-button"><a href="">
-        <p>Ajouter</p></a>
-      </article>
-
-      <article class="edit-button"><a href=""><i class="fa-solid fa-pen"></i></a>
-      </article>
-
-      <article class="cancel-button"><a href=""><i class="fa-solid fa-ban"></i></a>
-      </article>
-
-      <article class="validate-button"><a href=""><i class="fa-regular fa-circle-check"></i></a>
-      </article>
-      
-      <button class="delete-button" data-target="modal-delete" onClick="toggleModal(event)">
-      <a href=""><i class="fa-regular fa-trash-can"></i></a>
-      </button>
-
-      </div>
-  {% endblock %}
-
   {% block modaldelete %}
 <!-- Button to trigger the modal -->
-
-
 <!-- Modal -->
 <dialog id="modal-delete">
   <article class="modal">
