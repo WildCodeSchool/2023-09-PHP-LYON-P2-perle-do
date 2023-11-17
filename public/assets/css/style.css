@@ -836,12 +836,12 @@ a {
     .fa-minus {
         padding: 0;
     }
-    .product{
+    .product {
         left: 30vw;
         width: 50%;
     }
     h3 {
-        margin-top: 0;  
+        margin-top: 0;
     }
     h3.product {
         position: fixed;
@@ -886,5 +886,49 @@ a {
     .article-customer {
         top: 0vh;
         left: 0vw;
+    }
+
+    .body-calculator {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--background-block-white);
+    }
+    .container-calculator {
+        position: relative;
+        max-width: 300px;
+        width: 100%;
+        border-radius: 12px;
+        padding: 10px 20px 20px;
+        background: #f9f9f9;
+        box-shadow: var(--card-box-shadow);
+    }
+
+    .display {
+        height: 80px;
+        width: 100%;
+        text-align: right;
+        margin-bottom: 10px;
+        font-size: 25px;
+    }
+    .spans-calculator {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .button-on-calculator {
+        padding:10px;
+        border-radius: 6px;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        background-color: #eee;
+    }
+    .button-on-calculator :active{
+        transform:scale(0.99);
+    }
+    .operator{
+        background-color: var(--block-color);
     }
 }
