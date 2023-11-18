@@ -5,8 +5,8 @@
 {% block content %}
     <div class="container-head-invoice">
         <img src="/assets/images/logo2.png" alt="logo de perle do" class="img-invoice">
-        <h2>Facture n° (insérer numéro de facture)</h2>
-        <p>date : insérer la date ici</p>
+        <h2>Facture n° {{ invoice.numInvoice }}</h2>
+        <p>date : {{ invoice.date }}</p>
     </div>
 
     <div class="container-name-invoice">
@@ -23,10 +23,10 @@
             </ul>
         </div>
         <ul>
-            <li>nom du client</li>
-            <li>adresse du client</li>
-            <li>cp du client + ville</li>
-            <li>Référence client</li>
+            <li>{{ invoice.lastname }} {{ invoice.firstname }}</li>
+            <li>{{ invoice.adress }}</li>
+            <li>{{ invoice.zipcode }} {{ invoice.city }}</li>
+            <li>{{ invoice.customerReference }}</li>
         </ul>
     </div>
 
@@ -41,40 +41,36 @@
             </tr>
         </thead>
         <tbody>
+            
+            {% for product in products %}
             <tr>
-                <td>inserer les ref produits</td>
-                <td>inserer les noms</td>
-                <td>inserer le prix unitaires</td>
-                <td>inserer les quantités</td>
-                <td>inserer montants</td>
+                <td>{{ product.productRef }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                {# <td>inserer les quantités</td>
+                <td>{% set pricetotal = product.price * "quantité de produit"  %} #}
+                {{ pricetotal }}</td>
             </tr>
-            <tr>
-                <td>inserer les ref produits</td>
-                <td>inserer les noms</td>
-                <td>inserer le prix unitaires</td>
-                <td>inserer les quantités</td>
-                <td>inserer montants</td>
-            </tr>
-            <tr>
-                <td>inserer les ref produits</td>
-                <td>inserer les noms</td>
-                <td>inserer le prix unitaires</td>
-                <td>inserer les quantités</td>
-                <td>inserer montants</td>
-            </tr>
+            {% endfor %}
         </tbody>
     </table>
     <div class="container-name-invoice">
         <div class="container-society">
             <p>Echéance : {{ now|date("j F Y", "Europe/Paris") }}</p>
-            <p>Règlement : mettre ici le mode règlmement</p>
+            <p>Règlement : {{ invoice.payment_type }}</p>
         </div>
         <div class"total-invoice">
             <ul>
-            <li>Sous-Total : insérer le calcul du total</li>
-            <li>Remise : insérer la remise</li>
-            <li>Total : insérer le total après remise</li>
-            <li>Dont Tva : insérer le montant de la TVA</li>
+                <li>Sous-Total : insérer le calcul du total</li>
+                <li>Remise : 
+                    {% if invoice.discount !=0 %}
+                        {{ invoice.discount *100 }} %
+                    {% else %}
+                        {{ invoice.customerDiscount *100 }} %
+                    {% endif %}
+                </li>
+                <li>Total : insérer le total après remise</li>
+                <li>Dont Tva : insérer le montant de la TVA</li>
             </ul>
         </div>
     </div>

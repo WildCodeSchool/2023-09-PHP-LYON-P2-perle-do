@@ -74,4 +74,18 @@ class ProductManager extends AbstractManager
 
         return $statement->execute();
     }
+
+    public function getProductsbyInvoice(int $invoiceId): array|false
+    {
+        $sql = "SELECT i.id, p.name, p.price, p.reference productRef,
+        p.id, pi.id_invoice, pi.id_product
+        FROM product p
+        JOIN product_invoice pi ON p.id = pi.id_product
+        JOIN invoice i ON i.id = pi.id_invoice
+        WHERE i.id=:id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue('id', $invoiceId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
