@@ -111,7 +111,25 @@
     {% endblock %}
 
     {% block calculator %}
-      <div class="body-calculator">
+
+    <button class="contrast"
+  data-target="modal-example"
+  onClick="toggleModal(event)">
+<i class="fa-solid fa-calculator"></i>
+</button>
+
+
+<!-- Modal -->
+<dialog id="modal-example">
+  <article class="calculator">
+    <a href="#close"
+      aria-label="Close"
+      class="close"
+      data-target="modal-example"
+      onClick="toggleModal(event)">
+    </a>
+    
+<div class="body-calculator">
         <div class="container-calculator">
           <input type="text" class="display" />
 
@@ -143,7 +161,14 @@
           </div>
         </div>
       </div>
+     </article>
+</dialog>
+
+      
+
+      
     {% endblock %}
+<!-- Button to trigger the modal -->
 
     {% block javascript %}
       <script src="/assets/script.js"></script>
