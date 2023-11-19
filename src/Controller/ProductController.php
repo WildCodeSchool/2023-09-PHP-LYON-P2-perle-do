@@ -11,9 +11,13 @@ class ProductController extends AbstractController
 {
     public function indexProduct(int $category, int $material): string
     {
-        $productManager = new ProductManager();
-        $products = $productManager->getProductsByCategoryAndMaterial($category, $material);
+
         if (isset($_SESSION['user_id'])) {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $_SESSION['cart'][$_POST['product_id']] = $_POST['quantity'];
+            }
+            $productManager = new ProductManager();
+            $products = $productManager->getProductsByCategoryAndMaterial($category, $material);
             return $this->twig->render('Product/index.html.twig', [
                 'products' => $products,
                 'category' => $category,
@@ -87,10 +91,10 @@ class ProductController extends AbstractController
     public function deleteProduct(int $id): void
     {
         if (isset($_SESSION['user_id'])) {
-                $productManager = new ProductManager();
-                $product = $productManager->selectOneById($id);
-                $productManager->delete((int)$id);
-                header('Location:/products?categoryId=' . $product['id_category'] .
+            $productManager = new ProductManager();
+            $product = $productManager->selectOneById($id);
+            $productManager->delete((int)$id);
+            header('Location:/products?categoryId=' . $product['id_category'] .
                 '&materialId=' . $product['id_material']);
         } else {
             header('Location: /');

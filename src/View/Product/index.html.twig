@@ -14,15 +14,12 @@
             <li>{{ product.referenceProduct }}</li>
           </ul>
         </a>
-        <div class="container-plus-minus">
-          <button class="cart-shopping minus"><i class="fa-solid fa-minus color"></i></button>
-          <span class="product-span number">1</span>
-          <button class="cart-shopping plus"><i class="fa-solid fa-plus color"></i></button>
-        </div>
-        <a href="" role="button" class="cart-shopping"><i class="fa-solid fa-cart-shopping"></i></a>
+        <form action="" method="post">
+					<input type="hidden" name="product_id" value={{ product.id }}>
+					<input type="number" name="quantity" value="0" min="0">
+					<input type="submit" value="ajouter">
+				</form>
       </article>
     {% endfor %}
   </div>
-
-  <a href="/products/add" role="button" class="add-button-customer">Nouveau Produit</a>
 {% endblock %}
