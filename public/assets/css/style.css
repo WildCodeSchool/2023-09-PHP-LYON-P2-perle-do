@@ -467,6 +467,7 @@ button {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-bottom: 2rem;
+    justify-items: center;
 }
 
 .container-head-invoice img {
@@ -476,19 +477,19 @@ button {
 
 .container-head-invoice h2 {
     margin: 0;
-    justify-self: end;
+    justify-self: center;
 }
 
 .container-head-invoice p {
     margin: 0;
-    justify-self: end;
+    justify-self: center;
 
 }
 
 .container-name-invoice{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .society {
@@ -951,7 +952,11 @@ a {
 
 /* media queries pour print */
 @media print {
-    .society{
+    .society {
         margin-top: 1rem;
+    }
+
+    body header {
+        display: none;
     }
 }
