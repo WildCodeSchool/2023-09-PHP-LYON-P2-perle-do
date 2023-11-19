@@ -522,7 +522,8 @@ button.contrast {
     padding: 1em;
     display: flex;
     position: fixed;
-    width: 15%;
+    width: 3rem;
+    border-radius: 50%;
     right: 20px;
     bottom: 10vh;
     justify-content: center;
@@ -956,7 +957,7 @@ input.display {
 
     button.contrast {
         border-radius: 50%;
-        width: fit-content;
+        width: 3rem;
         justify-content: center;
         position: fixed;
         bottom: 4vh;
