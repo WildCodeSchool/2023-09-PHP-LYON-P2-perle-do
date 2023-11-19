@@ -931,6 +931,15 @@ a {
         top: 0vh;
         left: 0vw;
     }
+
+    .invoice-total {
+        align-self: center;
+        justify-self: end;
+    }
+
+    .invoice-font-size {
+        font-size: 1rem;
+    }
 }
 
 /* media queries pour print */
