@@ -3,37 +3,43 @@
 {% block content %}
 	<h1>Panier</h1>
 	<div class="auth_page">
-        <div>
-            <datalist>
-            <option value=" {{ customer.name}} "></option>
-            </datalist>
-        </div>
+		<form action="">
+			<label for="customer">Sélectione un client:</label>
+			<input list="customers" id="customer" name="customer"/>
+			<datalist id="customers">
+				  {% for customer in customers %}
+                <option value="{{ customer.lastname }}"></option>
+             {% endfor %}
+			</datalist>
+		</form>
+
 		<table>
 			<thead>
 				<tr>
 					<th>id</th>
-                    <th>Produit</th>
-                    <th>quantité</th>
-                    <th>Prix</th>
-				</tr>				
+					<th>Produit</th>
+					<th>quantité</th>
+					<th>Prix</th>
+				</tr>
 			</thead>
-            <tbody>
-                {% set sum = 0 %}
-                {% for product in products %}
-                {% set sum = sum + product.price * product.quantity %}
-                <tr>
-                    <td>{{ product.id }}</td>
-                    <td>{{ product.productname }}</td>
-                    <td>{{ product.quantity }}</td>
-                    <td>{{ product.price * product.quantity }}€</td>
-                </tr>
-            {% endfor %}
-            <tr>
-            <td></td>
-            <td></td>
-            <td>Sous-total</td>
-            <td>{{ sum }}€</td>
-        </tr>
-            </tbody>
+			<tbody>
+				{% set sum = 0 %}
+				{% for product in products %}
+					{% set sum = sum + product.price * product.quantity %}
+					<tr>
+						<td>{{ product.id }}</td>
+						<td>{{ product.productname }}</td>
+						<td>{{ product.quantity }}</td>
+						<td>{{ product.price * product.quantity }}€</td>
+					</tr>
+				{% endfor %}
+				<tr>
+					<td></td>
+					<td></td>
+					<td>Sous-total</td>
+					<td>{{ sum }}€</td>
+
+				</tr>
+			</tbody>
 		</table>
-{% endblock %}
+	{% endblock %}
