@@ -24,13 +24,25 @@ class InvoiceManager extends AbstractManager
         return $stmt->fetch();
     }
 
-    // liste pour les factures dans les clients avec where c.id=:id
     public function getAllInvoices(): array|bool
     {
         $sql = 'SELECT i.id, i.num_invoice, i.date, i.total, c.lastname, c.firstname
         FROM invoice i
         JOIN customer c ON c.id = i.id_customer';
         $query = $this->pdo->prepare($sql);
+        $query->execute();
+        $allInvoices = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $allInvoices;
+    }
+
+    public function getAllInvoicesByCustomer($customerId): array|bool
+    {
+        $sql = 'SELECT i.id invoiceId, i.num_invoice, i.date, i.total,c.id, c.lastname, c.firstname
+        FROM invoice i
+        JOIN customer c ON c.id = i.id_customer
+        WHERE c.id=:id';
+        $query = $this->pdo->prepare($sql);
+        $query->bindValue('id', $customerId, PDO::PARAM_INT);
         $query->execute();
         $allInvoices = $query->fetchAll(PDO::FETCH_ASSOC);
         return $allInvoices;

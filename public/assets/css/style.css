@@ -560,6 +560,13 @@ a {
     color: var(--font-black);
 }
 
+.customer-show-invoice {
+    padding: 0;
+    background: none;
+    border: none;
+    color: var(--font-black)
+}
+
 /* -------------------media queries pour + 780 px--------------------- */
 /***********************************************************************/
 
