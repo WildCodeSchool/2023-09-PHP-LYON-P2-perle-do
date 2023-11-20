@@ -1,4 +1,4 @@
-    //config
+//config
 const isOpenClass = "modal-is-open";
 const openingClass = "modal-is-opening";
 const closingClass = "modal-is-closing";
@@ -8,21 +8,28 @@ let visibleModal = null;
 // Toggle modal
 const toggleModal = (event) => {
     event.preventDefault();
-    const modal = document.getElementById(event.currentTarget.getAttribute("data-target"));
+    const modal = document.getElementById(
+        event.currentTarget.getAttribute("data-target")
+    );
     typeof modal != "undefined" && modal != null && isModalOpen(modal)
-    ? closeModal(modal)
-    : openModal(modal);
+        ? closeModal(modal)
+        : openModal(modal);
 };
 
 // Is modal open
 const isModalOpen = (modal) => {
-    return modal.hasAttribute("open") && modal.getAttribute("open") != "false" ? true : false;
+    return modal.hasAttribute("open") && modal.getAttribute("open") != "false"
+        ? true
+        : false;
 };
 
 // Open modal
 const openModal = (modal) => {
     if (isScrollbarVisible()) {
-    document.documentElement.style.setProperty("--scrollbar-width", `${getScrollbarWidth()}px`);
+        document.documentElement.style.setProperty(
+            "--scrollbar-width",
+            `${getScrollbarWidth()}px`
+        );
     }
     document.documentElement.classList.add(isOpenClass, openingClass);
     setTimeout(() => {
@@ -61,21 +68,21 @@ document.addEventListener("keydown", (event) => {
 
 // Get scrollbar width
 const getScrollbarWidth = () => {
-  // Creating invisible container
+    // Creating invisible container
     const outer = document.createElement("div");
     outer.style.visibility = "hidden";
     outer.style.overflow = "scroll"; // forcing scrollbar to appear
     outer.style.msOverflowStyle = "scrollbar"; // needed for WinJS apps
     document.body.appendChild(outer);
 
-  // Creating inner element and placing it in the container
+    // Creating inner element and placing it in the container
     const inner = document.createElement("div");
     outer.appendChild(inner);
 
-  // Calculating difference between container's full width and the child width
+    // Calculating difference between container's full width and the child width
     const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
 
-  // Removing temporary elements from the DOM
+    // Removing temporary elements from the DOM
     outer.parentNode.removeChild(outer);
 
     return scrollbarWidth;
@@ -86,13 +93,12 @@ const isScrollbarVisible = () => {
     return document.body.scrollHeight > screen.height;
 };
 
-
 const buttons = document.querySelectorAll(".cart-shopping");
 const minValue = 0;
 
 buttons.forEach((button) => {
     button.addEventListener("click", (event) => {
-    // 1. Get the clicked element
+        // 1. Get the clicked element
         const element = event.currentTarget;
         // 2. Get the parent
         const parent = element.parentNode;
@@ -112,7 +118,7 @@ buttons.forEach((button) => {
         if (newNumber === minValue) {
             decrement.disabled = true;
             numberContainer.classList.add("dim");
-        // Make sure the button won't get stuck in active state (Safari)
+            // Make sure the button won't get stuck in active state (Safari)
             element.blur();
         } else if (newNumber > minValue && newNumber < maxValue) {
             decrement.disabled = false;
@@ -126,3 +132,31 @@ buttons.forEach((button) => {
     });
 });
 
+//calculator
+
+const display = document.querySelector(".display");
+const spans = document.querySelectorAll("span");
+let output = "";
+
+const calculate = (btnValue) => {
+    if (btnValue === "=" && output !== "") {
+        try {
+            // Utiliser math.evaluate pour évaluer l'expression
+            output = math.evaluate(output);
+        } catch (error) {
+            output = "Error";
+        }
+    } else if (btnValue === "AC") {
+        output = "";
+    } else if (btnValue === "DEL") {
+        output = output.slice(0, -1);
+    } else {
+        if (output === "" && (btnValue === "*" || btnValue === "/")) return;
+        output += btnValue;
+    }
+    display.value = output;
+};
+
+spans.forEach((buttons) => {
+    buttons.addEventListener("click", (e) => calculate(e.target.dataset.value));
+});

@@ -568,6 +568,72 @@ a {
     color: var(--font-black)
 }
 
+button.contrast {
+    margin: 0;
+    padding: 1em;
+    display: flex;
+    position: fixed;
+    width: 3rem;
+    border-radius: 50%;
+    right: 20px;
+    bottom: 10vh;
+    justify-content: center;
+    background-color: var(--block-color);
+    box-shadow: var(--card-box-shadow);
+}
+
+article.calculator {
+    height: fit-content;
+    width: fit-content;
+    margin: 0;
+    padding: 0;
+}
+.body-calculator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--background-block-white);
+}
+
+input.display {
+    height: auto;
+}
+
+.container-calculator {
+    position: relative;
+    width: 100%;
+    border-radius: 12px;
+    padding: 30px 20px 20px;
+    background: #f9f9f9;
+    box-shadow: var(--card-box-shadow);
+}
+
+.display {
+    height: 80px;
+    width: 100%;
+    text-align: right;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+.spans-calculator {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+}
+.button-on-calculator {
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #eee;
+}
+.button-on-calculator :active {
+    transform: scale(0.99);
+}
+.operator {
+    background-color: var(--block-color);
+}
 /* -------------------media queries pour + 780 px--------------------- */
 /***********************************************************************/
 
@@ -888,12 +954,12 @@ a {
     .fa-minus {
         padding: 0;
     }
-    .product{
+    .product {
         left: 30vw;
         width: 50%;
     }
     h3 {
-        margin-top: 0;  
+        margin-top: 0;
     }
     h3.product {
         position: fixed;
@@ -948,6 +1014,45 @@ a {
     .invoice-font-size {
         font-size: 1rem;
     }
+    button.contrast {
+        border-radius: 50%;
+        width: 3rem;
+        justify-content: center;
+        position: fixed;
+        bottom: 4vh;
+    }
+    i.fa-solid.fa-calculator {
+        padding: 0;
+        width: 2vw;
+    }
+
+    article.calculator {
+        position: relative;
+        justify-content: center;
+    }
+    dialog {
+        display: flex;
+        z-index: 999;
+        position: fixed;
+        top: 30vh;
+        right: 0;
+        bottom: 0;
+        left: 50vw;
+        align-items: center;
+        justify-content: center;
+        width: inherit;
+        min-width: 15%;
+        height: inherit;
+        min-height: 15%;
+        padding: var(--spacing);
+        border: 0;
+        backdrop-filter:unset;
+        background-color:transparent;
+        color: var(--color);
+}
+input.display {
+    height: auto;
+}
 }
 
 /* media queries pour print */
@@ -959,4 +1064,5 @@ a {
     body header {
         display: none;
     }
+
 }

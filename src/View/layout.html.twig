@@ -1,10 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="/assets/images/favicon.png">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/assets/images/favicon.png" />
 
     <title>{% block title %}{% endblock %}</title>
     
@@ -16,20 +16,33 @@
     {% endblock %}
 </head>
 
-<body>
+    {% endblock %}
+  </head>
 
-  {% block navbar %}
-  <nav class="navbar-mobile">
-    <ul>
-      <li><a href="/categories"><i class="fa-regular fa-file-lines color "></i></a></li>
-      <li><a href="/customers"><i class="fa-regular fa-user color"></i></a></li>
-      <li><a href=""><i class="fa-solid fa-chart-column color"></i></a></li>
-      <li><a href=""><i class="fa-regular fa-calendar color"></i></a></li>
-      <li><a href="/invoices"><i class="fa-solid fa-receipt color"></i></a></li>
-      <li><a href=""><i class="fa-solid fa-cart-shopping color"></i></a></li>
-      <li><a href=""><i class="fa-solid fa-calculator color"></i></a></li>
-    </ul>
-  </nav>
+  <body>
+    {% block navbar %}
+      <nav class="navbar-mobile">
+        <ul>
+          <li>
+            <a href="/categories"><i class="fa-regular fa-file-lines color"></i></a>
+          </li>
+          <li>
+            <a href="/customers"><i class="fa-regular fa-user color"></i></a>
+          </li>
+          <li>
+            <a href=""><i class="fa-solid fa-chart-column color"></i></a>
+          </li>
+          <li>
+            <a href=""><i class="fa-regular fa-calendar color"></i></a>
+          </li>
+          <li>
+            <a href="/invoices"><i class="fa-solid fa-receipt color"></i></a>
+          </li>
+          <li>
+            <a href=""><i class="fa-solid fa-cart-shopping color"></i></a>
+          </li>
+        </ul>
+      </nav>
 
   <nav class="navbar-desktop">
     <ul>
@@ -46,54 +59,83 @@
   </nav>
   {% endblock %}
 
-  {% block header %}
-    <header>
+    {% block header %}
+      <header>
         <a href="javascript:window.history.back();"><i class="fa-solid fa-chevron-left"></i></a>
-        <a href="/"><img src="/assets/images/logo2.png" alt="logo de perle do"></a>
-        <p>{{ now|date("l j F Y", "Europe/Paris") }}</p>
+        <a href="/"><img src="/assets/images/logo2.png" alt="logo de perle do" /></a>
+        <p>{{ now|date('l j F Y', 'Europe/Paris') }}</p>
         <a href="/search"><i class="fa-solid fa-magnifying-glass"></i></a>
-    </header>
-  {% endblock %}
+      </header>
+    {% endblock %}
 
-  {% block content %}{% endblock %}
+    {% block content %}
 
-  {% block modaldelete %}
-<!-- Button to trigger the modal -->
-<!-- Modal -->
-<dialog id="modal-delete">
-  <article class="modal">
-    <a href="#close"
-      aria-label="Close"
-      class="close"
-      data-target="modal-delete"
-      onClick="toggleModal(event)">
-    </a>
-    <h3>Confirmer la suppression de :</h3>
-    <p>
-      intégrer ici la recherche dans la bdd
-    </p>
-    <footer>
-      <a href="#cancel"
-        role="button"
-        class="secondary"
-        data-target="modal-delete"
-        onClick="toggleModal(event)">
-        NON
-      </a>
-      <a href="#confirm"
-        role="button"
-        data-target="modal-delete"
-        onClick="toggleModal(event)">
-        OUI
-      </a>
-    </footer>
-  </article>
-</dialog>
-  {% endblock %}
+    {% endblock %}
 
-  {% block javascript %}
-  <script src="/assets/script.js"></script>
-  {% endblock %}
-</body>
+    {% block modaldelete %}
+      <!-- span to trigger the modal -->
+      <!-- Modal -->
+      <dialog id="modal-delete">
+        <article class="modal">
+          <a href="#close" aria-label="Close" class="close" data-target="modal-delete" onClick="toggleModal(event)"></a>
+          <h3>Confirmer la suppression de :</h3>
+          <p>intégrer ici la recherche dans la bdd</p>
+          <footer>
+            <a href="#cancel" role="span" class="secondary" data-target="modal-delete" onClick="toggleModal(event)">NON</a>
+            <a href="#confirm" role="span" data-target="modal-delete" onClick="toggleModal(event)">OUI</a>
+          </footer>
+        </article>
+      </dialog>
+    {% endblock %}
 
+    {% block calculator %}
+      <button class="contrast" data-target="modal-example" onClick="toggleModal(event)"><i class="fa-solid fa-calculator"></i></button>
+
+      <!-- Modal -->
+      <dialog id="modal-example">
+        <article class="calculator">
+          <a href="#close" aria-label="Close" class="close" data-target="modal-example" onClick="toggleModal(event)"></a>
+
+          <div class="body-calculator">
+            <div class="container-calculator">
+              <input type="text" class="display" />
+
+              <div class="spans-calculator">
+                <span class="button-on-calculator operator" data-value="AC">AC</span>
+                <span class="button-on-calculator operator" data-value="DEL">DEL</span>
+                <span class="button-on-calculator operator percentage" data-value="%">%</span>
+                <span class="button-on-calculator operator" data-value="/">/</span>
+
+                <span class="button-on-calculator" data-value="7">7</span>
+                <span class="button-on-calculator" data-value="8">8</span>
+                <span class="button-on-calculator" data-value="9">9</span>
+                <span class="button-on-calculator operator" data-value="*">*</span>
+
+                <span class="button-on-calculator" data-value="4">4</span>
+                <span class="button-on-calculator" data-value="5">5</span>
+                <span class="button-on-calculator" data-value="6">6</span>
+                <span class="button-on-calculator operator" data-value="-">-</span>
+
+                <span class="button-on-calculator" data-value="1">1</span>
+                <span class="button-on-calculator" data-value="2">2</span>
+                <span class="button-on-calculator" data-value="3">3</span>
+                <span class="button-on-calculator operator" data-value="+">+</span>
+
+                <span class="button-on-calculator" data-value="0">0</span>
+                <span class="button-on-calculator" data-value="00">00</span>
+                <span class="button-on-calculator" data-value=".">.</span>
+                <span class="button-on-calculator operator" data-value="=">=</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </dialog>
+    {% endblock %}
+    <!-- Button to trigger the modal -->
+
+    {% block javascript %}
+      <script src="/assets/script.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.1.0/math.min.js"></script>
+    {% endblock %}
+  </body>
 </html>
