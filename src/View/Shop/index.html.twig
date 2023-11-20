@@ -7,9 +7,9 @@
 			<label for="customer">Sélectione un client:</label>
 			<input list="customers" id="customer" name="customer"/>
 			<datalist id="customers">
-				  {% for customer in customers %}
+				{% for customer in customers %}
                 <option value="{{ customer.lastname }}"></option>
-             {% endfor %}
+            {% endfor %}
 			</datalist>
 		</form>
 

@@ -29,7 +29,7 @@
         </ul>
     </div>
 
-    <table role="grid">
+    <table role="grid" class="table-invoice">
         <thead>
             <tr class="thead">
                 <th scope="col">Référence</th>
@@ -46,9 +46,8 @@
                 <td>{{ product.productRef }}</td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.price }}</td>
-                {# <td>inserer les quantités</td>
-                <td>{% set pricetotal = product.price * "quantité de produit"  %} #}
-                {{ pricetotal }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>{{ product.price * product.quantity }}</td>
             </tr>
             {% endfor %}
         </tbody>
@@ -62,14 +61,10 @@
             <ul>
                 <li>Sous-Total : insérer le calcul du total</li>
                 <li>Remise : 
-                    {% if invoice.discount !=0 %}
-                        {{ invoice.discount *100 }} %
-                    {% else %}
-                        {{ invoice.customerDiscount *100 }} %
-                    {% endif %}
+                    {{ invoice.customerDiscount *100 }} %
                 </li>
-                <li>Total : insérer le total après remise</li>
-                <li>Dont Tva : insérer le montant de la TVA</li>
+                <li><strong class=invoice-font-size>Total : {{ invoice.total }}</strong></li>
+                <li>Dont Tva : {{ (invoice.total - (invoice.total/1.2))|number_format(2) }}</li>
             </ul>
         </div>
     </div>
