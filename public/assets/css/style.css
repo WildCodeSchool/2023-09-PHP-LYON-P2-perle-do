@@ -1065,11 +1065,10 @@ input.display {
         top: 30vh;
         right: 0;
         bottom: 0;
-        left: 50vw;
+        left: 28vw;
         align-items: center;
         justify-content: center;
         width: inherit;
-        min-width: 15%;
         height: inherit;
         min-height: 15%;
         padding: var(--spacing);
@@ -1077,10 +1076,15 @@ input.display {
         backdrop-filter: unset;
         background-color: transparent;
         color: var(--color);
+        margin: 0;
     }
 
     input.display {
         height: auto;
+    }
+
+    dialog article .close {
+        height: 0;
     }
 }
 
