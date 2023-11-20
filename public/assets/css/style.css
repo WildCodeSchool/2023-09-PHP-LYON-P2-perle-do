@@ -975,10 +975,10 @@ input.display {
         display: flex;
         z-index: 999;
         position: fixed;
-        top: 40vh;
+        top: 30vh;
         right: 0;
         bottom: 0;
-        left: 35vw;
+        left: 50vw;
         align-items: center;
         justify-content: center;
         width: inherit;
