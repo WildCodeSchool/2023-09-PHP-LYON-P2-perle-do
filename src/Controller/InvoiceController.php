@@ -6,7 +6,7 @@ use App\Model\InvoiceManager;
 use App\Model\ProductManager;
 use App\mikehaertl\wkhtmlto\Pdf;
 use App\Model\CustomerManager;
-use App\Model\ProductInvoiceManager;
+use App\Model\ProdInvoiceManager;
 
 class InvoiceController extends AbstractController
 {
@@ -19,11 +19,15 @@ class InvoiceController extends AbstractController
             $products = $productManager->getProductsbyInvoice($id);
             $customerManager = new CustomerManager();
             $customer = $customerManager->getCustomerById($id);
-
+            $prodInvoiceManager = new ProdInvoiceManager();
+            $productInvoices = $prodInvoiceManager->selectAll();
+// var_dump($productInvoices);
+// die();
             return $this->twig->render('Invoice/show.html.twig', [
                 'invoice' => $invoice,
                 'products' => $products,
                 'customer' => $customer,
+                'productInvoices' => $productInvoices,
             ]);
         } else {
             header('Location: /');

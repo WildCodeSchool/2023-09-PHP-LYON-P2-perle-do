@@ -40,14 +40,15 @@
             </tr>
         </thead>
         <tbody>
-            
+            {% set sum = 0 %}
             {% for product in products %}
+            {% set sum = sum + product.price * invoice.piQuantity %}
             <tr>
                 <td>{{ product.productRef }}</td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.price }}</td>
-                <td>{{ product.quantity }}</td>
-                <td>{{ product.price * product.quantity }}</td>
+                <td>{{ invoice.piQuantity }}</td>
+                <td>{{ product.price * invoice.piQuantity }}</td>
             </tr>
             {% endfor %}
         </tbody>
@@ -55,20 +56,29 @@
     <div class="container-name-invoice">
         <div class="container-society">
             <p>Echéance : {{ invoice.date|format_date('medium', locale='fr') }}</p>
-            <p>Règlement : {{ invoice.payment_type }}</p>
+            <p>Règlement : {{ invoice.paymentName }}</p>
         </div>
         <div class"total-invoice">
             <ul>
-                <li>Sous-Total : insérer le calcul du total</li>
+                <li>Sous-Total :{{ sum }} €</li>
                 <li>Remise : 
                     {{ invoice.customerDiscount *100 }} %
                 </li>
-                <li><strong class=invoice-font-size>Total : {{ invoice.total }}</strong></li>
-                <li>Dont Tva : {{ (invoice.total - (invoice.total/1.2))|number_format(2) }}</li>
+                <li><strong class=invoice-font-size>Total : {{ invoice.total }} €</strong></li>
+                <li>Dont TVA : {{ (invoice.total - (invoice.total/1.2))|number_format(2) }}</li>
             </ul>
         </div>
     </div>
 
+  {% for product in products %}
 
+            <tr>
+                <td>{{ product.productRef }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ invoice.piQuantity }}</td>
+                <td>{{ product.price * invoice.piQuantity }}</td>
+            </tr>
+            {% endfor %}
 
 {% endblock %}
