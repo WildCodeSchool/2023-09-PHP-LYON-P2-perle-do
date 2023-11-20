@@ -20,7 +20,9 @@
         <p>Ancienne Facture :</p>
         
         {% for invoice in invoices %}
-        <a href="/invoices/show?id={{ invoice.invoiceId }}" role="button" class='customer-show-invoice'>{{ invoice.num_invoice }} / {{ invoice.date|date("m-d-Y", "Europe/Paris") }} / {{ invoice.total}}</a>
+        <a href="/invoices/show?id={{ invoice.invoiceId }}" role="button" class='customer-show-invoice'>
+        fac n°{{ invoice.num_invoice }} / {{ invoice.date|format_date('medium', locale='fr') }} / {{ invoice.total}} €
+        </a>
         {% endfor %}
         
         <a href="/customers/edit?id={{ customer.id }}" role="button" class="edit-button-customer">

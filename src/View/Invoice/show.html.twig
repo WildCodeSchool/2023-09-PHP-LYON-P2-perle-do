@@ -5,7 +5,7 @@
     <div class="container-head-invoice">
         <img src="/assets/images/logo2.png" alt="logo de perle do" class="img-invoice">
         <h2>Facture n° {{ invoice.numInvoice }}</h2>
-        <p>date : {{ invoice.date|date("m-d-Y", "Europe/Paris") }}</p>
+        <p>{{ invoice.date|format_date('full', locale='fr') }}</p>
     </div>
 
     <div class="container-name-invoice">
@@ -54,7 +54,7 @@
     </table>
     <div class="container-name-invoice">
         <div class="container-society">
-            <p>Echéance : {{ invoice.date|date("m-d-Y", "Europe/Paris") }}</p>
+            <p>Echéance : {{ invoice.date|format_date('medium', locale='fr') }}</p>
             <p>Règlement : {{ invoice.payment_type }}</p>
         </div>
         <div class"total-invoice">

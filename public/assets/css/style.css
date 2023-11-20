@@ -131,6 +131,7 @@ article p {
     top: -5vh;
     left: 11vw;
 }
+
 /* navbar */
 
 nav ul {
@@ -155,7 +156,7 @@ nav {
     box-shadow: var(--card-box-shadow);
 }
 
-.navbar-mobile > ul a {
+.navbar-mobile>ul a {
     color: var(--font-black);
 }
 
@@ -187,6 +188,7 @@ h4 {
     position: relative;
     top: -4vh;
 }
+
 .block-page article {
     position: relative;
     top: -4vh;
@@ -252,11 +254,11 @@ select {
     font-size: 1.5rem;
 }
 
-.add-button > a > p,
-.delete-button > a,
-.edit-button > a,
-.cancel-button > a,
-.validate-button > a {
+.add-button>a>p,
+.delete-button>a,
+.edit-button>a,
+.cancel-button>a,
+.validate-button>a {
     margin: 0;
     color: var(--font-black);
 }
@@ -280,9 +282,10 @@ select {
     margin: 1rem 0;
 }
 
-.article-category > p {
+.article-category>p {
     margin: 0;
 }
+
 /*-------- GRID FORM STARTS--------- */
 .add-products-grid {
     display: grid;
@@ -302,6 +305,7 @@ select {
     grid-column-start: 1;
     grid-column-end: 3;
 }
+
 #add-category-form {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -390,11 +394,13 @@ button {
     grid-template-columns: 1fr 1fr;
     gap: 0.5rem;
 }
+
 .show-customer p:first-child {
     grid-row-start: 1;
     grid-row-end: 3;
     align-self: center;
 }
+
 .edit-button-customer {
     grid-column-start: 1;
     grid-column-end: 2;
@@ -408,6 +414,7 @@ button {
 .fa-trash-can {
     color: var(--font-black);
 }
+
 .delete-button-customer {
     grid-column-start: 2;
     grid-column-end: 3;
@@ -425,6 +432,7 @@ button {
     border-color: transparent;
     box-shadow: var(--card-box-shadow);
 }
+
 /* pages produits */
 .product {
     position: relative;
@@ -442,10 +450,12 @@ button {
     font-size: 1rem;
     padding-top: 0.5rem;
 }
+
 .container-plus-minus {
     display: flex;
     justify-content: space-around;
 }
+
 .cart-shopping {
     width: 85%;
     padding: 0.5rem 0 0.5rem 0;
@@ -486,7 +496,7 @@ button {
 
 }
 
-.container-name-invoice{
+.container-name-invoice {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -504,6 +514,7 @@ button {
 .fa-pen {
     color: var(--font-black);
 }
+
 a.edit-button-category {
     background-color: var(--block-color);
     border-color: transparent;
@@ -513,6 +524,7 @@ ul {
     margin: 0;
     padding: 0;
 }
+
 .article-product {
     height: auto;
     position: relative;
@@ -588,6 +600,7 @@ article.calculator {
     margin: 0;
     padding: 0;
 }
+
 .body-calculator {
     display: flex;
     align-items: center;
@@ -615,11 +628,13 @@ input.display {
     margin-bottom: 10px;
     font-size: 25px;
 }
+
 .spans-calculator {
     display: grid;
     grid-gap: 10px;
     grid-template-columns: repeat(4, 1fr);
 }
+
 .button-on-calculator {
     padding: 10px;
     border-radius: 6px;
@@ -628,12 +643,15 @@ input.display {
     cursor: pointer;
     background-color: #eee;
 }
+
 .button-on-calculator :active {
     transform: scale(0.99);
 }
+
 .operator {
     background-color: var(--block-color);
 }
+
 /* -------------------media queries pour + 780 px--------------------- */
 /***********************************************************************/
 
@@ -693,7 +711,7 @@ input.display {
         padding: 0 6%;
     }
 
-    .navbar-desktop > ul a {
+    .navbar-desktop>ul a {
         color: var(--font-black);
         font-size: small;
     }
@@ -740,7 +758,7 @@ input.display {
 
     .fa-power-off,
     .deconnexion,
-    .deconnexion > a {
+    .deconnexion>a {
         color: var(--primary);
     }
 
@@ -776,7 +794,8 @@ input.display {
         border: none;
         color: var(--font-black);
     }
-    .add-button > a > p {
+
+    .add-button>a>p {
         font-size: 1.2rem;
     }
 
@@ -801,7 +820,7 @@ input.display {
         padding: 2rem 3rem;
     }
 
-    .add-products-grid > div {
+    .add-products-grid>div {
         width: max-content;
     }
 
@@ -820,12 +839,10 @@ input.display {
         grid-column-end: 3;
     }
 
-    input:not(
-            [type="checkbox"],
-            [type="radio"],
-            [type="range"],
-            [type="file"]
-        ) {
+    input:not([type="checkbox"],
+        [type="radio"],
+        [type="range"],
+        [type="file"]) {
         height: 2rem;
         margin-bottom: 1rem;
         background-color: var(--background-button-color);
@@ -837,6 +854,7 @@ input.display {
         width: 100%;
         margin: 0.2rem;
     }
+
     #add-category-form {
         top: 5vh;
         left: 30vw;
@@ -885,6 +903,7 @@ input.display {
         background-color: var(--background-block-white);
         padding: 2rem 3rem 0 3 rem;
     }
+
     .article-category {
         left: 5%;
         top: 0%;
@@ -893,7 +912,7 @@ input.display {
         height: fit-content;
     }
 
-    .article-category > p {
+    .article-category>p {
         height: 20vh;
         align-items: center;
     }
@@ -954,13 +973,16 @@ input.display {
     .fa-minus {
         padding: 0;
     }
+
     .product {
         left: 30vw;
         width: 50%;
     }
+
     h3 {
         margin-top: 0;
     }
+
     h3.product {
         position: fixed;
         left: 30vw;
@@ -971,6 +993,7 @@ input.display {
         position: relative;
         top: 5vh;
     }
+
     a.edit-button-category {
         display: flex;
         width: 4vw;
@@ -990,11 +1013,13 @@ input.display {
         justify-content: center;
         align-items: center;
     }
+
     .block-page article {
         position: relative;
         top: 2vh;
         padding: 1rem;
     }
+
     p,
     a {
         color: var(--font-black);
@@ -1014,6 +1039,7 @@ input.display {
     .invoice-font-size {
         font-size: 1rem;
     }
+
     button.contrast {
         border-radius: 50%;
         width: 3rem;
@@ -1021,6 +1047,7 @@ input.display {
         position: fixed;
         bottom: 4vh;
     }
+
     i.fa-solid.fa-calculator {
         padding: 0;
         width: 2vw;
@@ -1030,6 +1057,7 @@ input.display {
         position: relative;
         justify-content: center;
     }
+
     dialog {
         display: flex;
         z-index: 999;
@@ -1046,13 +1074,14 @@ input.display {
         min-height: 15%;
         padding: var(--spacing);
         border: 0;
-        backdrop-filter:unset;
-        background-color:transparent;
+        backdrop-filter: unset;
+        background-color: transparent;
         color: var(--color);
-}
-input.display {
-    height: auto;
-}
+    }
+
+    input.display {
+        height: auto;
+    }
 }
 
 /* media queries pour print */
@@ -1064,5 +1093,4 @@ input.display {
     body header {
         display: none;
     }
-
 }
