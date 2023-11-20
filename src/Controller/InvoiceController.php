@@ -25,8 +25,6 @@ class InvoiceController extends AbstractController
                 'products' => $products,
                 'customer' => $customer,
             ]);
-            // $PDF = new \mikehaertl\wkhtmlto\Pdf($invoice);
-            // $PDF->send();
         } else {
             header('Location: /');
             die();
