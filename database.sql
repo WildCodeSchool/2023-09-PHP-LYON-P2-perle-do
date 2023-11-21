@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 10 nov. 2023 à 10:03
+-- Généré le : lun. 20 nov. 2023 à 14:58
 -- Version du serveur : 8.0.34
 -- Version de PHP : 8.0.26
 
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `created_date` date NOT NULL,
   `civility` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `lastname` varchar(100) NOT NULL,
-  `firstname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `firstname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `reference` varchar(100) NOT NULL,
   `adress` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `zipcode` mediumint DEFAULT NULL,
@@ -85,14 +85,15 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `id_type` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_type` (`id_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `customer`
 --
 
 INSERT INTO `customer` (`id`, `created_date`, `civility`, `lastname`, `firstname`, `reference`, `adress`, `zipcode`, `city`, `phone`, `email`, `description`, `id_type`) VALUES
-(1, '2023-11-10', 'Mr', 'GUIOT', 'Romain', 'C0001', '17 rue Delandine', 69002, 'Lyon', NULL, NULL, NULL, 1);
+(1, '2023-11-10', 'Mr', 'GUIOT', 'Romain', 'C0001', '17 rue Delandine', 69002, 'Lyon', NULL, NULL, NULL, 1),
+(2, '2023-11-18', 'Mme', 'PINFERI', 'Mélissa', 'C0002', '17 rue Delandine', 69002, 'LYON', NULL, NULL, NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -126,8 +127,8 @@ CREATE TABLE IF NOT EXISTS `invoice` (
   `payment_type_id` int NOT NULL,
   `id_customer` int NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `payment_type_id` (`payment_type_id`),
-  KEY `id_customer` (`id_customer`)
+  KEY `id_customer` (`id_customer`),
+  KEY `payment_type_id` (`payment_type_id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -255,8 +256,8 @@ CREATE TABLE IF NOT EXISTS `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `reference`, `price`, `description`, `origin`, `quantity`, `picture`, `id_category`, `id_material`) VALUES
-(1, 'LABRADORITE', 'P0001', '80.00', '869g', NULL, 1, NULL, 20, 2),
-(2, 'LABRADORITE', 'P0002', '42.00', '416g et 417g', NULL, 1, NULL, 20, 2),
+(1, 'LABRADORITE', 'P0001', '80.00', '869g', NULL, 2, NULL, 20, 2),
+(2, 'LABRADORITE', 'P0002', '42.00', '416g et 417g', NULL, 0, NULL, 20, 2),
 (3, 'LABRADORITE', 'P0003', '38.00', '373g', NULL, 1, NULL, 20, 2),
 (4, 'PIERRE DE LUNE', 'P0004', '50.00', '467g', NULL, 1, NULL, 20, 26),
 (5, 'PIERRE DE LUNE', 'P0005', '72.00', NULL, NULL, 1, NULL, 20, 26),
@@ -265,27 +266,27 @@ INSERT INTO `product` (`id`, `name`, `reference`, `price`, `description`, `origi
 (12, 'OPALE', 'P0008', '80.00', NULL, NULL, 1, NULL, 21, 23),
 (13, 'OPALE', 'P0009', '100.00', NULL, NULL, 1, NULL, 21, 23),
 (14, 'OPALE', 'P0010', '120.00', NULL, NULL, 1, NULL, 21, 23),
-(15, 'PENDENTIF ROND CHRYSOCOLLE', 'P0011', '30.00', 'pendentif + bélière + cordon jonc', NULL, 1, NULL, 3, 27),
+(15, 'PENDENTIF ROND CHRYSOCOLLE', 'P0011', '30.00', 'pendentif + bélière + cordon jonc', NULL, 0, NULL, 3, 27),
 (16, 'PENDENTIF COEUR OEUIL DE LUCIE', 'P0012', '33.00', 'pendentif + bélière + cordon jonc', NULL, 1, NULL, 3, 28),
 (17, 'PENDENTIF ROND MULTI', 'P0013', '30.00', 'pendentif + bélière + cordon jonc', NULL, 1, NULL, 3, 19),
 (18, 'PENDENTIF ROND OPALE BLEUE', 'P0014', '30.00', 'pendentif + bélière + cordon jonc', NULL, 1, NULL, 3, 23),
 (19, 'PENDENTIF TRIANGLE JASPE K2', 'P0015', '30.00', 'pendentif + bélière + cordon jonc', NULL, 1, NULL, 3, 19),
 (20, 'PENDENTIF MARQUISE FELDSPATH', 'P0016', '30.00', 'pendentif + bélière + cordon jonc', NULL, 1, NULL, 3, 29),
 (21, 'PENDENTIF GOUTTE MOOKAITE', 'P0017', '30.00', 'pendentif + bélière + cordon jonc', NULL, 1, NULL, 3, 13),
-(22, 'PENDENTIF ROND AGATE DENTRITE', 'P0018', '18.00', 'pendentif + bélière + cordon jonc', NULL, 1, NULL, 3, 13),
-(23, 'PENDENTIF ROND OPALE DENTRITE', 'P0019', '15.00', 'pendentif + bélière + cordon jonc', NULL, 1, NULL, 3, 23),
-(24, 'QUARTZ ROSE BRUT', 'P0020', '2.00', 'lot de 9 minéraux', NULL, 1, NULL, 12, 25),
-(25, 'QUARTZ BLANC BRUT', 'P0021', '2.00', 'lot de 11 minéraux', NULL, 1, NULL, 12, 25),
-(26, 'AVENTURINE VERTE', 'P0022', '2.00', 'lot de 6 minéraux', NULL, 1, NULL, 12, 18),
-(27, 'JASPE ZEBRE', 'P0023', '2.00', 'lot de 3 minéraux', NULL, 1, NULL, 12, 19),
+(22, 'PENDENTIF ROND AGATE DENTRITE', 'P0018', '18.00', 'pendentif + bélière + cordon jonc', NULL, 2, NULL, 3, 13),
+(23, 'PENDENTIF ROND OPALE DENTRITE', 'P0019', '15.00', 'pendentif + bélière + cordon jonc', NULL, 2, NULL, 3, 23),
+(24, 'QUARTZ ROSE BRUT', 'P0020', '2.00', 'lot de 9 minéraux', NULL, 9, NULL, 12, 25),
+(25, 'QUARTZ BLANC BRUT', 'P0021', '2.00', 'lot de 11 minéraux', NULL, 11, NULL, 12, 25),
+(26, 'AVENTURINE VERTE', 'P0022', '2.00', 'lot de 6 minéraux', NULL, 6, NULL, 12, 18),
+(27, 'JASPE ZEBRE', 'P0023', '2.00', 'lot de 3 minéraux', NULL, 3, NULL, 12, 19),
 (28, 'LAPIS LAZULI', 'P0024', '75.00', '646g petit', NULL, 1, NULL, 20, 11),
 (29, 'LAPIS LAZULI', 'P0025', '130.00', '1189g grand', NULL, 1, NULL, 20, 11),
-(30, 'SELENITE CASCADE S', 'P0026', '12.00', 'sélénite cascade S lot de 7', NULL, 1, NULL, 16, 32),
+(30, 'SELENITE CASCADE S', 'P0026', '12.00', 'sélénite cascade S lot de 7', NULL, 8, NULL, 16, 32),
 (32, 'SELENITE CASCADE M', 'P0027', '16.00', 'sélénite cascade M lot de 3', NULL, 1, NULL, 16, 32),
 (33, 'SPHERE SELENITE', 'P0028', '25.00', 'sphère sélénite + 1 support', NULL, 1, NULL, 16, 32),
-(34, 'PALET SELENITE METATRON', 'P0029', '20.00', 'palet sélénite (métatron) lot de 3', NULL, 1, NULL, 16, 32),
-(35, 'PALET SELENITE', 'P0030', '17.00', 'palet sélénite lot de 10', NULL, 1, NULL, 16, 32),
-(36, 'BOUGEOIR SELENITE', 'P0031', '20.00', 'bougeoir sélénite lot de 2', NULL, 1, NULL, 5, 32),
+(34, 'PALET SELENITE METATRON', 'P0029', '20.00', 'palet sélénite (métatron) lot de 3', NULL, 3, NULL, 16, 32),
+(35, 'PALET SELENITE', 'P0030', '17.00', 'palet sélénite lot de 10', NULL, 10, NULL, 16, 32),
+(36, 'BOUGEOIR SELENITE', 'P0031', '20.00', 'bougeoir sélénite lot de 2', NULL, 2, NULL, 5, 32),
 (37, 'POINTE CALCITE', 'P0032', '22.00', '237g', NULL, 1, NULL, 14, 3),
 (38, 'POINTE CALCITE', 'P0033', '20.00', 'pointe calcite Brésil 218g', NULL, 1, NULL, 14, 3),
 (39, 'POINTE CALCITE', 'P0034', '25.00', 'pointe calcite Brésil 280g', NULL, 1, NULL, 14, 3),
@@ -358,8 +359,8 @@ INSERT INTO `product` (`id`, `name`, `reference`, `price`, `description`, `origi
 (106, 'PIERRE ROULÉE LAPIS LAZULI', 'P0101', '7.00', 'lot de 13', NULL, 1, NULL, 8, 11),
 (107, 'PIERRE ROULÉE LAPIS LAZULI', 'P0102', '6.00', 'lot de 2', NULL, 1, NULL, 8, 11),
 (108, 'PIERRE ROULÉE LAPIS LAZULI', 'P0103', '4.00', 'lot de 5', NULL, 1, NULL, 8, 11),
-(109, 'TRANCHE D\'AGATE', 'P0104', '1.00', 'lot de 216', NULL, 1, NULL, 15, 13),
-(110, 'CALCITE BRUT', 'P0105', '300.00', '', NULL, 1, NULL, 12, 3),
+(109, 'TRANCHE D\'AGATE', 'P0104', '1.00', 'lot de 216', NULL, 211, NULL, 15, 13),
+(110, 'CALCITE BRUT', 'P0105', '300.00', '', NULL, 6, NULL, 12, 3),
 (111, 'LAMPE CALCITE', 'P0106', '47.00', NULL, NULL, 1, NULL, 4, 3),
 (112, 'LAMPE SELENITE PM', 'P0107', '55.00', NULL, NULL, 1, NULL, 4, 32),
 (113, 'BOUDDHA DEBOUT LOTUS', 'P0108', '130.00', NULL, NULL, 1, NULL, 19, 32),
@@ -367,37 +368,37 @@ INSERT INTO `product` (`id`, `name`, `reference`, `price`, `description`, `origi
 (115, 'FONTAINE CHRISTAL DE ROCHE', 'P0110', '250.00', 'vasque, grande pierre, 2 sacs de pierres déco, pompe, lampe, alimentation', NULL, 1, NULL, 11, 12),
 (116, 'GEODE AMETHYSTE 18,48Kg', 'P0111', '1200.00', 'petite 18,48kG', NULL, 1, NULL, 17, 7),
 (117, 'GEODE AMETHYSTE 23,74Kg', 'P0112', '1500.00', 'grande 23,74Kg', NULL, 1, NULL, 17, 7),
-(118, 'QUARTZ CORINTO BRESIL', 'P0113', '6.00', 'lot de 11', NULL, 1, NULL, 14, 25),
-(119, 'QUARTZ CORINTO BRESIL', 'P0114', '4.00', 'lot de 4', NULL, 1, NULL, 14, 25),
-(120, 'MINI BOUTEILLE', 'P0115', '5.00', 'lot de 10', NULL, 1, NULL, 11, 32),
-(121, 'BOUGIE AMRTHYSTE', 'P0116', '12.00', 'lot de 2', NULL, 1, NULL, 10, 7),
-(122, 'BOUGIE QUARTZ ROSE', 'P0117', '12.00', 'lot de 2', NULL, 1, NULL, 10, 9),
-(123, 'BOUGIE CELESTITE', 'P0118', '12.00', 'lot de 2', NULL, 1, NULL, 10, 32),
-(124, 'COUPE ONYX 10CM', 'P0119', '19.00', 'lot de 7', NULL, 1, NULL, 11, 6),
-(125, 'COUPE ONYX 15CM', 'P0120', '30.00', 'lot de 5', NULL, 1, NULL, 11, 6),
-(126, 'BOULE 30mm', 'P0121', '8.00', 'lot de 38 différentes', NULL, 1, NULL, 7, 32),
-(127, 'OEUF ONYX', 'P0122', '10.00', 'lot de 12', NULL, 1, NULL, 7, 6),
+(118, 'QUARTZ CORINTO BRESIL', 'P0113', '6.00', 'lot de 11', NULL, 11, NULL, 14, 25),
+(119, 'QUARTZ CORINTO BRESIL', 'P0114', '4.00', 'lot de 4', NULL, 4, NULL, 14, 25),
+(120, 'MINI BOUTEILLE', 'P0115', '5.00', 'lot de 10', NULL, 10, NULL, 11, 32),
+(121, 'BOUGIE AMRTHYSTE', 'P0116', '12.00', 'lot de 2', NULL, 2, NULL, 10, 7),
+(122, 'BOUGIE QUARTZ ROSE', 'P0117', '12.00', 'lot de 2', NULL, 2, NULL, 10, 9),
+(123, 'BOUGIE CELESTITE', 'P0118', '12.00', 'lot de 2', NULL, 2, NULL, 10, 32),
+(124, 'COUPE ONYX 10CM', 'P0119', '19.00', 'lot de 7', NULL, 7, NULL, 11, 6),
+(125, 'COUPE ONYX 15CM', 'P0120', '30.00', 'lot de 5', NULL, 5, NULL, 11, 6),
+(126, 'BOULE 30mm', 'P0121', '8.00', 'lot de 38 différentes', NULL, 38, NULL, 7, 32),
+(127, 'OEUF ONYX', 'P0122', '10.00', 'lot de 12', NULL, 12, NULL, 7, 6),
 (128, 'BATON DE MASSAGE EN SELENITE', 'P0123', '12.00', '2', NULL, 1, NULL, 16, 32),
 (129, 'OPALE VERTE POLIE', 'P0124', '35.00', NULL, NULL, 1, NULL, 20, 23),
 (130, 'CHRYSOPRASE', 'P0125', '90.00', NULL, NULL, 1, NULL, 20, 32),
 (131, 'AGATE SUR SOCLE', 'P0126', '25.00', 'lot de 2', NULL, 1, NULL, 15, 13),
 (132, 'AGATE SUR SOCLE', 'P0127', '20.00', NULL, NULL, 1, NULL, 15, 13),
 (133, 'QUARTZ ROSE TOUT POLIE', 'P0128', '40.00', 'lot de 2', NULL, 1, NULL, 20, 9),
-(134, 'BOUGEOIR EN SEL (PETIT)', 'P0129', '10.00', 'lot de 18', NULL, 1, NULL, 5, 32),
+(134, 'BOUGEOIR EN SEL (PETIT)', 'P0129', '10.00', 'lot de 18', NULL, 18, NULL, 5, 32),
 (135, 'AMETHYSTE POINT BRESIL', 'P0130', '6.00', 'lot de 36', NULL, 1, NULL, 14, 7),
 (136, 'AMETHYSTE POINT BRESIL', 'P0131', '7.00', '', NULL, 1, NULL, 14, 7),
 (137, 'LABRADORITE', 'P0132', '30.00', NULL, NULL, 1, NULL, 20, 2),
-(138, 'ANIMAL PIERRE DES ANDES TORTUES', 'P0133', '5.00', 'lot de 10', NULL, 1, NULL, 6, 32),
-(139, 'ANIMAL PIERRE DES ANDES CHIEN', 'P0134', '5.00', 'lot de 10', NULL, 1, NULL, 6, 32),
-(140, 'ANIMAL PIERRE DES ANDES DIPLODOCUS', 'P0135', '5.00', 'lot de 10', NULL, 1, NULL, 6, 32),
-(141, 'ANIMAL PIERRE DES ANDES CHEVAL', 'P0136', '5.00', 'lot de 10', NULL, 1, NULL, 6, 32),
-(142, 'ANIMAL PIERRE DES ANDES LICORNE', 'P0137', '5.00', 'lot de 10', NULL, 1, NULL, 6, 32),
-(143, 'ANIMAL PIERRE DES ANDES CHAT', 'P0138', '5.00', 'lot de 10', NULL, 1, NULL, 6, 32),
-(144, 'ANIMAL PIERRE DES ANDES TRICERATOPS', 'P0139', '5.00', 'lot de 10', NULL, 1, NULL, 6, 32),
-(145, 'PIERRE ROULÉE AMETHYSTE ZONÉE NAMBIE', 'P0140', '6.00', 'lot de 26', NULL, 1, NULL, 8, 17),
-(146, 'PIERRE ROULÉE AMETHYSTE ZONÉE NAMBIE', 'P0141', '5.00', 'lot de 50', NULL, 1, NULL, 8, 17),
-(147, 'PIERRE ROULÉE AMETHYSTE ZONÉE NAMBIE', '0142', '4.00', 'lot de 2', NULL, 1, NULL, 8, 17),
-(148, 'ZEOLITE INDE (APOPHYLITTE ET STIBITE)', 'P0143', '40.00', 'lot de 6', NULL, 1, NULL, 12, 32),
+(138, 'ANIMAL PIERRE DES ANDES TORTUES', 'P0133', '5.00', 'lot de 10', NULL, 10, NULL, 6, 32),
+(139, 'ANIMAL PIERRE DES ANDES CHIEN', 'P0134', '5.00', 'lot de 10', NULL, 8, NULL, 6, 32),
+(140, 'ANIMAL PIERRE DES ANDES DIPLODOCUS', 'P0135', '5.00', 'lot de 10', NULL, 8, NULL, 6, 32),
+(141, 'ANIMAL PIERRE DES ANDES CHEVAL', 'P0136', '5.00', 'lot de 10', NULL, 7, NULL, 6, 32),
+(142, 'ANIMAL PIERRE DES ANDES LICORNE', 'P0137', '5.00', 'lot de 10', NULL, 10, NULL, 6, 32),
+(143, 'ANIMAL PIERRE DES ANDES CHAT', 'P0138', '5.00', 'lot de 10', NULL, 9, NULL, 6, 32),
+(144, 'ANIMAL PIERRE DES ANDES TRICERATOPS', 'P0139', '5.00', 'lot de 10', NULL, 9, NULL, 6, 32),
+(145, 'PIERRE ROULÉE AMETHYSTE ZONÉE NAMBIE', 'P0140', '6.00', 'lot de 26', NULL, 26, NULL, 8, 17),
+(146, 'PIERRE ROULÉE AMETHYSTE ZONÉE NAMBIE', 'P0141', '5.00', 'lot de 50', NULL, 47, NULL, 8, 17),
+(147, 'PIERRE ROULÉE AMETHYSTE ZONÉE NAMBIE', '0142', '4.00', 'lot de 2', NULL, 2, NULL, 8, 17),
+(148, 'ZEOLITE INDE (APOPHYLITTE ET STIBITE)', 'P0143', '40.00', 'lot de 6', NULL, 5, NULL, 12, 32),
 (149, 'RUTILE HEMATITE', 'P0144', '14.00', '', NULL, 1, NULL, 12, 32),
 (150, 'AZURITE', 'P0145', '10.00', NULL, NULL, 1, NULL, 12, 32),
 (151, 'CYANITE ROUGE', 'P0146', '10.00', 'lot de 2', NULL, 1, NULL, 12, 32),
@@ -521,12 +522,35 @@ INSERT INTO `product` (`id`, `name`, `reference`, `price`, `description`, `origi
 DROP TABLE IF EXISTS `product_invoice`;
 CREATE TABLE IF NOT EXISTS `product_invoice` (
   `id` int NOT NULL AUTO_INCREMENT,
+  `quantity` int NOT NULL,
   `id_product` int NOT NULL,
   `id_invoice` int NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id` (`id_product`,`id_invoice`),
-  KEY `id_invoice` (`id_invoice`)
+  KEY `id_invoice` (`id_invoice`),
+  KEY `id` (`id_product`,`id_invoice`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `role`
+--
+
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE IF NOT EXISTS `role` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `role`
+--
+
+INSERT INTO `role` (`id`, `name`) VALUES
+(1, 'administrateur'),
+(2, 'employé'),
+(3, 'stagiaire');
 
 -- --------------------------------------------------------
 
@@ -540,7 +564,7 @@ CREATE TABLE IF NOT EXISTS `type` (
   `type` varchar(100) NOT NULL,
   `discount` float(3,2) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `type`
@@ -552,7 +576,8 @@ INSERT INTO `type` (`id`, `type`, `discount`) VALUES
 (3, 'police', 0.10),
 (4, 'pompier', 0.10),
 (5, 'Famille', 0.20),
-(6, 'amis', 0.20);
+(6, 'amis', 0.20),
+(7, 'Carte Fidélité', 0.10);
 
 -- --------------------------------------------------------
 
@@ -565,11 +590,21 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` int NOT NULL AUTO_INCREMENT,
   `lastname` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `login` varchar(100) NOT NULL,
+  `pseudo` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `password` varchar(100) NOT NULL,
-  `role` int NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `role_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `role` (`role_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`id`, `lastname`, `name`, `pseudo`, `password`, `role_id`) VALUES
+(1, 'GUIOT', 'Romain', 'Jackal', '$2y$10$pdL8Mct2AwApY04aDlsYt.IFriY.WfTbif1zgpDlV/wjfd/3EccyC', 1),
+(4, 'BONNIER', 'Pierre-Louis', 'plb', '$2y$10$5itlGNcicK3l560yylSYcupE2dAvwcvlsHqGxMWmols.DAHwraE3K', 1),
+(5, 'RASA', 'Nicky', 'Nicky', '$2y$10$JHWUqej0KkDMdlyL/G8L1.cQuZp9X/d0qcc3S2oLLIBELxZniXR6q', 1);
 
 -- --------------------------------------------------------
 
@@ -631,6 +666,12 @@ ALTER TABLE `product`
 ALTER TABLE `product_invoice`
   ADD CONSTRAINT `product_invoice_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`),
   ADD CONSTRAINT `product_invoice_ibfk_2` FOREIGN KEY (`id_invoice`) REFERENCES `invoice` (`id`);
+
+--
+-- Contraintes pour la table `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

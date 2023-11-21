@@ -63,18 +63,16 @@ class ShopController extends AbstractController
                         }
 
                         unset($_SESSION['cart']);
-
-
                         header('Location: /shop');
                         exit;
                     } else {
                         return $this->twig->render(
                             'Shop/index.html.twig',
                             [
-                            'errors' => $errors,
-                            'products' => $products,
-                            'customers' => $customers,
-                            'payments' => $payments,
+                                'errors' => $errors,
+                                'products' => $products,
+                                'customers' => $customers,
+                                'payments' => $payments,
                             ]
                         );
                     }
@@ -82,9 +80,9 @@ class ShopController extends AbstractController
                     return $this->twig->render(
                         'Shop/index.html.twig',
                         [
-                        'products' => $products,
-                        'customers' => $customers,
-                        'payments' => $payments,
+                            'products' => $products,
+                            'customers' => $customers,
+                            'payments' => $payments,
                         ]
                     );
                 }
