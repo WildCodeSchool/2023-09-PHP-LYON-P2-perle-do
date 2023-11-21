@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 20 nov. 2023 à 14:58
+-- Généré le : mar. 21 nov. 2023 à 15:55
 -- Version du serveur : 8.0.34
 -- Version de PHP : 8.0.26
 
@@ -20,6 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `perle_do`
 --
+
+DROP DATABASE IF EXISTS `perle_do`;
+CREATE DATABASE IF NOT EXISTS `perle_do`;
 
 -- --------------------------------------------------------
 
@@ -87,14 +90,6 @@ CREATE TABLE IF NOT EXISTS `customer` (
   KEY `id_type` (`id_type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Déchargement des données de la table `customer`
---
-
-INSERT INTO `customer` (`id`, `created_date`, `civility`, `lastname`, `firstname`, `reference`, `adress`, `zipcode`, `city`, `phone`, `email`, `description`, `id_type`) VALUES
-(1, '2023-11-10', 'Mr', 'GUIOT', 'Romain', 'C0001', '17 rue Delandine', 69002, 'Lyon', NULL, NULL, NULL, 1),
-(2, '2023-11-18', 'Mme', 'PINFERI', 'Mélissa', 'C0002', '17 rue Delandine', 69002, 'LYON', NULL, NULL, NULL, 3);
-
 -- --------------------------------------------------------
 
 --
@@ -120,23 +115,16 @@ CREATE TABLE IF NOT EXISTS `customer_workshop` (
 DROP TABLE IF EXISTS `invoice`;
 CREATE TABLE IF NOT EXISTS `invoice` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `num_invoice` varchar(100) NOT NULL,
+  `num_invoice` int NOT NULL,
   `date` date NOT NULL,
-  `total` decimal(6,2) NOT NULL,
+  `total` decimal(15,2) NOT NULL,
   `discount` float(5,2) NOT NULL,
   `payment_type_id` int NOT NULL,
   `id_customer` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_customer` (`id_customer`),
   KEY `payment_type_id` (`payment_type_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Déchargement des données de la table `invoice`
---
-
-INSERT INTO `invoice` (`id`, `num_invoice`, `date`, `total`, `discount`, `payment_type_id`, `id_customer`) VALUES
-(1, 'F0001', '2023-11-10', '150.00', 0.00, 1, 1);
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -528,7 +516,7 @@ CREATE TABLE IF NOT EXISTS `product_invoice` (
   PRIMARY KEY (`id`),
   KEY `id_invoice` (`id_invoice`),
   KEY `id` (`id_product`,`id_invoice`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -650,8 +638,7 @@ ALTER TABLE `invoice`
 -- Contraintes pour la table `invoice_workshop`
 --
 ALTER TABLE `invoice_workshop`
-  ADD CONSTRAINT `invoice_workshop_ibfk_1` FOREIGN KEY (`id_workshop`) REFERENCES `workshop` (`id`),
-  ADD CONSTRAINT `invoice_workshop_ibfk_2` FOREIGN KEY (`id_invoice`) REFERENCES `invoice` (`id`);
+  ADD CONSTRAINT `invoice_workshop_ibfk_1` FOREIGN KEY (`id_workshop`) REFERENCES `workshop` (`id`);
 
 --
 -- Contraintes pour la table `product`
