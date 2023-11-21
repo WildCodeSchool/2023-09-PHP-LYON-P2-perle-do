@@ -23,6 +23,7 @@ SET time_zone = "+00:00";
 
 DROP DATABASE IF EXISTS `perle_do`;
 CREATE DATABASE IF NOT EXISTS `perle_do`;
+USE `perle_do`; 
 
 -- --------------------------------------------------------
 
