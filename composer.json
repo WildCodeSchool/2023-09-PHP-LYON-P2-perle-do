@@ -11,7 +11,8 @@
     "require": {
         "twig/twig": "^3.5.1",
         "ext-pdo": "*",
-        "twig/intl-extra": "^3.7"
+        "twig/intl-extra": "^3.7",
+        "mikehaertl/phpwkhtmltopdf": "^2.5"
     },
     "require-dev": {
         "filp/whoops": "^2.15",

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\CustomerManager;
+use App\Model\InvoiceManager;
 use App\Model\TypeManager;
 use App\Service\ValidationService;
 
@@ -66,10 +67,13 @@ class CustomerController extends AbstractController
             $customer = $customerManager->getCustomerById($id);
             $typeManager = new TypeManager();
             $type = $typeManager->getTypeById($id);
+            $invoiceManager = new InvoiceManager();
+            $invoices = $invoiceManager->getAllInvoicesByCustomer($id);
 
             return $this->twig->render('customer/show.html.twig', [
                 'customer' => $customer,
                 'type' => $type,
+                'invoices' => $invoices,
             ]);
         } else {
             header('Location: /');
