@@ -59,9 +59,6 @@ class ShopController extends AbstractController
                         // var_dump($key);
                         // die();
                         $invoiceManager->addInvoiceProduct($productId, $quantity, $invoiceId);
-
-                        unset($_SESSION['cart']);
-                        header('Location: /shop');
                     }
 
 

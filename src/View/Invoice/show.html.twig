@@ -71,7 +71,7 @@
 					{{ invoice.customerDiscount *100 }}
 					%
 				</li>
-				{% set sumT = sum * (1 - type.discount) %}
+				{% set sumT = sum * (1 - invoice.customerDiscount) %}
 				<li>
 					<strong class="invoice-font-size">Total :
 						{{ sumT }}
