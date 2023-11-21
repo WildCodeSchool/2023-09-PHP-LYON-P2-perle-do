@@ -21,7 +21,7 @@
         
         {% for invoice in invoices %}
         <a href="/invoices/show?id={{ invoice.invoiceId }}" role="button" class='customer-show-invoice'>
-        fac n°{{ invoice.num_invoice }} / {{ invoice.date|format_date('medium', locale='fr') }} / {{ invoice.total}} €
+        fac n°{{ invoice.num_invoice }} / {{ invoice.date|format_date('medium', locale='fr') }}
         </a>
         {% endfor %}
         
