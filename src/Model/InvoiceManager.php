@@ -6,6 +6,7 @@ use PDO;
 
 class InvoiceManager extends AbstractManager
 {
+    public const TABLE = 'invoice';
     public function getOneInvoiceById(int $id): array|false
     {
         $sql = "SELECT i.id, i.num_invoice numInvoice, i.date, i.total, i.discount,
@@ -46,5 +47,32 @@ class InvoiceManager extends AbstractManager
         $query->execute();
         $allInvoices = $query->fetchAll(PDO::FETCH_ASSOC);
         return $allInvoices;
+    }
+    public function addInvoice($invoice)
+    {
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`num_invoice`, `date`,`total`,`discount`,
+        `payment_type_id`,`id_customer`) 
+        VALUES (:num_invoice, :date, :total, :discount, :payment_type_id, :id_customer)");
+        $statement->bindValue('num_invoice', 'toto', PDO::PARAM_STR);
+        $statement->bindValue('date', date("Y-m-d"), PDO::PARAM_STR);
+        $statement->bindValue('total', $invoice['total'], PDO::PARAM_INT);
+        $statement->bindValue('discount', $invoice['discount']);
+        $statement->bindValue('payment_type_id', $invoice['payment'], PDO::PARAM_INT);
+        $statement->bindValue('id_customer', $invoice['customers'], PDO::PARAM_INT);
+
+        $statement->execute();
+        return (int)$this->pdo->lastInsertId();
+    }
+
+    public function addInvoiceProduct($productId, $quantity, $invoiceId)
+    {
+        $statement = $this->pdo->prepare("INSERT INTO `product_invoice`(`quantity`, `id_product`, `id_invoice`) 
+        VALUES (:quantity, :id_product, :id_invoice)");
+        $statement->bindValue('quantity', $quantity, PDO::PARAM_INT);
+        $statement->bindValue('id_product', $productId, PDO::PARAM_INT);
+        $statement->bindValue('id_invoice', $invoiceId, PDO::PARAM_INT);
+
+        $statement->execute();
+        return (int)$this->pdo->lastInsertId();
     }
 }
