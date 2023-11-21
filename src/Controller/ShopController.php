@@ -16,68 +16,72 @@ class ShopController extends AbstractController
     public function indexShop(): string
     {
         if (isset($_SESSION['user_id'])) {
-            $productManager = new ProductManager();
-            $customerManager = new CustomerManager();
+            if (isset($_SESSION['cart'])) {
+                $productManager = new ProductManager();
+                $customerManager = new CustomerManager();
 
-            $cart = $_SESSION['cart'];
-            $errors = [];
-            $products = [];
 
-            foreach ($cart as $productId => $quantity) {
-                $aProductInfo = $productManager->getProductById($productId);
-                $aProductInfo['realQuantity'] = $quantity;
-                if (is_array($aProductInfo)) {
-                    $products[] = $aProductInfo;
+
+                $cart = $_SESSION['cart'];
+                $errors = [];
+                $products = [];
+
+                foreach ($cart as $productId => $quantity) {
+                    $aProductInfo = $productManager->getProductById($productId);
+                    $aProductInfo['realQuantity'] = $quantity;
+                    if (is_array($aProductInfo)) {
+                        $products[] = $aProductInfo;
+                    }
                 }
-            }
-            $payment = new PaymentManager();
-            $payments = $payment->selectAll();
+                $payment = new PaymentManager();
+                $payments = $payment->selectAll();
 
-            $customers = $customerManager->getAllCustomer();
-
+                $customers = $customerManager->getAllCustomer();
 
 
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                // clean $_POST data
 
-                $cartValid = array_map('trim', $_POST);
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    // clean $_POST data
 
-                $errorsValidation = new ValidationCart();
-                $errorsValidation->cartValidation($cartValid);
-                $errors = $errorsValidation->errors;
+                    $cartValid = array_map('trim', $_POST);
 
-                if (empty($errors)) {
-                    // if validation is ok, insert and redirection
-                    $invoiceManager = new InvoiceManager();
-                    $cartValid['discount'] = floatval($cartValid['discount']);
+                    $errorsValidation = new ValidationCart();
+                    $errorsValidation->cartValidation($cartValid);
+                    $errors = $errorsValidation->errors;
+
+                    if (empty($errors)) {
+                        // if validation is ok, insert and redirection
+                        $invoiceManager = new InvoiceManager();
+                        $cartValid['discount'] = floatval($cartValid['discount']);
 
 
-                    $invoiceId = $invoiceManager->addInvoice($cartValid);
+                        $invoiceId = $invoiceManager->addInvoice($cartValid);
 
-                    // foreach $product in $cartValid,
-                    foreach ($cart as $productId => $quantity) {
-                        // var_dump($key);
-                        // die();
-                        $invoiceManager->addInvoiceProduct($productId, $quantity, $invoiceId);
+                        // foreach $product in $cartValid,
+                        foreach ($cart as $productId => $quantity) {
+                            $invoiceManager->addInvoiceProduct($productId, $quantity, $invoiceId);
+                        }
 
                         unset($_SESSION['cart']);
+
+
                         header('Location: /shop');
+                        exit;
+                    } else {
+                        return $this->twig->render(
+                            'Shop/index.html.twig',
+                            [
+                            'errors' => $errors,
+                            'products' => $products,
+                            'customers' => $customers,
+                            'payments' => $payments,
+                            ]
+                        );
                     }
-
-
-                    return $this->twig->render(
-                        'Shop/index.html.twig',
-                        [
-                        'products' => $products,
-                        'customers' => $customers,
-                        'payments' => $payments,
-                        ]
-                    );
                 } else {
                     return $this->twig->render(
                         'Shop/index.html.twig',
                         [
-                        'errors' => $errors,
                         'products' => $products,
                         'customers' => $customers,
                         'payments' => $payments,
@@ -85,14 +89,7 @@ class ShopController extends AbstractController
                     );
                 }
             } else {
-                return $this->twig->render(
-                    'Shop/index.html.twig',
-                    [
-                        'products' => $products,
-                        'customers' => $customers,
-                        'payments' => $payments,
-                    ]
-                );
+                return $this->twig->render('Shop/index.html.twig');
             }
         } else {
             header('Location: /');
