@@ -29,7 +29,7 @@ class InvoiceManager extends AbstractManager
     {
         $sql = 'SELECT i.id, i.num_invoice, i.date, i.total, c.lastname, c.firstname
         FROM invoice i
-        JOIN customer c ON c.id = i.id_customer';
+        JOIN customer c ON c.id = i.id_customer ORDER BY num_invoice ASC';
         $query = $this->pdo->prepare($sql);
         $query->execute();
         $allInvoices = $query->fetchAll(PDO::FETCH_ASSOC);
