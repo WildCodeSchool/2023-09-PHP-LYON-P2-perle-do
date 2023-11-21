@@ -49,6 +49,9 @@ class ShopController extends AbstractController
                 if (empty($errors)) {
                     // if validation is ok, insert and redirection
                     $invoiceManager = new InvoiceManager();
+                    $cartValid['discount'] = floatval($cartValid['discount']);
+
+
                     $invoiceId = $invoiceManager->addInvoice($cartValid);
 
                     // foreach $product in $cartValid,

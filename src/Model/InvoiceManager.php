@@ -15,7 +15,7 @@ class InvoiceManager extends AbstractManager
         $statement->bindValue('num_invoice', 'toto', PDO::PARAM_STR);
         $statement->bindValue('date', date("Y-m-d"), PDO::PARAM_STR);
         $statement->bindValue('total', $invoice['total'], PDO::PARAM_INT);
-        $statement->bindValue('discount', $invoice['discount'], PDO::PARAM_INT);
+        $statement->bindValue('discount', $invoice['discount']);
         $statement->bindValue('payment_type_id', $invoice['payment'], PDO::PARAM_INT);
         $statement->bindValue('id_customer', $invoice['customers'], PDO::PARAM_INT);
 
