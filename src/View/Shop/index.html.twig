@@ -2,6 +2,7 @@
 
 {% block content %}
 	<h1>Panier</h1>
+		{% if products %}
 	<div class="auth_page">
 		{% for error in errors %}
 			<p class="auth_error">{{error}}</p>
@@ -80,4 +81,14 @@
 	<input type="radio" name="payment" value={{ payment.id }} id={{ payment.name }}>
 	<label for="{{ payment.name }}">{{ payment.name }}</label>
 {% endfor %}</div><div>
-<button type="submit" class="btn btn-success">Valider le panier</button></div></form>{% endblock %}
+<button type="submit" class="btn btn-success">Valider le panier</button></div></form>
+
+{% else %}
+
+<p>Votre panier est vide</p>
+
+{% endif %}
+
+{% endblock %}
+
+
