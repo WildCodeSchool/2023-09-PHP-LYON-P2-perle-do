@@ -9,9 +9,8 @@ class InvoiceManager extends AbstractManager
     public function getOneInvoiceById(int $id): array|false
     {
         $sql = "SELECT i.id, i.num_invoice numInvoice, i.date, i.total, i.discount,
-        p.name productName, p.price, p.reference productReference,
         c.lastname, c.firstname, c.reference customerReference, c.adress, c.zipcode, 
-        c.city, t.discount customerDiscount, pa.name paymentName, pi.quantity piQuantity
+        c.city, t.discount customerDiscount, pa.name paymentName
         FROM invoice i
         JOIN product_invoice pi ON i.id = pi.id_invoice
         JOIN product p ON p.id = pi.id_product

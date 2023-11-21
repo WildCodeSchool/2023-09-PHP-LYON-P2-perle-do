@@ -2,83 +2,83 @@
 
 {% block navbar %}{% endblock %}
 {% block content %}
-    <div class="container-head-invoice">
-        <img src="/assets/images/logo2.png" alt="logo de perle do" class="img-invoice">
-        <h2>Facture n° {{ invoice.numInvoice }}</h2>
-        <p>{{ invoice.date|format_date('full', locale='fr') }}</p>
-    </div>
+	<div class="container-head-invoice">
+		<img src="/assets/images/logo2.png" alt="logo de perle do" class="img-invoice">
+		<h2>Facture n°
+			{{ invoice.numInvoice }}</h2>
+		<p>{{ invoice.date|format_date('full', locale='fr') }}</p>
+	</div>
 
-    <div class="container-name-invoice">
-        <div class="container-society">
-            <ul>
-                <li>
-                    <h3 class="society">Perle DO</h3>
-                </li>
-                <li>SAS au capital de 1 000 €</li>
-                <li>75-77 avenue Victor Hugo</li>
-                <li>69160 Tassin La Demi-Lune</li>
-                <li>Siret : 978 254 878 00017</li>
-                <li>N° TVA : FR61978254878</li>
-            </ul>
-        </div>
-        <ul>
-            <li>{{ invoice.lastname }} {{ invoice.firstname }}</li>
-            <li>{{ invoice.adress }}</li>
-            <li>{{ invoice.zipcode }} {{ invoice.city }}</li>
-            <li>{{ invoice.customerReference }}</li>
-        </ul>
-    </div>
+	<div class="container-name-invoice">
+		<div class="container-society">
+			<ul>
+				<li>
+					<h3 class="society">Perle DO</h3>
+				</li>
+				<li>SAS au capital de 1 000 €</li>
+				<li>75-77 avenue Victor Hugo</li>
+				<li>69160 Tassin La Demi-Lune</li>
+				<li>Siret : 978 254 878 00017</li>
+				<li>N° TVA : FR61978254878</li>
+			</ul>
+		</div>
+		<ul>
+			<li>{{ invoice.lastname }}
+				{{ invoice.firstname }}</li>
+			<li>{{ invoice.adress }}</li>
+			<li>{{ invoice.zipcode }}
+				{{ invoice.city }}</li>
+			<li>{{ invoice.customerReference }}</li>
+		</ul>
+	</div>
 
-    <table role="grid" class="table-invoice">
-        <thead>
-            <tr class="thead">
-                <th scope="col">Référence</th>
-                <th scope="col">Nom du produit</th>
-                <th scope="col">Prix Unitaire</th>
-                <th scope="col">Quantité</th>
-                <th scope="col">Montant TTC</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% set sum = 0 %}
-            {% for product in products %}
-            {% set sum = sum + product.price * invoice.piQuantity %}
-            <tr>
-                <td>{{ product.productRef }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.price }}</td>
-                <td>{{ invoice.piQuantity }}</td>
-                <td>{{ product.price * invoice.piQuantity }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <div class="container-name-invoice">
-        <div class="container-society">
-            <p>Echéance : {{ invoice.date|format_date('medium', locale='fr') }}</p>
-            <p>Règlement : {{ invoice.paymentName }}</p>
-        </div>
-        <div class"total-invoice">
-            <ul>
-                <li>Sous-Total :{{ sum }} €</li>
-                <li>Remise : 
-                    {{ invoice.customerDiscount *100 }} %
-                </li>
-                <li><strong class=invoice-font-size>Total : {{ invoice.total }} €</strong></li>
-                <li>Dont TVA : {{ (invoice.total - (invoice.total/1.2))|number_format(2) }}</li>
-            </ul>
-        </div>
-    </div>
-
-  {% for product in products %}
-
-            <tr>
-                <td>{{ product.productRef }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.price }}</td>
-                <td>{{ invoice.piQuantity }}</td>
-                <td>{{ product.price * invoice.piQuantity }}</td>
-            </tr>
-            {% endfor %}
-
+	<table role="grid" class="table-invoice">
+		<thead>
+			<tr class="thead">
+				<th scope="col">Référence</th>
+				<th scope="col">Nom du produit</th>
+				<th scope="col">Prix Unitaire</th>
+				<th scope="col">Quantité</th>
+				<th scope="col">Montant TTC</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% set sum = 0 %}
+			{% for product in products %}
+				{% set sum = sum + product.price * product.quantity %}
+				<tr>
+					<td>{{ product.productRef }}</td>
+					<td>{{ product.name }}</td>
+					<td>{{ product.price }}</td>
+					<td>{{ product.quantity }}</td>
+					<td>{{ product.price * product.quantity }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<div class="container-name-invoice">
+		<div class="container-society">
+			<p>Echéance :
+				{{ invoice.date|format_date('medium', locale='fr') }}</p>
+			<p>Règlement :
+				{{ invoice.paymentName }}</p>
+		</div>
+		<div class"total-invoice">
+			<ul>
+				<li>Sous-Total : {{ sum }}
+					€</li>
+				<li>Remise :
+					{{ invoice.customerDiscount *100 }}
+					%
+				</li>
+				<li>
+					<strong class="invoice-font-size">Total :
+						{{ invoice.total }}
+						€</strong>
+				</li>
+				<li>Dont TVA :
+					{{ (invoice.total - (invoice.total/1.2))|number_format(2) }}</li>
+			</ul>
+		</div>
+	</div>
 {% endblock %}
