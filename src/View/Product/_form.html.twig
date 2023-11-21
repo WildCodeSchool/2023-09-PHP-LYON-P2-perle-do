@@ -1,0 +1,94 @@
+{# TODO : manage errors display #}
+
+<form action="" method="post">
+{% for error in errors %}
+<p> {{error}} </p>
+{% endfor %}
+	<input type="hidden" value="{{ product.id }}" name="id"> 
+
+	<div class="add-customer-grid" id="add-customer-form">
+
+		<div>
+			<label for="id_category">Catégorie du produit</label>
+		</div>
+
+
+
+		<div>
+		    <select name="id_category" id="id_category">
+				{% for category in categorys %}
+				<option value={{ category.id }} {% if category.name == product.categoryName %}selected{% endif %}>{{ category.name }}</option>
+				{% endfor %}
+        	</select>
+		</div>
+
+		<div>
+			<label for="id_material">Matériaux du produit</label>
+		</div>
+
+		<div>
+		    <select name="id_material" id="id_material">
+				{% for material in materials %}
+				<option value={{ material.id }} {% if material.name == product.materialName %}selected{% endif %}> {{ material.name }} </option>
+				{% endfor %}
+        	</select>
+		</div>
+
+		<div>
+			<label for="name">Nom du produit</label>
+		</div>
+
+		<div>
+		    <input type="text" value="{{ product.productname }}" id="name" name="name" placeholder="nom du produit" required>
+		</div>
+
+		<div>
+			<label for="reference">Référence</label>
+		</div>
+
+		<div>
+			<input type="text" value="{{ product.reference }}" id="reference" name="reference" placeholder="Référence du produit" required>
+		</div>
+
+		<div>
+			<label for="price">Prix</label>
+		</div>
+
+		<div>
+			<input type="number" value="{{ product.price }}" id="price" name="price" placeholder="prix du produit" required>
+		</div>
+
+		<div>
+			<label for="description">Description</label>
+		</div>
+
+		<div>
+			<input type="text" value="{{ product.description }}" id="description" name="description" placeholder="description du produit">
+		</div>
+
+		<div>
+			<label for="origin">Origine</label>
+		</div>
+
+		<div>
+			<input type="text" value="{{ product.origin }}" id="origin" name="origin" placeholder="origine">
+		</div>
+
+		<div>
+			<label for="quantity">Quantité</label>
+		</div>
+
+		<div>
+			<input type="number" value="{{ product.quantity }}" id="quantity" name="quantity" placeholder="Quantité">
+		</div>
+
+		<div><label for="picture">Charger une image</div>
+		
+		<div>
+			<input class="input-file" type="file" id="picture" name="picture" >
+		</div>
+
+		<button>Enregistrer</button>
+	</div>
+
+</form>

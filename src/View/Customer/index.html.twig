@@ -1,0 +1,19 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="customer-block">
+
+    {% for customer in customers %}
+        <article class="article-customer">
+            <a href="/customers/show?id={{customer.id}}">
+                <p class="p-customer"> <strong>{{ customer.lastname }}  {{ customer.firstname }} </strong></p>
+                <p class="p-customer"> {{ customer.city }} </p>
+                <p class="p-customer"> {{ customer.type }} </p>
+            </a>
+        </article>
+    {% endfor %} 
+    <a href="/customers/add" role="button" class="add-button-customer">
+        Nouveau client
+    </a>
+</div>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+	<h1>Panier</h1>
+		{% if products %}
+	<div class="auth_page">
+		{% for error in errors %}
+			<p class="auth_error">{{error}}</p>
+		{% endfor %}
+		<form action="" method='POST'>
+			<label for="customers">Sélectionne un client:</label>
+			<select id="customers" name="customers">
+				<option value="" disabled selected>Sélection</option>
+				{% for customer in customers %}
+					<option value="{{ customer.id }}">{{customer.lastname }}
+						{{ customer.firstname }}</option>
+				{% endfor %}
+			</select>
+			<table>
+				<thead>
+					<tr>
+						<th>id</th>
+						<th>Produit</th>
+						<th>Prix unitaire</th>
+						<th>quantité</th>
+						<th>Prix total</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% set sum = 0 %}
+					{% set sumT = 0 %}
+					{% set reduce = 0 %}
+					{% for product in products %}
+						{% set sum = sum + product.price * product.realQuantity %}
+						<tr>
+							<td>{{ product.id }}
+								<input type="hidden" name="id_product" id="id_product" value={{ product.id }}></td>
+							<td>{{ product.productname }}
+							</td>
+							<td>{{ product.price }}€</td>
+							<td>{{ product.realQuantity }}
+								<input type="hidden" name="quantity" id="quantity" value={{ product.realQuantity }}></td>
+							<td>{{ product.price * product.realQuantity }}€</td>
+						</tr>
+					{% endfor %}
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>Sous-total</td>
+						<td id="sum">{{ sum }}</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>Remise</td>
+						<td>
+							<select name="discount" id="discount">
+								<option value="" disabled selected>Sélection</option>
+								<option value=0>0%</option>
+								<option value=0.1>10%</option>
+								<option value=0.2>20%</option>
+							</select>
+						</td>
+					</tr>
+					{% set sumT = sum %}
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>Total</td>
+						<td> <span id="sumT">{{ sumT }}</span><input type="hidden" name="total" id="total" value={{ sumT }}>
+						</td>
+					</tr>
+				</tbody>
+			</input>
+		</td>
+	</tr>
+</tbody></table><div class="payment">
+{% for payment in payments %}
+	<input type="radio" name="payment" value={{ payment.id }} id={{ payment.name }}>
+	<label for="{{ payment.name }}">{{ payment.name }}</label>
+{% endfor %}</div><div>
+<button type="submit" class="btn btn-success">Valider le panier</button></div></form>
+
+{% else %}
+
+<p>Votre panier est vide</p>
+
+{% endif %}
+
+{% endblock %}
+
+

@@ -1,12 +1,16 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+<div class="category-block block-page">
+<article>
     <h1>Utilisateurs {{ user.title }}</h1>
     <p>{{ user.id }}. {{ user.title }}</p>
-    <a href="/items/edit?id={{ user.id }}">Edit</a>
-    <form action="/items/delete" method="POST">
+    <a href="/user/edit?id={{ user.id }}" role="button" class="edit-button-customer">Edit</a>
+    <form action="/user/delete" method="POST">
         <input type="hidden" name="id" value="{{ user.id }}">
         <button>Delete</button>
     </form>
-    <a href="/items">Back</a>
+    </article>
+    <a href="/user">Back</a>
+</div>
 {% endblock %}

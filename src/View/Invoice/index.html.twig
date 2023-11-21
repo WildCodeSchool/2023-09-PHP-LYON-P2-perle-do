@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    {% for invoice in invoices %}
+        <article class="customer-block">
+            <a href="/invoices/show?id={{ invoice.id }}" role="button"><strong class=invoice-font-size>{{ invoice.num_invoice }}</strong></a>
+            <ul>
+            <li>{{ invoice.date|format_date('medium', locale='fr') }}</li>
+            <li>{{ invoice.firstname }} {{ invoice.lastname }}</li>
+            </ul>
+            <p class="invoice-total"><strong class=invoice-font-size>{{ invoice.total }}</strong></p>
+        </article>
+    {% endfor %}
+{% endblock %}

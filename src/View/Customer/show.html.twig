@@ -1,0 +1,69 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class ="category-block block-page">
+    <h3 class="product">{{ customer.firstname }} {{ customer.lastname }} - {{ customer.reference}}</h3>
+    <article class=show-customer>
+        <p>Adresse :</p>
+        <p>{{ customer.adress }}</p>
+        <p>{{ customer.zipcode }} - {{ customer.city }}</p>
+        <p>Téléphone :</p>
+        <p>{{ customer.phone }}</p>
+        <p>Mail : </p>
+        <p>{{ customer.email }}</p>
+        <p>Information : </p>
+        <p>{{ customer.description }}</p>
+        <p>Type de clients :</p>
+        <p>{{ customer.type }}</p>
+        <p>Réduction :</p>
+        <p>{{ type.discount }}</p>
+        <p>Ancienne Facture :</p>
+        
+        {% for invoice in invoices %}
+        <a href="/invoices/show?id={{ invoice.invoiceId }}" role="button" class='customer-show-invoice'>
+        fac n°{{ invoice.num_invoice }} / {{ invoice.date|format_date('medium', locale='fr') }}
+        </a>
+        {% endfor %}
+        
+        <a href="/customers/edit?id={{ customer.id }}" role="button" class="edit-button-customer">
+            <i class="fa-solid fa-pen"></i>
+        </a>
+        <button class="delete-button-customer"
+            data-target="modal-delete"
+            onClick="toggleModal(event)">
+            <a href=""><i class="fa-regular fa-trash-can"></i></a>
+        </button>
+
+            <!-- Modal -->
+        <dialog id="modal-delete">
+            <article class="modal">
+                <a href="#close"
+                aria-label="Close"
+                class="close"
+                data-target="modal-delete"
+                onClick="toggleModal(event)">
+                </a>
+                <h3>Confirmer la suppression de :</h3>
+                <p>
+                {{ customer.firstname }} {{ customer.lastname }}
+                </p>
+                <footer>
+                    <a href="#cancel"
+                        role="button"
+                        class="secondary"
+                        data-target="modal-delete"
+                        onClick="toggleModal(event)">
+                        NON
+                    </a>
+                    <a href="/customers/delete?id= {{ customer.id }}"
+                        role="button"
+                        data-target="modal-delete"
+                        >
+                        OUI
+                    </a>
+                </footer>
+            </article>
+        </dialog>
+    </article>
+</div>
+{% endblock %}

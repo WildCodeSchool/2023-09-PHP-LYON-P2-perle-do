@@ -1,0 +1,8 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="auth_page">
+    <h1>Modification utilisateur {{ userToEdit.pseudo }}</h1>
+    {% include 'User/form.html.twig' %}
+</div>
+{% endblock %}

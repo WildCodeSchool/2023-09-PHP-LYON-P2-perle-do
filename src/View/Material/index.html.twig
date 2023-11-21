@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+  <h3 class="product">{{ materials[0].categoryName }}</h3>
+  <div class="customer-block">
+    {% for material in materials %}
+      <article class="article-category">
+        <a href="/products?categoryId={{ material.categoryId }}&materialId={{ material.materialId }}"><strong>{{ material.materialName }}</strong></a>
+        <a href="materials/edit?id={{ material.materialId }}" role="button" class="edit-button-category"><i class="fa-solid fa-pen"></i></a>
+      </article>
+    {% endfor %}
+    <a href="materials/add" role="button" class="add-button-customer">Nouveau matériaux</a>
+  </div>
+{% endblock %}

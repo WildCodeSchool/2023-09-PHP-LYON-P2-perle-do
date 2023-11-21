@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<h3 class="product">{{ products[0].categoryName }} / {{ products[0].materialName }}</h3>
+  <div class="product-block">
+    {% for product in products %}
+      <article class="article-product">
+        <a href="/products/show?id={{ product.id }}">
+          <ul>
+            <li>
+              <strong>{{ product.productName }}</strong>
+            </li>
+            <li>{{ product.price }} €</li>
+            <li>{{ product.referenceProduct }}</li>
+          </ul>
+        </a>
+        <form action="" method="post">
+					<input type="hidden" name="product_id" value={{ product.id }}>
+					<input type="number" name="quantity" value="0" min="0">
+					<input type="submit" value="ajouter" class="add_cart">
+				</form>
+      </article>
+    {% endfor %}
+  </div>
+  <a href="/products/add" role="button" class="add-button-customer">
+    Nouveau Produit
+</a>
+{% endblock %}
