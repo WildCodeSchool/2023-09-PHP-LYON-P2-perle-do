@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Model\CustomerManager;
+use App\Model\InvoiceManager;
+use App\Model\PaymentManager;
 use App\Model\ProductManager;
+use App\Service\ValidationCart;
 
 class ShopController extends AbstractController
 {
@@ -17,7 +20,7 @@ class ShopController extends AbstractController
             $customerManager = new CustomerManager();
 
             $cart = $_SESSION['cart'];
-
+            $errors = [];
             $products = [];
 
             foreach ($cart as $productId => $quantity) {
@@ -27,13 +30,67 @@ class ShopController extends AbstractController
                     $products[] = $aProductInfo;
                 }
             }
+            $payment = new PaymentManager();
+            $payments = $payment->selectAll();
 
             $customers = $customerManager->getAllCustomer();
 
-            return $this->twig->render('Shop/index.html.twig', [
-                'products' => $products,
-                'customers' => $customers,
-            ]);
+
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                // clean $_POST data
+
+                $cartValid = array_map('trim', $_POST);
+
+                $errorsValidation = new ValidationCart();
+                $errorsValidation->cartValidation($cartValid);
+                $errors = $errorsValidation->errors;
+
+                if (empty($errors)) {
+                    // if validation is ok, insert and redirection
+                    $invoiceManager = new InvoiceManager();
+                    $cartValid['discount'] = floatval($cartValid['discount']);
+
+
+                    $invoiceId = $invoiceManager->addInvoice($cartValid);
+
+                    // foreach $product in $cartValid,
+                    foreach ($cart as $productId => $quantity) {
+                        // var_dump($key);
+                        // die();
+                        $invoiceManager->addInvoiceProduct($productId, $quantity, $invoiceId);
+                    }
+
+
+                    return $this->twig->render(
+                        'Shop/index.html.twig',
+                        [
+                        'products' => $products,
+                        'customers' => $customers,
+                        'payments' => $payments,
+                        ]
+                    );
+                } else {
+                    return $this->twig->render(
+                        'Shop/index.html.twig',
+                        [
+                        'errors' => $errors,
+                        'products' => $products,
+                        'customers' => $customers,
+                        'payments' => $payments,
+                        ]
+                    );
+                }
+            } else {
+                return $this->twig->render(
+                    'Shop/index.html.twig',
+                    [
+                        'products' => $products,
+                        'customers' => $customers,
+                        'payments' => $payments,
+                    ]
+                );
+            }
         } else {
             header('Location: /');
             die();
