@@ -29,9 +29,9 @@
 				<tbody>
 					{% set sum = 0 %}
 					{% set sumT = 0 %}
+					{% set reduce = 0 %}
 					{% for product in products %}
 						{% set sum = sum + product.price * product.realQuantity %}
-						{% set sumT = sum * (1 - type.discount) %}
 						<tr>
 							<td>{{ product.id }}
 								<input type="hidden" name="id_product" id="id_product" value={{ product.id }}></td>
@@ -48,7 +48,7 @@
 						<td></td>
 						<td></td>
 						<td>Sous-total</td>
-						<td>{{ sum }}€</td>
+						<td id="sum">{{ sum }}</td>
 					</tr>
 					<tr>
 						<td></td>
@@ -64,12 +64,13 @@
 							</select>
 						</td>
 					</tr>
+					{% set sumT = sum * (1 - discount) %}
 					<tr>
 						<td></td>
 						<td></td>
 						<td></td>
 						<td>Total</td>
-						<td>{{ sumT }}€<input type="hidden" name="total" id="total" value={{ sumT }}>
+						<td> <span id="sumT">{{ sumT }}</span><input type="hidden" name="total" id="total" value={{ sumT }}>
 						</td>
 					</tr>
 				</tbody>

@@ -160,3 +160,15 @@ const calculate = (btnValue) => {
 spans.forEach((buttons) => {
     buttons.addEventListener("click", (e) => calculate(e.target.dataset.value));
 });
+
+let reduce = 0;
+let discount = document.getElementById('discount');
+let sumT = document.querySelector('#sumT');
+let sum = document.querySelector('#sum')
+console.log(sum.innerHTML);
+discount.addEventListener("change", (e) => {
+reduce  = e.target.value;
+sumT.innerHTML = sum.innerHTML *(1-reduce);
+console.log(sumT.innerHTML);
+});
+
