@@ -24,8 +24,8 @@ class ShopController extends AbstractController
             $products = [];
 
             foreach ($cart as $productId => $quantity) {
-                $quantity = $quantity;
                 $aProductInfo = $productManager->getProductById($productId);
+                $aProductInfo['realQuantity'] = $quantity;
                 if (is_array($aProductInfo)) {
                     $products[] = $aProductInfo;
                 }
@@ -59,6 +59,9 @@ class ShopController extends AbstractController
                         // var_dump($key);
                         // die();
                         $invoiceManager->addInvoiceProduct($productId, $quantity, $invoiceId);
+
+                        unset($_SESSION['cart']);
+                        header('Location: /shop');
                     }
 
 

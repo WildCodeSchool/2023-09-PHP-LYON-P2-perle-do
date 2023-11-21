@@ -29,7 +29,7 @@
 					{% set sum = 0 %}
 					{% set sumT = 0 %}
 					{% for product in products %}
-						{% set sum = sum + product.price * product.quantity %}
+						{% set sum = sum + product.price * product.realQuantity %}
 						{% set sumT = sum * (1 - type.discount) %}
 						<tr>
 							<td>{{ product.id }}
@@ -37,9 +37,9 @@
 							<td>{{ product.productname }}
 							</td>
 							<td>{{ product.price }}€</td>
-							<td>{{ product.quantity }}
-								<input type="hidden" name="quantity" id="quantity" value={{ product.quantity }}></td>
-							<td>{{ product.price * product.quantity }}€</td>
+							<td>{{ product.realQuantity }}
+								<input type="hidden" name="quantity" id="quantity" value={{ product.realQuantity }}></td>
+							<td>{{ product.price * product.realQuantity }}€</td>
 						</tr>
 					{% endfor %}
 					<tr>
