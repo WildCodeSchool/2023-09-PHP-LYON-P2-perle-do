@@ -71,13 +71,14 @@
 					{{ invoice.customerDiscount *100 }}
 					%
 				</li>
+				{% set sumT = sum * (1 - type.discount) %}
 				<li>
 					<strong class="invoice-font-size">Total :
-						{{ invoice.total }}
+						{{ sumT }}
 						€</strong>
 				</li>
 				<li>Dont TVA :
-					{{ (invoice.total - (invoice.total/1.2))|number_format(2) }}</li>
+					{{ (sumT - (sumT / 1.2))|number_format(2) }}</li>
 			</ul>
 		</div>
 	</div>
