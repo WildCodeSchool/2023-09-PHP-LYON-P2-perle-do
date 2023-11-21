@@ -652,6 +652,12 @@ input.display {
     background-color: var(--block-color);
 }
 
+input.add_cart {
+    text-align: center;
+    color: black;
+    padding: 0%;
+}
+
 /* -------------------media queries pour + 780 px--------------------- */
 /***********************************************************************/
 
