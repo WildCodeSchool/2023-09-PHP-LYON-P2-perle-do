@@ -30,7 +30,7 @@ USE `perle_do`;
 --
 -- Structure de la table `category`
 --
-
+USE `perle_do`;
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE IF NOT EXISTS `category` (
   `id` int NOT NULL AUTO_INCREMENT,
